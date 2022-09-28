@@ -1,21 +1,18 @@
 .col-1 {
   display: flex;
   width: 100%;
-  border: 1px solid yellow;
   flex-direction: column;
 }
 
 .col-2 {
   display: flex;
   width: 100%;
-  border: 1px solid red;
   justify-content: space-between;
 }
 
 .col-3 {
   display: flex;
   width: 100%;
-  border: 1px solid red;
   justify-content: space-between;
 }
 
@@ -37,19 +34,23 @@
   justify-content: space-between;
 }
 
-.col-2 > .col {
-  width: 50%;
-  border: 1px solid blue;
-}
-
 .col-1 > .col {
   width: 100%;
 }
+.col-2 > .col {
+  width: 50%;
+}
+
+.col-3 > .col {
+  width: 30%;
+}
 
 .col-4 > .col {
-  width: 25%;
-  border: 1px solid blue;
-  margin: 1rem;
+  width: 22%;
+}
+
+.col-5 > .col {
+  width: 18%;
 }
 
 .col-aside-main > .col-aside {
@@ -60,10 +61,241 @@
   width: 80%;
 }
 
-.col-4 > .col {
-  width: 33.33%;
+/* utilidades */
+.flex {
+  display: flex;
 }
 
-.col-5 > .col {
-  width: 20%;
+.flex-inline {
+  display: inline-flex;
+  width: 100%;
+}
+
+/* Structure */
+body {
+  background-color: hsl(218, 44%, 45%);
+}
+header {
+}
+
+.header-logo {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+  font-size: 2rem;
+}
+
+.header-menu {
+  height: 10vh;
+  display: flex;
+  justify-content: end;
+}
+.header-menu > ul {
+  width: 100%;
+  align-items: flex-end;
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+}
+.header-menu > ul > li {
+  margin: 0 2% 0 2%;
+  font-size: 1.2rem;
+}
+
+main {
+}
+
+footer {
+}
+
+/* Components */
+
+/* index.html */
+.inicio {
+}
+.banner {
+  height: 90vh;
+}
+.banner-imagen {
+  position: absolute;
+  height: 90vh;
+  width: 100%;
+}
+.banner-titulo {
+  position: relative;
+  top: 30vh;
+  left: 10vw;
+  font-size: 3rem;
+  min-width: 1680px;
+}
+.banner-accion {
+  position: relative;
+  top: 40vh;
+  left: 10vw;
+}
+.banner-accion > button {
+  height: 5vh;
+  border-radius: 5rem;
+  box-shadow: 1.2rem;
+  font-size: 1.2rem;
+  padding: 0 5%;
+}
+.destacados {
+  height: 100vh;
+}
+.destacados-titulo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.destacado {
+  margin: 0% 10%;
+}
+.destacado-card {
+  border: 5px solid white;
+  border-radius: 5px;
+}
+.destacado-card-imagen {
+  width: 100%;
+}
+.destacado-card-texto {
+  margin: 5%;
+}
+.banner-Text {
+  margin: 0% 10%;
+}
+.banner-Text-texto {
+}
+.banner-Text-imagen {
+}
+
+/* products.html */
+
+.productos-categorias {
+}
+.productos-titulo {
+}
+.productos-menu {
+}
+.productos-detalle {
+}
+.poductos-resumen {
+}
+.poductos-resumen-seleccion {
+}
+.poductos-resumen-filtro {
+}
+.productos-galeria {
+}
+.producto-detalle {
+}
+
+.producto-detalle-imagen {
+}
+.producto-detalle-precio {
+}
+.producto-detalle-descripcion {
+}
+.producto-detalle-accion {
+}
+
+/* product.html */
+
+.producto {
+}
+.producto-detalle {
+}
+.galeria-foto {
+}
+.galeria-miniaturas {
+}
+.galeria-miniatura {
+}
+.producto-detalle-descripcion {
+}
+.producto-detalle-descripcion-titulo {
+}
+.producto-detalle-descripcion-precio {
+}
+.producto-detalle-descripcion-texto {
+}
+.producto-detalle-cantidad {
+}
+.producto-label {
+}
+.selector-numerico {
+}
+.boton-menos {
+}
+.cantidad {
+}
+.boton-mas {
+}
+.producto-detalle-descripcion-accion {
+}
+
+/* contacto.html */
+.contacto {
+}
+.contacto-titulo {
+}
+.contacto-opciones {
+}
+.contacto-opciones-detalle {
+}
+.contacto-formulario {
+}
+.contacto-formulario-campos {
+}
+.contacto-formulario-accion {
+}
+
+/* checkout.html */
+.checkout {
+}
+.checkout-titulo {
+}
+.checkout-cliente {
+}
+.checkout-cliente-datos {
+}
+.checkout-resumen {
+}
+.checkout-resumen-titulo {
+}
+.checkout-resumen-desglose {
+}
+.checkout-resumen-formasPago {
+}
+.checkout-resumen-accion {
+}
+
+/* carrito.html */
+
+.carrito {
+}
+.carrito-titulo {
+}
+.carrito-productos {
+}
+.carrito-producto {
+}
+.carrito-producto-imagen {
+}
+.carrito-producto-detalle {
+}
+.carrito-producto-precio {
+}
+.carrito-producto-dias {
+}
+.carrito-producto-resumen {
+}
+.carrito-producto-accion {
 }
