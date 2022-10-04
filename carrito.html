@@ -16,53 +16,90 @@
       content="descripción de la web, se recomienda 90 caracteres"
     />
     <meta name="keywords" content="palabras clave, separadas, por comas" />
-
+    <link href="normalice.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <header>
-      <div>
-        <div>
-          <div>logo</div>
-          <div>
-            <h1>Titulo</h1>
-          </div>
-        </div>
-        <nav>
-          <ul>
-            <li>inicio</li>
-            <li>reserva</li>
-            <li>contacto</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <header></header>
 
     <main>
       <div class="carrito">
-        <!-- titulo  -->
-        <div class="carrito-titulo">Carrito de la compra</div>
-        <!-- productos -->
-        <div class="carrito-productos">
-          <!-- producto  -->
-          <div class="carrito-producto">
-            <!-- imagen -->
-            <div class="carrito-producto-imagen"></div>
-            <!-- producto -->
-            <div class="carrito-producto-detalle"></div>
-            <!-- precio  -->
-            <div class="carrito-producto-precio"></div>
-            <!-- días  -->
-            <div class="carrito-producto-dias"></div>
+        <div class="col-1">
+          <div class="col">
+            <!-- titulo  -->
+            <div class="carrito-titulo"><h2>Carrito de la compra</h2></div>
           </div>
-        </div>
-        <!-- resumen compra -->
-        <div class="carrito-producto-resumen"></div>
-        <!-- botones  -->
-        <div class="carrito-producto-accion">
-          <div class="carrito-producto-accion-volver"></div>
-          <div class="carrito-producto-accion-comprar"></div>
+          <div class="col">
+            <!-- productos -->
+            <div class="carrito-productos">
+              <div class="col-4">
+                <div class="col"></div>
+                <div class="col">Producto</div>
+                <div class="col">Precio</div>
+                <div class="col">Días</div>
+              </div>
+              <!-- producto  -->
+              <div class="carrito-producto">
+                <div class="col-4">
+                  <div class="col">
+                    <!-- imagen -->
+                    <div class="carrito-producto-imagen">
+                      <img
+                        src="https://picsum.photos/seed/picsum/100/100"
+                        alt="producto"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <!-- producto -->
+                    <div class="carrito-producto-detalle">
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Corporis voluptatem voluptatibus ipsam.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <!-- precio  -->
+                    <div class="carrito-producto-precio">120/día</div>
+                  </div>
+                  <div class="col">
+                    <!-- días  -->
+                    <div class="carrito-producto-dias">
+                      <div class="flex-inline selector-numerico">
+                        <div class="boton-menos"><button>-</button></div>
+                        <div class="cantidad">1</div>
+                        <div class="boton-mas"><button>+</button></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <!-- resumen compra -->
+            <div class="carrito-producto-resumen">Resumen compra</div>
+            <!-- botones  -->
+            <div class="carrito-producto-accion">
+              <!-- desglose factura -->
+              <div class="checkout-resumen-desglose">
+                <div class="col-2">
+                  <div class="col">IVA</div>
+                  <div class="col">20</div>
+                </div>
+                <div class="col-2">
+                  <div class="col">Transporte</div>
+                  <div class="col">20</div>
+                </div>
+                <div class="col-2">
+                  <div class="col">Total</div>
+                  <div class="col">120</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

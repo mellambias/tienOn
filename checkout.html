@@ -16,53 +16,137 @@
       content="descripción de la web, se recomienda 90 caracteres"
     />
     <meta name="keywords" content="palabras clave, separadas, por comas" />
-
+    <link href="normalice.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <header>
-      <div>
-        <div>
-          <div>logo</div>
-          <div>
-            <h1>Titulo</h1>
-          </div>
-        </div>
-        <nav>
-          <ul>
-            <li>inicio</li>
-            <li>reserva</li>
-            <li>contacto</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <header></header>
 
     <main>
       <div class="checkout">
-        <div class="checkout-titulo">Finalizar compra</div>
-        <div class="checkout-cliente">
-          <!-- datos cliente -->
-          <div class="checkout-cliente-datos">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="col-1">
+          <div class="col">
+            <div class="checkout-titulo"><h2>Finalizar compra</h2></div>
           </div>
-          <!-- resumen compra -->
-          <div class="checkout-resumen">
-            <!-- titulo  -->
-            <div class="checkout-resumen-titulo">Resumen de la compra</div>
-            <!-- desglose factura -->
-            <div class="checkout-resumen-desglose"></div>
-            <!-- tipo de pago -->
-            <div class="checkout-resumen-formasPago"></div>
-            <!-- botones -->
-            <div class="checkout-resumen-accion"></div>
+          <div class="col">
+            <div class="checkout-cliente">
+              <div class="col-2">
+                <div class="col">
+                  <!-- datos cliente -->
+                  <div class="checkout-cliente-datos">
+                    <div class="col-2">
+                      <div class="col flex">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" type="text" />
+                      </div>
+                      <div class="col flex">
+                        <label for="apellidos">Apellidos</label>
+                        <input id="apellidos" type="text" />
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="col flex">
+                        <label for="telefono">Teléfono</label>
+                        <input id="telefono" type="text" />
+                      </div>
+                      <div class="col flex">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" />
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="col flex">
+                        <label for="ciudad">Ciudad</label>
+                        <select name="ciudad" id="ciudad">
+                          <option value="00000"></option>
+                          <option value="07600">Palma de Mallorca</option>
+                        </select>
+                      </div>
+                      <div class="col flex">
+                        <label for="codigoPostal">Código postal</label>
+                        <input id="codigoPostal" type="text" />
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="col flex">
+                        <label for="dirección">Dirección</label>
+                        <input id="dirección" type="text" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <!-- resumen compra -->
+                  <div class="checkout-resumen">
+                    <div class="col-1">
+                      <div class="col">
+                        <!-- titulo  -->
+                        <div class="checkout-resumen-titulo">
+                          <h3>Resumen de la compra</h3>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <!-- desglose factura -->
+                        <div class="checkout-resumen-desglose">
+                          <div class="col-2">
+                            <div class="col">IVA</div>
+                            <div class="col">20</div>
+                          </div>
+                          <div class="col-2">
+                            <div class="col">Transporte</div>
+                            <div class="col">20</div>
+                          </div>
+                          <div class="col-2">
+                            <div class="col">Total</div>
+                            <div class="col">120</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <form action="" method="post">
+                          <!-- tipo de pago -->
+                          <div class="checkout-resumen-formasPago">
+                            <div class="col-1">
+                              <div class="col">
+                                <input
+                                  type="radio"
+                                  id="transferencia"
+                                  name="transferencia"
+                                  value="1"
+                                />
+                                <label for="transferencia">
+                                  Transferencia bancaria</label
+                                >
+                              </div>
+                              <div class="col">
+                                <input
+                                  type="radio"
+                                  id="paypal"
+                                  name="paypal"
+                                  value="2"
+                                />
+                                <label for="Paypal">Paypal</label>
+                              </div>
+                              <div class="col">
+                                <input type="radio" id="" name="" value="" />
+                                <label for="">Tarjeta de crédito</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <!-- botones -->
+                            <div class="checkout-resumen-accion">
+                              <button>Pagar</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

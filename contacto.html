@@ -16,7 +16,7 @@
       content="descripción de la web, se recomienda 90 caracteres"
     />
     <meta name="keywords" content="palabras clave, separadas, por comas" />
-
+    <link href="normalice.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
   </head>
 
@@ -113,25 +113,47 @@
                 <div class="col">
                   <!-- contacto formulario-->
                   <div class="contacto-formulario">
-                    <div class="col-2"></div>
                     <!-- campos -->
                     <div class="contacto-formulario-campos">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
+                      <div class="col-2">
+                        <div class="col">
+                          <label for="nombre">Nombre</label>
+                          <input id="nombre" type="text" />
+                        </div>
+                        <div class="col">
+                          <label for="apellidos">Apellidos</label>
+                          <input id="apellidos" type="text" />
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="col">
+                          <label for="telefono">Teléfono</label>
+                          <input id="telefono" type="text" />
+                        </div>
+                        <div class="col">
+                          <label for="email">Email</label>
+                          <input id="email" type="email" />
+                        </div>
+                      </div>
+                      <div class="col-1">
+                        <div class="col">
+                          <label for="mensaje">Mensaje</label>
+                          <textarea id="mensaje"></textarea>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col">
                     <!-- boton envio formulario -->
-                    <div class="contacto-formulario-accion"></div>
+                    <div class="contacto-formulario-accion">
+                      <button id="enviar">Enviar</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- contacto datos -->
       </div>
     </main>
     <footer></footer>
