@@ -1,109 +1,536 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- link es un enlace a un recurso -->
-    <link
-      rel="shortcut icon"
-      href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
-    />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- link es un enlace a un recurso -->
+        <link
+            rel="shortcut icon"
+            href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
+        />
 
-    <title>Título</title>
-    <!-- meta información -->
-    <meta
-      name="description"
-      content="descripción de la web, se recomienda 90 caracteres"
-    />
-    <meta name="keywords" content="palabras clave, separadas, por comas" />
-    <link href="normalice.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
+        <title>Carrito</title>
+        <!-- meta información -->
+        <meta
+            name="description"
+            content="descripción de la web, se recomienda 90 caracteres"
+        />
+        <meta name="keywords" content="palabras clave, separadas, por comas" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link href="normalice.css" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+    </head>
 
-  <body>
-    <header></header>
+    <body>
+        <header></header>
+        <main>
+            <div class="carrito">
+                <div class="col-1">
+                    <div class="col">
+                        <!-- titulo  -->
+                        <div class="carrito-titulo">
+                            <h2>Carrito de la compra</h2>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- productos -->
+                        <div class="col-4 producto-header">
+                            <div class="col"></div>
+                            <div class="col"><p>Producto</p></div>
+                            <div class="col">
+                                <p>Precio</p>
+                            </div>
+                            <div class="col">
+                                <p>Días</p>
+                            </div>
+                        </div>
+                        <div class="carrito-productos">
+                            <!-- producto  -->
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carrito-producto">
+                                <div class="col-4">
+                                    <div class="col">
+                                        <!-- imagen -->
+                                        <div class="carrito-producto-imagen">
+                                            <img
+                                                src="https://picsum.photos/seed/picsum/50/50"
+                                                alt="producto"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- producto -->
+                                        <div class="carrito-producto-detalle">
+                                            <p>
+                                                Lorem ipsum dolor, sit amet
+                                                consectetur adipisicing elit.
+                                                Corporis voluptatem voluptatibus
+                                                ipsam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- precio  -->
+                                        <div class="carrito-producto-precio">
+                                            <p>120 <span>&euro;/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- días  -->
+                                        <div class="carrito-producto-dias">
+                                            <div class="selector-numerico">
+                                                <div class="boton-menos">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1-1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H5V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="cantidad">
+                                                    <input
+                                                        id="cantidad"
+                                                        type="text"
+                                                        placeholder="1"
+                                                        value="1"
+                                                    />
+                                                </div>
+                                                <div class="boton-mas">
+                                                    <button
+                                                        onclick="getElementById('cantidad').value=getElementById('cantidad').value*1+1"
+                                                    >
+                                                        <svg
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- resumen compra -->
+                        <div class="carrito-producto-resumen">
+                            <div class="checkout-product-resumen">
+                                <div class="resum">
+                                    <!-- titulo  -->
+                                    <div class="checkout-resumen-titulo">
+                                        <h3>Resumen de la compra</h3>
+                                    </div>
+                                    <!-- desglose factura -->
+                                    <div class="checkout-resumen-desglose">
+                                        <div class="col-2">
+                                            <div class="col flex center">
+                                                <label>IVA</label>
+                                            </div>
+                                            <div class="col flex center">
+                                                <p>20 &euro;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="col flex center">
+                                                <label>Transporte</label>
+                                            </div>
+                                            <div class="col flex center">
+                                                <p>20 &euro;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="col flex center">
+                                                <label>Total</label>
+                                            </div>
+                                            <div class="col flex center">
+                                                <p>120 &euro;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- botones  -->
 
-    <main>
-      <div class="carrito">
-        <div class="col-1">
-          <div class="col">
-            <!-- titulo  -->
-            <div class="carrito-titulo"><h2>Carrito de la compra</h2></div>
-          </div>
-          <div class="col">
-            <!-- productos -->
-            <div class="carrito-productos">
-              <div class="col-4">
-                <div class="col"></div>
-                <div class="col">Producto</div>
-                <div class="col">Precio</div>
-                <div class="col">Días</div>
-              </div>
-              <!-- producto  -->
-              <div class="carrito-producto">
-                <div class="col-4">
-                  <div class="col">
-                    <!-- imagen -->
-                    <div class="carrito-producto-imagen">
-                      <img
-                        src="https://picsum.photos/seed/picsum/100/100"
-                        alt="producto"
-                      />
+                                <div class="carrito-producto-accion">
+                                    <button>Volver</button>
+                                    <button>Comprar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col">
-                    <!-- producto -->
-                    <div class="carrito-producto-detalle">
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Corporis voluptatem voluptatibus ipsam.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <!-- precio  -->
-                    <div class="carrito-producto-precio">120/día</div>
-                  </div>
-                  <div class="col">
-                    <!-- días  -->
-                    <div class="carrito-producto-dias">
-                      <div class="flex-inline selector-numerico">
-                        <div class="boton-menos"><button>-</button></div>
-                        <div class="cantidad">1</div>
-                        <div class="boton-mas"><button>+</button></div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col">
-            <!-- resumen compra -->
-            <div class="carrito-producto-resumen">Resumen compra</div>
-            <!-- botones  -->
-            <div class="carrito-producto-accion">
-              <!-- desglose factura -->
-              <div class="checkout-resumen-desglose">
-                <div class="col-2">
-                  <div class="col">IVA</div>
-                  <div class="col">20</div>
-                </div>
-                <div class="col-2">
-                  <div class="col">Transporte</div>
-                  <div class="col">20</div>
-                </div>
-                <div class="col-2">
-                  <div class="col">Total</div>
-                  <div class="col">120</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+        </main>
 
-    <footer></footer>
-  </body>
+        <footer></footer>
+    </body>
+    <script src="./partials.js" type="module"></script>
 </html>

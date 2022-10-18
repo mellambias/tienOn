@@ -1,157 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- link es un enlace a un recurso -->
-    <link
-      rel="shortcut icon"
-      href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
-    />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- link es un enlace a un recurso -->
+        <link
+            rel="shortcut icon"
+            href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
+        />
 
-    <title>Título</title>
-    <!-- meta información -->
-    <meta
-      name="description"
-      content="descripción de la web, se recomienda 90 caracteres"
-    />
-    <meta name="keywords" content="palabras clave, separadas, por comas" />
-    <link href="normalice.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
+        <title>checkout</title>
+        <!-- meta información -->
+        <meta
+            name="description"
+            content="descripción de la web, se recomienda 90 caracteres"
+        />
+        <meta name="keywords" content="palabras clave, separadas, por comas" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link href="normalice.css" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="./partials.js" type="module"></script>
+    </head>
 
-  <body>
-    <header></header>
+    <body>
+        <header></header>
 
-    <main>
-      <div class="checkout">
-        <div class="col-1">
-          <div class="col">
-            <div class="checkout-titulo"><h2>Finalizar compra</h2></div>
-          </div>
-          <div class="col">
-            <div class="checkout-cliente">
-              <div class="col-2">
-                <div class="col">
-                  <!-- datos cliente -->
-                  <div class="checkout-cliente-datos">
-                    <div class="col-2">
-                      <div class="col flex">
-                        <label for="nombre">Nombre</label>
-                        <input id="nombre" type="text" />
-                      </div>
-                      <div class="col flex">
-                        <label for="apellidos">Apellidos</label>
-                        <input id="apellidos" type="text" />
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="col flex">
-                        <label for="telefono">Teléfono</label>
-                        <input id="telefono" type="text" />
-                      </div>
-                      <div class="col flex">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" />
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="col flex">
-                        <label for="ciudad">Ciudad</label>
-                        <select name="ciudad" id="ciudad">
-                          <option value="00000"></option>
-                          <option value="07600">Palma de Mallorca</option>
-                        </select>
-                      </div>
-                      <div class="col flex">
-                        <label for="codigoPostal">Código postal</label>
-                        <input id="codigoPostal" type="text" />
-                      </div>
-                    </div>
-                    <div class="col-1">
-                      <div class="col flex">
-                        <label for="dirección">Dirección</label>
-                        <input id="dirección" type="text" />
-                      </div>
-                    </div>
-                  </div>
+        <main>
+            <div class="checkout">
+                <div class="checkout-titulo">
+                    <h2>Finalizar compra</h2>
                 </div>
-                <div class="col">
-                  <!-- resumen compra -->
-                  <div class="checkout-resumen">
-                    <div class="col-1">
-                      <div class="col">
-                        <!-- titulo  -->
-                        <div class="checkout-resumen-titulo">
-                          <h3>Resumen de la compra</h3>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <!-- desglose factura -->
-                        <div class="checkout-resumen-desglose">
-                          <div class="col-2">
-                            <div class="col">IVA</div>
-                            <div class="col">20</div>
-                          </div>
-                          <div class="col-2">
-                            <div class="col">Transporte</div>
-                            <div class="col">20</div>
-                          </div>
-                          <div class="col-2">
-                            <div class="col">Total</div>
-                            <div class="col">120</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <form action="" method="post">
-                          <!-- tipo de pago -->
-                          <div class="checkout-resumen-formasPago">
-                            <div class="col-1">
-                              <div class="col">
-                                <input
-                                  type="radio"
-                                  id="transferencia"
-                                  name="transferencia"
-                                  value="1"
-                                />
-                                <label for="transferencia">
-                                  Transferencia bancaria</label
-                                >
-                              </div>
-                              <div class="col">
-                                <input
-                                  type="radio"
-                                  id="paypal"
-                                  name="paypal"
-                                  value="2"
-                                />
-                                <label for="Paypal">Paypal</label>
-                              </div>
-                              <div class="col">
-                                <input type="radio" id="" name="" value="" />
-                                <label for="">Tarjeta de crédito</label>
-                              </div>
+
+                <div class="checkout-cliente">
+                    <div class="col-2">
+                        <div class="col">
+                            <!-- datos cliente -->
+                            <div class="checkout-cliente-datos">
+                                <div class="col-2">
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="nombre">Nombre</label>
+                                            <input id="nombre" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="apellidos"
+                                                >Apellidos</label
+                                            >
+                                            <input id="apellidos" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="telefono"
+                                                >Teléfono</label
+                                            >
+                                            <input id="telefono" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="email">Email</label>
+                                            <input id="email" type="email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="ciudad">Ciudad</label>
+                                            <select name="ciudad" id="ciudad">
+                                                <option value="00000"></option>
+                                                <option value="07600">
+                                                    Palma de Mallorca
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="campo">
+                                            <label for="codigoPostal"
+                                                >Código postal</label
+                                            >
+                                            <input
+                                                id="codigoPostal"
+                                                type="text"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="campo">
+                                        <label for="dirección">Dirección</label>
+                                        <input id="dirección" type="text" />
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="col">
-                            <!-- botones -->
-                            <div class="checkout-resumen-accion">
-                              <button>Pagar</button>
+                        </div>
+                        <div class="col">
+                            <!-- resumen compra -->
+
+                            <div class="checkout-resumen">
+                                <div class="resum">
+                                    <!-- titulo  -->
+                                    <div class="checkout-resumen-titulo">
+                                        <h3>Resumen de la compra</h3>
+                                    </div>
+                                    <div class="col">
+                                        <!-- desglose factura -->
+                                        <div class="checkout-resumen-desglose">
+                                            <div class="col-2">
+                                                <div class="col flex center">
+                                                    <label>IVA</label>
+                                                </div>
+                                                <div class="col flex center">
+                                                    <p>20 &euro;</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="col flex center">
+                                                    <label>Transporte</label>
+                                                </div>
+                                                <div class="col flex center">
+                                                    <p>20 &euro;</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="col flex center">
+                                                    <label>Total</label>
+                                                </div>
+                                                <div class="col flex center">
+                                                    <p>120 &euro;</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        </form>
-                      </div>
+
+                            <!-- tipo de pago -->
+                            <div class="checkout-resumen-formasPago">
+                                <div class="col-1">
+                                    <div class="col">
+                                        <input
+                                            type="radio"
+                                            id="transferencia"
+                                            name="formaPago"
+                                            value="1"
+                                        />
+                                        <label for="transferencia">
+                                            Transferencia bancaria</label
+                                        >
+                                    </div>
+                                    <div class="col">
+                                        <input
+                                            type="radio"
+                                            id="paypal"
+                                            name="formaPago"
+                                            value="2"
+                                        />
+                                        <label for="Paypal">Paypal</label>
+                                    </div>
+                                    <div class="col">
+                                        <input
+                                            type="radio"
+                                            id="tarjeta"
+                                            name="formaPago"
+                                            value="3"
+                                            checked
+                                        />
+                                        <label for="">Tarjeta de crédito</label>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <!-- botones -->
+                                    <div class="checkout-resumen-accion">
+                                        <button>Pagar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
+        </main>
 
-    <footer></footer>
-  </body>
+        <footer></footer>
+    </body>
+    <script src="./partials.js" type="module"></script>
 </html>

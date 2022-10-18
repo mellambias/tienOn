@@ -1,316 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- link es un enlace a un recurso -->
-    <link
-      rel="shortcut icon"
-      href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
-    />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- link es un enlace a un recurso -->
+        <link
+            rel="shortcut icon"
+            href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico"
+        />
 
-    <title>Título</title>
-    <!-- meta información -->
-    <meta
-      name="description"
-      content="descripción de la web, se recomienda 90 caracteres"
-    />
-    <meta name="keywords" content="palabras clave, separadas, por comas" />
-    <link href="normalice.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
+        <title>Productos</title>
+        <!-- meta información -->
+        <meta
+            name="description"
+            content="descripción de la web, se recomienda 90 caracteres"
+        />
+        <meta name="keywords" content="palabras clave, separadas, por comas" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link href="normalice.css" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+    </head>
 
-  <body>
-    <header></header>
+    <body>
+        <header></header>
 
-    <main>
-      <div class="productos">
-        <div class="col-aside-main">
-          <div class="col-aside">
-            <!-- panel izq  categorias -->
-            <div class="productos-categorias">
-              <div class="productos-titulo">
-                <h2>CATEGORIAS</h2>
-              </div>
-              <nav class="productos-menu">
-                <ul>
-                  <li>Todas</li>
-                  <li>Lanchas</li>
-                  <li>Llauts</li>
-                  <li>Veleros</li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="col-main">
-            <!-- panel derecho productos -->
-            <div class="productos-detalle">
-              <div class="poductos-resumen">
-                <div class="col-2">
-                  <div class="col">
-                    <!-- información selección -->
-                    <div class="poductos-resumen-seleccion">
-                      Se están señalando 20 de 100 productos
+        <main>
+            <div class="productos">
+                <div class="col-aside-main">
+                    <div class="col-aside">
+                        <!-- panel izq  categorias -->
+                        <div class="productos-categorias">
+                            <nav class="productos-menu">
+                                <div class="productos-titulo">
+                                    <h2>CATEGORIAS</h2>
+                                </div>
+                                <ul>
+                                    <li>Todas</li>
+                                    <li>Excursiones</li>
+                                    <li>Estancias</li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col">
-                    <!-- selector -->
-                    <div class="poductos-resumen-filtro">
-                      <select name="filtro" id="filtro">
-                        <option value="todos">todos</option>
-                        <option value="menorPrimero">de menor a mayor</option>
-                        <option value="mayorPrimero">de mayor a mmenor</option>
-                      </select>
+                    <div class="col-main">
+                        <!-- panel derecho productos -->
+                        <div class="productos-detalle">
+                            <div class="poductos-resumen">
+                                <div class="col-2">
+                                    <div class="col">
+                                        <!-- información selección -->
+                                        <div class="poductos-resumen-seleccion">
+                                            <h3>
+                                                Se están señalando 20 de 100
+                                                productos
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- selector -->
+                                        <div class="poductos-resumen-filtro">
+                                            <select name="filtro" id="filtro">
+                                                <option value="todos">
+                                                    todos
+                                                </option>
+                                                <option value="menorPrimero">
+                                                    de menor a mayor
+                                                </option>
+                                                <option value="mayorPrimero">
+                                                    de mayor a mmenor
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- productos -->
+                            <div class="productos-galeria">
+                                <!-- card -->
+                                <div class="producto-card">
+                                    <div class="producto-card-imagen">
+                                        <img
+                                            src="https://picsum.photos/seed/picsum/320/350"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="producto-card-precio">
+                                        <span>100&euro;/día</span>
+                                    </div>
+                                    <div
+                                        class="producto-card-descripcion text-overflow"
+                                    >
+                                        <p>
+                                            Lorem ipsum dolor sit amet
+                                            consectetur. Lorem ipsum dolor sit
+                                            amet consectetur. Lorem ipsum dolor
+                                            sit amet sit amet consectetur. Lorem
+                                            ipsum dolor sit amet sit amet
+                                            consectetur. Lorem ipsum dolor sit
+                                            amet consectetur. Lorem ipsum dolor
+                                            sit amet consectetur. Lorem ipsum
+                                            dolor sit amet consectetur. Lorem
+                                            ipsum dolor sit amet
+                                        </p>
+                                    </div>
+                                    <div class="producto-card-accion">
+                                        <button><p>Ver producto</p></button>
+                                    </div>
+                                </div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                                <div class="producto-card"></div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- productos -->
-              <div class="productos-galeria">
-                <!-- card -->
-                <div class="col-3">
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="producto-detalle">
-                      <div class="col-1">
-                        <div class="col">
-                          <!-- foto -->
-                          <div class="producto-detalle-imagen">
-                            <img
-                              src="https://picsum.photos/seed/picsum/270/270"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- precio -->
-                          <div class="producto-detalle-precio">
-                            <p>100</p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- descripción -->
-                          <div class="producto-detalle-descripcion">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur,
-                              adipisicing elit. Asperiores saepe est consectetur
-                              magni quaerat qui odio totam maxime commodi
-                              debitis perferendis aut accusamus animi nulla
-                              inventore, explicabo consequuntur laborum? Ad.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <!-- llamada a la acción -->
-                          <div class="producto-detalle-accion">
-                            <button>Ver producto</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
+        </main>
 
-    <footer></footer>
-  </body>
+        <footer></footer>
+    </body>
+    <script src="./partials.js" type="module"></script>
 </html>
