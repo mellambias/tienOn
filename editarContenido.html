@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Editar el contenido</title>
+        <style>
+            #informe {
+                border: 1px solid blue;
+                min-height: 80px;
+                height: 120px;
+                width: 100%;
+                position: relative;
+                padding: 10px;
+                margin: 20px;
+            }
+            #informe h3 {
+                padding: 0 5px;
+                margin: 0;
+                position: absolute;
+                top: -13px;
+                left: 10px;
+                background-color: white;
+            }
+            .contentEditable {
+                border: 1px solid red;
+                cursor: text;
+            }
+            .none {
+                color: blue;
+            }
+            .blue {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <article>
+                <h1 class="none blue">Editar el contenido</h1>
+                <h2>Este texto no es editable</h2>
+                <h3>Practicando la propiedad contentEditable de JavaScript</h3>
+                <div>
+                    <p>párrafo 1</p>
+                    <!-- Nav tabs -->
+                    <p class="blue">párrafo 2</p>
+                    <p>párrafo 3</p>
+                    <p>párrafo 4</p>
+                    <p>párrafo 5</p>
+                </div>
+                <div>
+                    Este texto esta en un div no es editable
+                    <span>Pero este dentro del div entre span SI</span>
+                </div>
+                <ul>
+                    <li><a href="#">link1</a><span> Texto</span></li>
+                    <li><a href="#">link2</a> Este texto no es editable</li>
+                    <li><a href="#">link3</a></li>
+                    <li><a href="#">link4</a></li>
+                    <li><a href="#">link5</a></li>
+                </ul>
+                <div>
+                    <button id="editMode" value="false" type="button">
+                        Activar edicion
+                    </button>
+                </div>
+                <div id="informe">
+                    <h3>Contenido editable:</h3>
+                </div>
+            </article>
+        </main>
+        <style>
+            .blue {
+                color: green;
+            }
+        </style>
+        <script>
+            /*
+        @autor Miguel Llambías Llansó
+        */
+            /*
+        variables globales o iniciales
+        */
+            // muestra el estilo contentEditable o no
+            let showEditable = true;
+            // Toma el valor inicial del boton
+            let editable = document.getElementById('editMode').value;
+            // Pone un controlador sobre el click del boton cuyo id es editMode
+            document
+                .getElementById('editMode')
+                .addEventListener('click', cambiaBoton);
+            /*
+             *Función que cambia el estado y texto del boton
+             * y llama a la función editMode.
+             */
+            function cambiaBoton() {
+                if (editable === 'true') {
+                    this.innerHTML = 'Activar edicion';
+                    editable = 'false';
+                } else {
+                    this.innerHTML = 'Desactivar edicion';
+                    editable = 'true';
+                }
+                this.value = editable;
+                editMode(editable, showEditable);
+            }
+            /*
+        Esta funcion añade contoladores a los elementos
+        p, h1, li a, span permitiendo que se editen y actualicen
+         */
+            function editMode(mode, showEditable = true) {
+                let nodos = document.querySelectorAll('p,h1,li a,span');
+                for (let i = 0; i < nodos.length; i++) {
+                    if (mode === 'true') {
+                        nodos.item(i).addEventListener('click', edit);
+                        nodos.item(i).addEventListener('blur', actualiza);
+                        if (showEditable) {
+                            nodos.item(i).classList.add('contentEditable');
+                        }
+                    } else {
+                        nodos.item(i).removeEventListener('click', edit);
+                        nodos.item(i).removeEventListener('blur', actualiza);
+                        nodos.item(i).classList.remove('contentEditable');
+                    }
+                }
+            }
+            /*
+            Esta funcion permite editar el contenido,
+            elimina la clase contentEditable y establece el foco
+         */
+            function edit(ev) {
+                ev.preventDefault();
+                this.contentEditable = true;
+                this.classList.remove('contentEditable');
+                this.focus();
+            }
+            /*
+        Funcion llamada cuando el elemento editado pierde el foco
+        escribe en un elemento con id informe el contenido actual
+        del elemento.
+         */
+            function actualiza() {
+                this.contentEditable = false;
+                document.getElementById('informe').innerHTML =
+                    '<h3>Contenido editable:</h3>' + this.innerHTML;
+            }
+            //Inicia el modo en función de las variables globales
+            editMode(editable, showEditable);
+        </script>
+    </body>
+</html>

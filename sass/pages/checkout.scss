@@ -1,0 +1,81 @@
+.checkout {
+    margin: 0 auto;
+    width: 80%;
+    height: 70vh;
+}
+
+.checkout-titulo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    h2 {
+        color: $text-color;
+    }
+}
+
+.checkout-cliente {
+    height: 70vh;
+}
+.checkout-cliente-datos {
+    padding-right: 20%;
+    border-right: 1px solid $text-color;
+}
+.checkout-resumen {
+    width: 70%;
+}
+.resum {
+    margin: 0 10%;
+    border: 1px solid $text-color;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+.checkout-resumen-titulo {
+    display: flex;
+    justify-content: center;
+    background-color: $text-color;
+    margin-bottom: 1rem;
+}
+.checkout-resumen-desglose {
+    display: flex;
+    flex-direction: column;
+    * {
+        color: $text-color;
+    }
+}
+
+.center {
+    justify-content: center;
+}
+
+.col-dir {
+    flex-direction: column;
+}
+
+.checkout-resumen-formasPago {
+    width: 60%;
+    margin: 0 10%;
+    input {
+        margin-bottom: 1rem;
+        margin-right: 0.5rem;
+    }
+    label {
+        color: $text-color;
+    }
+}
+
+.checkout-resumen-accion {
+    width: 30%;
+    height: 5vh;
+    button {
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            to right,
+            hsl(225.83, 63.16%, 44.71%),
+            rgba(25, 0, 255, 0.486)
+        );
+        border-radius: 10%;
+        border: 1px solid $text-color;
+        color: $text-color;
+    }
+}

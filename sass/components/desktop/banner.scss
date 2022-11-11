@@ -1,0 +1,37 @@
+.banner {
+    height: 100vh;
+}
+.banner-imagen {
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+}
+.banner-titulo {
+    position: relative;
+    top: 30vh;
+    left: 10vw;
+    min-width: 1680px;
+
+    > h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #20205e;
+        text-shadow: 9px 6px 6px #3a4966;
+    }
+}
+
+.banner-accion {
+    position: relative;
+    top: 40vh;
+    left: 10vw;
+
+    > button {
+        height: 5vh;
+        border-radius: 5rem;
+        box-shadow: 1.2rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        padding: 0 5%;
+        background-color: antiquewhite;
+    }
+}

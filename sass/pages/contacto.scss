@@ -1,0 +1,70 @@
+.contacto {
+    margin: 0 auto;
+    width: 80%;
+}
+.contacto-titulo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    h2 {
+        color: $text-color;
+        font-size: 2.5rem;
+    }
+}
+
+.contacto-opciones-detalle {
+    display: flex;
+    li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        p {
+            color: $text-color;
+            font-size: 2rem;
+        }
+    }
+    svg {
+        width: 2rem;
+        margin-right: 1rem;
+
+        path {
+            fill: rgb(66, 34, 211);
+        }
+    }
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+
+    label {
+        color: $text-color;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+    input {
+        font-size: 1.2rem;
+    }
+}
+
+.contacto-formulario-accion {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        border: 0;
+        align-items: center;
+        background-image: linear-gradient(
+            to right,
+            hsl(225.83, 63.16%, 44.71%),
+            rgba(25, 0, 255, 0.486)
+        );
+        border-radius: 5px;
+        width: 25%;
+        height: 2rem;
+        color: $text-color;
+    }
+}

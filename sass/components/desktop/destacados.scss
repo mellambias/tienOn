@@ -1,0 +1,30 @@
+.destacados {
+    height: 100vh;
+}
+.destacados-titulo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.destacado {
+    margin: 0 5%;
+}
+.destacado-card {
+    border: 5px solid $text-color;
+    border-radius: 15px;
+    min-height: 100%;
+}
+.destacado-card-imagen {
+    width: 100%;
+    position: relative;
+    z-index: $z-imagen;
+}
+
+.destacado-card-texto {
+    margin: 5%;
+    -webkit-line-clamp: 10;
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+}

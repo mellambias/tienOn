@@ -1,0 +1,144 @@
+.desktop-five-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .column {
+        width: 18%;
+    }
+}
+
+.desktop-four-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .column {
+        width: 22%;
+    }
+}
+
+.desktop-three-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .column {
+        width: 30%;
+    }
+}
+
+.desktop-two-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .column {
+        width: 48%;
+    }
+}
+
+.desktop-two-columns-aside {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .column-aside {
+        width: 20%;
+    }
+
+    & > .column-main {
+        width: 75%;
+    }
+}
+
+.desktop-one-column {
+    width: 100%;
+
+    & > .column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+.col-1 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    > .col {
+        width: 100%;
+    }
+}
+
+.col-2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    > .col {
+        width: 50%;
+    }
+}
+
+.col-3 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    > .col {
+        width: 30%;
+    }
+}
+
+.col-4 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    > .col {
+        width: 22%;
+    }
+}
+
+.col-5 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    > .col {
+        width: 18%;
+    }
+}
+
+.col-aside-main {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    > .col-aside {
+        width: 20%;
+    }
+
+    > .col-main {
+        width: 80%;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.bgc-1 {
+    background-color: antiquewhite;
+}
+
+.bgc-2 {
+    background-color: rgb(245, 182, 130);
+}
+
+.bgc-3 {
+    background-color: aqua;
+}

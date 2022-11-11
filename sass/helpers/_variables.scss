@@ -1,0 +1,30 @@
+//z-index
+$z-index-featured-image: 1000;
+$z-index-slider-image: 1000;
+$z-index-featured-elements: 1001;
+$z-index-slider-elements: 1001;
+$z-index-header: 5000;
+$z-index-header-menu: 5000;
+$z-index-overlay: 5001;
+$z-index-spinner: 5002;
+$z-header: 2000;
+$z-imagen: -1000;
+$z-resum: 1000;
+$z-etiqueta: 1200;
+
+//typography
+$font-stack: 'Source Sans Pro', sans-serif;
+$font-primary: 'Oswald';
+$font-stack-condensed: 'Ubuntu Condensed', sans-serif;
+
+//colors
+$background-color: hsl(218, 44%, 45%);
+$text-color: white;
+$etiqueta_color: red;
+$primary-color: hsl(226, 63%, 45%);
+$primary-color-light: hsl(226, 71%, 63%);
+$secondary-color: hsl(183, 98%, 35%);
+
+//style
+$text-border: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;

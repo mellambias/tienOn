@@ -1,0 +1,13 @@
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    position: absolute;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+    margin-top: 15vh;
+}
+footer * {
+    color: $text-color;
+}
