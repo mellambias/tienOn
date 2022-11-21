@@ -22,5 +22,8 @@
     "bugs": {
         "url": "https://github.com/mellambias/tienOn/issues"
     },
-    "homepage": "https://github.com/mellambias/tienOn#readme"
+    "homepage": "https://github.com/mellambias/tienOn#readme",
+    "dependencies": {
+        "sass": "^1.56.1"
+    }
 }

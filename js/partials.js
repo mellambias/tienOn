@@ -1,4 +1,4 @@
-const header = () => `            <div class="col-2">
+export const header = () => `            <div class="col-2">
                 <div class="col flex">
                     <div class="header-logo">
                         <svg
@@ -216,8 +216,6 @@ c28 -18 115 -99 195 -179 109 -109 139 -145 124 -145 -14 0 -76 52 -176 148
                 </div>
             </div>`;
 
-const footer = () => `
+export const footer = () => `
 <p>PicMountain</p>
 <p>&copy; 2022`;
-document.querySelector('header').innerHTML = header();
-document.querySelector('footer').innerHTML = footer();

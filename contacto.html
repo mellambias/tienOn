@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <form action="">
+                                <form id="contactForm">
                                     <!-- contacto formulario-->
                                     <div class="contacto-formulario">
                                         <!-- campos -->
@@ -98,8 +98,13 @@
                                                     >
                                                     <input
                                                         id="nombre"
+                                                        name="nombre"
                                                         type="text"
                                                     />
+                                                    <p
+                                                        class="error"
+                                                        data-name="nombre"
+                                                    ></p>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -109,8 +114,13 @@
                                                     >
                                                     <input
                                                         id="apellidos"
+                                                        name="apellidos"
                                                         type="text"
                                                     />
+                                                    <p
+                                                        class="error"
+                                                        data-name="apellidos"
+                                                    ></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,8 +132,13 @@
                                                     >
                                                     <input
                                                         id="telefono"
+                                                        name="telefono"
                                                         type="text"
                                                     />
+                                                    <p
+                                                        class="error"
+                                                        data-name="telefono"
+                                                    ></p>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -133,8 +148,13 @@
                                                     >
                                                     <input
                                                         id="email"
+                                                        name="email"
                                                         type="email"
                                                     />
+                                                    <p
+                                                        class="error"
+                                                        data-name="email"
+                                                    ></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,8 +166,13 @@
                                                     >
                                                     <textarea
                                                         id="mensaje"
+                                                        name="mensaje"
                                                         rows="10"
                                                     ></textarea>
+                                                    <p
+                                                        class="error"
+                                                        data-name="mensaje"
+                                                    ></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,5 +192,5 @@
         </main>
         <footer></footer>
     </body>
-    <script src="./partials.js" type="module"></script>
+    <script src="./js/index.js" type="module" defer></script>
 </html>

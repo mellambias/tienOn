@@ -1002,6 +1002,10 @@ footer * {
   font-size: 1.2rem;
 }
 
+.error {
+  color: black;
+}
+
 .contacto-formulario-accion {
   display: flex;
   justify-content: flex-end;

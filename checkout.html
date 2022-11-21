@@ -24,7 +24,6 @@
             rel="stylesheet"
         />
         <link href="app.css" rel="stylesheet" />
-        <script src="./partials.js" type="module"></script>
     </head>
 
     <body>
@@ -40,12 +39,21 @@
                     <div class="col-2">
                         <div class="col">
                             <!-- datos cliente -->
+                            <form id="contactForm">
                             <div class="checkout-cliente-datos">
                                 <div class="col-2">
                                     <div class="col">
                                         <div class="campo">
                                             <label for="nombre">Nombre</label>
-                                            <input id="nombre" type="text" />
+                                            <input
+                                                id="nombre"
+                                                name="nombre"
+                                                type="text"
+                                            />
+                                            <p
+                                                class="error"
+                                                data-name="nombre"
+                                            ></p>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -53,7 +61,15 @@
                                             <label for="apellidos"
                                                 >Apellidos</label
                                             >
-                                            <input id="apellidos" type="text" />
+                                            <input
+                                                id="apellidos"
+                                                name="apellidos"
+                                                type="text"
+                                            />
+                                            <p
+                                                class="error"
+                                                data-name="apellidos"
+                                            ></p>
                                         </div>
                                     </div>
                                 </div>
@@ -63,13 +79,29 @@
                                             <label for="telefono"
                                                 >Teléfono</label
                                             >
-                                            <input id="telefono" type="text" />
+                                            <input
+                                                id="telefono"
+                                                name="telefono"
+                                                type="text"
+                                            />
+                                            <p
+                                                class="error"
+                                                data-name="telefono"
+                                            ></p>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="campo">
                                             <label for="email">Email</label>
-                                            <input id="email" type="email" />
+                                            <input
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                            />
+                                            <p
+                                                class="error"
+                                                data-name="email"
+                                            ></p>
                                         </div>
                                     </div>
                                 </div>
@@ -92,15 +124,28 @@
                                             >
                                             <input
                                                 id="codigoPostal"
+                                                name="codigoPostal"
                                                 type="text"
                                             />
+                                            <p
+                                                class="error"
+                                                data-name="codigoPostal"
+                                            ></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="campo">
                                         <label for="dirección">Dirección</label>
-                                        <input id="dirección" type="text" />
+                                        <input
+                                            id="dirección"
+                                            name="dirección"
+                                            type="text"
+                                        />
+                                        <p
+                                            class="error"
+                                            data-name="dirección"
+                                        ></p>
                                     </div>
                                 </div>
                             </div>
@@ -152,9 +197,8 @@
                                     <div class="col">
                                         <input
                                             type="radio"
-                                            id="transferencia"
                                             name="formaPago"
-                                            value="1"
+                                            value="Transferencia"
                                         />
                                         <label for="transferencia">
                                             Transferencia bancaria</label
@@ -163,21 +207,19 @@
                                     <div class="col">
                                         <input
                                             type="radio"
-                                            id="paypal"
                                             name="formaPago"
-                                            value="2"
+                                            value="Paypal"
                                         />
                                         <label for="Paypal">Paypal</label>
                                     </div>
                                     <div class="col">
                                         <input
                                             type="radio"
-                                            id="tarjeta"
                                             name="formaPago"
-                                            value="3"
+                                            value="Tarjeta"
                                             checked
                                         />
-                                        <label for="">Tarjeta de crédito</label>
+                                        <label for="Tarjeta">Tarjeta de crédito</label>
                                     </div>
                                 </div>
 
@@ -189,6 +231,7 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -196,5 +239,5 @@
 
         <footer></footer>
     </body>
-    <script src="./partials.js" type="module"></script>
+    <script src="./js/index.js" type="module" defer></script>
 </html>
