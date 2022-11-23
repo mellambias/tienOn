@@ -2,10 +2,13 @@
     "name": "tienon",
     "version": "1.0.0",
     "description": "tienda on line",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "sass": "sass -w sass/app.scss:app.css"
+        "serve": "node app",
+        "dev": "concurrently  \"nodemon -e js,css,html app\" \"npm run scss\" ",
+        "start": "npm run sass",
+        "scss": "sass --watch sass/app.scss public/app.css"
     },
     "repository": {
         "type": "git",
@@ -24,6 +27,11 @@
     },
     "homepage": "https://github.com/mellambias/tienOn#readme",
     "dependencies": {
+        "express": "^4.18.2",
         "sass": "^1.56.1"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0",
+        "nodemon": "^2.0.20"
     }
 }

@@ -28,3 +28,7 @@ export const tabs = () => {
         element.addEventListener('click', changeTab);
     });
 };
+
+// ejecutar cuando el dom se carga
+
+document.addEventListener('DOMContentLoaded', tabs);
