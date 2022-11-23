@@ -1,6 +1,7 @@
 import contactForm from './contact-form.js';
 import { footer, header } from './partials.js';
 import { plusMinusButton } from './plus-minus-button.js';
+import { tabs } from './tabs.js';
 
 const currentDocumentTitle = document
     .getElementsByTagName('title')
@@ -14,13 +15,15 @@ switch (currentDocumentTitle) {
         contactForm();
         break;
     case 'producto':
+        tabs();
     case 'Carrito':
         plusMinusButton();
         break;
-
     default:
         break;
 }
 console.log(`Se encuentra en ${currentDocumentTitle}`);
-document.querySelector('header').innerHTML = header();
-document.querySelector('footer').innerHTML = footer();
+const headerElement = document.querySelector('header');
+const footerElement = document.querySelector('footer');
+if (headerElement) headerElement.innerHTML = header();
+if (footerElement) footerElement.innerHTML = footer();
