@@ -2,6 +2,7 @@ import contactForm from './contact-form.js';
 import { footer, header } from './partials.js';
 import { plusMinusButton } from './plus-minus-button.js';
 import { tabs } from './tabs.js';
+import { texAreaInputCounter } from './textareaInputCounter.js';
 
 const currentDocumentTitle = document
     .getElementsByTagName('title')
@@ -10,6 +11,7 @@ const currentDocumentTitle = document
 switch (currentDocumentTitle) {
     case 'Contacto':
         contactForm();
+        texAreaInputCounter();
         break;
     case 'checkout':
         contactForm();

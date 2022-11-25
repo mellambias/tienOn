@@ -9,4 +9,3 @@ app.use(express.static('public'));
 app.listen(3000, () => {
     console.log('Servidor funcionando');
 });
-// ruta para assets estaticos

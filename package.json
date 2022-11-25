@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "serve": "node app",
-        "dev": "concurrently  \"nodemon -e js,css,html app\" \"npm run scss\" ",
+        "dev": "nodemon -e js,css,html app",
+        "devall": "concurrently  \"nodemon -e js,css,html app\" \"npm run scss\" ",
         "start": "npm run sass",
         "scss": "sass --watch sass/app.scss public/app.css"
     },

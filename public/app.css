@@ -998,12 +998,23 @@ footer * {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
+.campo label.error {
+  color: rgb(235, 81, 21);
+}
 .campo input {
   font-size: 1.2rem;
+}
+.campo span {
+  margin: 3px;
+  align-self: flex-end;
+  color: white;
 }
 
 .error {
   color: black;
+  border-color: rgb(235, 81, 21);
+  font-size: 1rem;
+  margin: 2px 0px 0px 3px;
 }
 
 .contacto-formulario-accion {

@@ -133,7 +133,7 @@
                                                     <input
                                                         id="telefono"
                                                         name="telefono"
-                                                        type="text"
+                                                        type="tel"
                                                     />
                                                     <p
                                                         class="error"
@@ -164,11 +164,17 @@
                                                     <label for="mensaje"
                                                         >Mensaje</label
                                                     >
+
                                                     <textarea
                                                         id="mensaje"
                                                         name="mensaje"
                                                         rows="10"
+                                                        maxlength="100"
                                                     ></textarea>
+                                                    <span
+                                                        >máximo 100
+                                                        caracteres</span
+                                                    >
                                                     <p
                                                         class="error"
                                                         data-name="mensaje"
