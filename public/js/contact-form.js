@@ -1,5 +1,6 @@
 const contactForm = () => {
     const formulario = document.getElementById('contactForm');
+    if (!formulario) return;
     formulario.addEventListener('submit', checkForm);
     const imputElements = [...formulario.getElementsByTagName('input')];
     const selectElements = [...formulario.getElementsByTagName('select')];

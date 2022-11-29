@@ -37,14 +37,7 @@
     font-weight: bold;
 }
 
-.tabs div.active {
-    display: block;
-}
-.tab.active > p {
-    opacity: 1;
-}
-
-.tabs div {
+.tabs > div {
     display: none;
     width: 90%;
     border-top: 3px solid black;
@@ -55,11 +48,15 @@
     // box-shadow: -5px -5px 5px black;
     box-shadow: 5px 5px black;
     overflow-y: auto;
-    height: 40vh;
+    height: 90vh;
     padding: 1vh 3%;
     background-color: white;
 }
-.tabs div * {
+.tabs div.active {
+    display: block;
+}
+
+.tabs div.active * {
     color: black;
     margin-bottom: 1.5rem;
 }

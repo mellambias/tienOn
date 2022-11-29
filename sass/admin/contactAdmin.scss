@@ -1,0 +1,40 @@
+.breadcrubs {
+    background: linear-gradient(
+        to right,
+        rgba(9, 9, 121, 1) 0%,
+        rgba(0, 212, 255, 1) 50%,
+        rgba(9, 9, 121, 1) 100%
+    );
+    width: 100%;
+    height: 10vh;
+}
+
+.fichas {
+    width: 90%;
+    padding-top: 5%;
+    > li {
+        border-top: 2px solid black;
+        border-bottom: 1px solid black;
+    }
+    .ficha {
+        height: 10vh;
+        padding: 2% 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        ul {
+            overflow: auto;
+        }
+    }
+    .crud {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        button {
+            width: 25%;
+            margin: 5px;
+        }
+    }
+}
