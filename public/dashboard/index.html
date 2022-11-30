@@ -18,181 +18,345 @@
     <body>
         <main class="contactAdmin">
             <header class="col-1">
-                <section class="breadcrubs">breadcrubs</section>
-                <nav>
-                    <ul></ul>
-                </nav>
+                <section class="breadcrubs"><p>breadcrubs</p></section>
             </header>
-            <div class="col-2">
-                <section class="col">
-                    <div class="col-1">
-                        <div class="col">
-                            <ul class="fichas">
-                                <li>
-                                    <div class="ficha">
-                                        <ul>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                            <li>Nombre</li>
-                                        </ul>
+            <div class="col-aside-main">
+                <div class="col-aside">
+                    <nav>
+                        <ul>
+                            <li>Menu</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-main">
+                    <div class="col-2">
+                        <section class="col">
+                            <div class="col-1">
+                                <div class="col">
+                                    <ul class="fichas">
+                                        <li>
+                                            <div class="ficha">
+                                                <ul>
+                                                    <li>Nombre:</li>
+                                                    <li>Nombre:</li>
+                                                    <li>Nombre:</li>
+                                                </ul>
 
-                                        <div class="crud">
-                                            <button>Edit</button>
-                                            <button>Delete</button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ficha">ficha 2</div>
-                                </li>
-                                <li>
-                                    <div class="ficha">ficha 3</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <section class="col">
-                    <div class="tabs">
-                        <nav>
-                            <ul>
-                                <li class="tab active" data-tabid="contenido">
-                                    <p>Formulario de contracto</p>
-                                </li>
-                                <li class="tab" data-tabid="imagen">
-                                    <p>imagen</p>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <div id="contenido" class="active">
-                            <div class="contacto">
-                                <div class="col-1">
-                                    <div class="col">
-                                        <form id="contactForm">
-                                            <!-- contacto formulario-->
-                                            <div class="contacto-formulario">
-                                                <!-- campos -->
-                                                <div class="col-2">
-                                                    <div class="col">
-                                                        <div class="campo">
-                                                            <label for="nombre"
-                                                                >Nombre</label
-                                                            >
-                                                            <input
-                                                                id="nombre"
-                                                                name="nombre"
-                                                                type="text"
-                                                            />
-                                                            <p
-                                                                class="error"
-                                                                data-name="nombre"
-                                                            ></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="campo">
-                                                            <label
-                                                                for="apellidos"
-                                                                >Apellidos</label
-                                                            >
-                                                            <input
-                                                                id="apellidos"
-                                                                name="apellidos"
-                                                                type="text"
-                                                            />
-                                                            <p
-                                                                class="error"
-                                                                data-name="apellidos"
-                                                            ></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-2">
-                                                    <div class="col">
-                                                        <div class="campo">
-                                                            <label
-                                                                for="telefono"
-                                                                >Teléfono</label
-                                                            >
-                                                            <input
-                                                                id="telefono"
-                                                                name="telefono"
-                                                                type="tel"
-                                                            />
-                                                            <p
-                                                                class="error"
-                                                                data-name="telefono"
-                                                            ></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="campo">
-                                                            <label for="email"
-                                                                >Email</label
-                                                            >
-                                                            <input
-                                                                id="email"
-                                                                name="email"
-                                                                type="email"
-                                                            />
-                                                            <p
-                                                                class="error"
-                                                                data-name="email"
-                                                            ></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1">
-                                                    <div class="col">
-                                                        <div class="campo">
-                                                            <label for="mensaje"
-                                                                >Mensaje</label
-                                                            >
-
-                                                            <textarea
-                                                                id="mensaje"
-                                                                name="mensaje"
-                                                                rows="10"
-                                                                maxlength="100"
-                                                            ></textarea>
-                                                            <span
-                                                                >máximo 100
-                                                                caracteres</span
-                                                            >
-                                                            <p
-                                                                class="error"
-                                                                data-name="mensaje"
-                                                            ></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <!-- boton envio formulario -->
-                                                <div
-                                                    class="contacto-formulario-accion"
-                                                >
-                                                    <button id="enviar">
-                                                        Enviar
+                                                <div class="crud">
+                                                    <button>
+                                                        <i
+                                                            class="edit-icon"
+                                                            style="
+                                                                width: 1.5rem;
+                                                            "
+                                                        ></i>
+                                                        Edit
+                                                    </button>
+                                                    <button>
+                                                        <i
+                                                            class="delete-icon"
+                                                            style="
+                                                                width: 1.5rem;
+                                                            "
+                                                        ></i>
+                                                        Delete
                                                     </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </li>
+                                        <li>
+                                            <div class="ficha">ficha 2</div>
+                                        </li>
+                                        <li>
+                                            <div class="ficha">ficha 3</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col">
+                            <div id="tabs1" class="tabs">
+                                <nav>
+                                    <ul>
+                                        <li
+                                            class="tab active"
+                                            data-tabid="contenido"
+                                        >
+                                            <p>Formulario de contracto</p>
+                                        </li>
+                                        <li class="tab" data-tabid="imagen">
+                                            <p>imagen</p>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <div id="contenido" class="active">
+                                    <div class="contacto">
+                                        <div class="col-1">
+                                            <div class="col">
+                                                <form id="contactForm">
+                                                    <!-- contacto formulario-->
+                                                    <div
+                                                        class="contacto-formulario"
+                                                    >
+                                                        <!-- campos -->
+                                                        <div class="col-2">
+                                                            <div class="col">
+                                                                <div
+                                                                    class="campo"
+                                                                >
+                                                                    <label
+                                                                        for="nombre"
+                                                                        >Nombre</label
+                                                                    >
+                                                                    <input
+                                                                        id="nombre"
+                                                                        name="nombre"
+                                                                        type="text"
+                                                                    />
+                                                                    <p
+                                                                        class="error"
+                                                                        data-name="nombre"
+                                                                    ></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div
+                                                                    class="campo"
+                                                                >
+                                                                    <label
+                                                                        for="apellidos"
+                                                                        >Apellidos</label
+                                                                    >
+                                                                    <input
+                                                                        id="apellidos"
+                                                                        name="apellidos"
+                                                                        type="text"
+                                                                    />
+                                                                    <p
+                                                                        class="error"
+                                                                        data-name="apellidos"
+                                                                    ></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <div class="col">
+                                                                <div
+                                                                    class="campo"
+                                                                >
+                                                                    <label
+                                                                        for="telefono"
+                                                                        >Teléfono</label
+                                                                    >
+                                                                    <input
+                                                                        id="telefono"
+                                                                        name="telefono"
+                                                                        type="tel"
+                                                                    />
+                                                                    <p
+                                                                        class="error"
+                                                                        data-name="telefono"
+                                                                    ></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div
+                                                                    class="campo"
+                                                                >
+                                                                    <label
+                                                                        for="email"
+                                                                        >Email</label
+                                                                    >
+                                                                    <input
+                                                                        id="email"
+                                                                        name="email"
+                                                                        type="email"
+                                                                    />
+                                                                    <p
+                                                                        class="error"
+                                                                        data-name="email"
+                                                                    ></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="col">
+                                                                <div
+                                                                    class="campo"
+                                                                >
+                                                                    <label
+                                                                        for="mensaje"
+                                                                        >Mensaje</label
+                                                                    >
+
+                                                                    <textarea
+                                                                        id="mensaje"
+                                                                        name="mensaje"
+                                                                        rows="10"
+                                                                        maxlength="100"
+                                                                    ></textarea>
+                                                                    <span
+                                                                        >máximo
+                                                                        100
+                                                                        caracteres</span
+                                                                    >
+                                                                    <p
+                                                                        class="error"
+                                                                        data-name="mensaje"
+                                                                    ></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <!-- boton envio formulario -->
+                                                        <div
+                                                            class="contacto-formulario-accion"
+                                                        >
+                                                            <button id="enviar">
+                                                                Enviar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="imagen">
+                                    <h2>Imagen</h2>
+                                    <p>contenido imagenes</p>
+                                    <div id="tabs2" class="tabs">
+                                        <nav>
+                                            <ul>
+                                                <li
+                                                    class="tab active"
+                                                    data-tabid="s1"
+                                                >
+                                                    <p>Pestaña 1</p>
+                                                </li>
+                                                <li
+                                                    class="tab"
+                                                    data-tabid="sdatos"
+                                                >
+                                                    <p>Datos</p>
+                                                </li>
+                                                <li class="tab" data-tabid="s3">
+                                                    <p>Pestaña 3</p>
+                                                </li>
+                                                <li class="tab" data-tabid="s4">
+                                                    <p>Pestaña 4</p>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
+                                        <div id="s1" class="active">
+                                            <h2>Pestaña1</h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.
+                                                Eius exercitationem, totam
+                                                ratione facilis, quas odio
+                                                architecto dicta recusandae hic
+                                                nam expedita aut rerum laborum,
+                                                maiores est assumenda.
+                                                Laudantium, eius quae. Obcaecati
+                                                ratione sunt, sapiente modi
+                                                aspernatur voluptatem harum
+                                                dolore perferendis iusto sed
+                                                vitae dolorum ea consequatur
+                                                ipsam delectus aliquid neque
+                                                maiores quas! Aliquid dolore
+                                                corporis, voluptate nulla nemo
+                                                voluptatibus rem. Commodi
+                                                accusamus culpa vitae ullam
+                                                iusto neque, ea repellat
+                                                perferendis temporibus assumenda
+                                                minus corrupti quam
+                                                exercitationem porro pariatur
+                                                amet fugiat nemo illo.
+                                                Cupiditate deserunt debitis
+                                                voluptatibus sit soluta
+                                                consequuntur illo?
+                                            </p>
+                                        </div>
+                                        <div id="sdatos">
+                                            <h2>Datos</h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.
+                                                Est, tempora odit! Perspiciatis
+                                                aspernatur, quam labore omnis
+                                                nisi alias? Recusandae sapiente
+                                                eaque possimus dolore
+                                                reprehenderit asperiores beatae
+                                                dolorum earum suscipit quod?
+                                                Fugit cumque distinctio vero,
+                                                tempore consequuntur sequi
+                                                nostrum at quos ratione. Atque
+                                                ullam quaerat esse numquam ad
+                                                alias reiciendis officia ipsum,
+                                                odio hic quae maiores modi,
+                                                tenetur libero vel aperiam.
+                                                Nulla recusandae ex odit modi.
+                                                Praesentium aliquid doloremque,
+                                                incidunt ipsam libero
+                                                asperiores, optio delectus eius
+                                                dolores autem laborum minima
+                                                voluptates at nobis suscipit
+                                                repellendus consequatur modi,
+                                                natus fuga ducimus sunt? Nemo
+                                                commodi harum sit
+                                                necessitatibus, quos recusandae
+                                                aliquam excepturi corrupti
+                                                dolore nobis quod esse veritatis
+                                                vitae error delectus animi neque
+                                                nihil dolor numquam illo magni
+                                                quae. Ad sequi a adipisci!
+                                            </p>
+                                        </div>
+                                        <div id="s3">
+                                            <h2>tab 3</h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.
+                                                Nesciunt iste maxime adipisci
+                                                velit magni iusto, in quae eum a
+                                                similique voluptates accusantium
+                                                ut, explicabo quam ducimus
+                                                dignissimos quaerat voluptate
+                                                aut! Cumque itaque mollitia
+                                                aliquam eum dolore autem impedit
+                                                in repellat consequatur deleniti
+                                                sunt hic quas unde ea ipsum
+                                                vitae molestias adipisci
+                                                assumenda ducimus officia,
+                                                voluptas incidunt? Itaque
+                                                possimus perferendis ipsa?
+                                            </p>
+                                        </div>
+                                        <div id="s4">
+                                            <h2>Galeria</h2>
+                                            <img
+                                                src="https://picsum.photos/200/200"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="https://picsum.photos/200/200"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="https://picsum.photos/200/200"
+                                                alt=""
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="imagen">
-                            <h2>Imagen</h2>
-                            <p>contenido imagenes</p>
-                        </div>
+                        </section>
                     </div>
-                </section>
+                </div>
             </div>
         </main>
     </body>

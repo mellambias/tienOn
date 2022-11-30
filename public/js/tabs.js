@@ -1,13 +1,19 @@
-export const tabs = () => {
-    const tabs = [...document.getElementsByClassName('tab')];
-    const tabContents = document.querySelectorAll('.tabs div');
+export const tabs = rootElement => {
+    if (!rootElement) {
+        rootElement = document;
+    }
+    console.log(document.getElementsByTagName('title').item(0).outerText);
+    const tabsElements = [...rootElement.getElementsByClassName('tab')];
+    const tabContents = rootElement.querySelectorAll('.tabs div');
+    console.log(tabsElements);
 
     //controlador del evento click
     function changeTab(evento) {
         const currentTab = evento.target.hasAttribute('data-tabid')
             ? evento.target.dataset.tabid
             : evento.target.parentElement.dataset.tabid;
-        tabs.forEach(tab => {
+        console.log('%o %s', tabsElements, currentTab);
+        tabsElements.forEach(tab => {
             if (tab.dataset.tabid == currentTab) {
                 tab.classList.add('active');
             } else {
@@ -24,11 +30,7 @@ export const tabs = () => {
     }
 
     // establece los controladores para los tabs
-    tabs.forEach(element => {
+    tabsElements.forEach(element => {
         element.addEventListener('click', changeTab);
     });
 };
-
-// ejecutar cuando el dom se carga
-
-document.addEventListener('DOMContentLoaded', tabs);

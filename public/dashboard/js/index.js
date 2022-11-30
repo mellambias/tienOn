@@ -10,7 +10,8 @@ switch (currentDocumentTitle) {
     case 'Dashboard':
         contactForm();
         texAreaInputCounter();
-        tabs();
+        tabs(document.getElementById('tabs1'));
+        tabs(document.getElementById('tabs2'));
         break;
     default:
         break;
