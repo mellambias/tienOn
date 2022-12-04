@@ -1,5 +1,8 @@
 .tabs {
     padding-top: 2vh;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
 }
 .tabs nav ul {
     display: flex;
@@ -16,17 +19,18 @@
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     width: 33%;
-    line-height: 2rem;
+    min-height: 2rem;
     margin-right: 3px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    // box-shadow: -5px -5px 2px black;
+    user-select: none;
 }
 
 .tab p {
     color: black;
-    padding-right: 5%;
 }
 
 .tab.active {
@@ -49,14 +53,31 @@
     box-shadow: 5px 5px black;
     overflow-y: auto;
     height: 90vh;
-    padding: 1vh 3%;
+    padding: 2rem 1rem;
     background-color: white;
 }
 .tabs div.active {
     display: block;
 }
 
-.tabs div.active * {
+// .tabs div.active * {
+//     color: black;
+// }
+
+.tabs div.active label,
+p,
+.campo span,
+input {
     color: black;
-    margin-bottom: 1.5rem;
+}
+
+.tabs div.active label.error,
+.error {
+    color: red;
+}
+.tabs div.active label.error,
+.error input,
+.error select,
+.error textarea {
+    color: black;
 }

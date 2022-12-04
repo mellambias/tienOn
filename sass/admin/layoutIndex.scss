@@ -1,0 +1,47 @@
+.breadcrubs {
+    background: linear-gradient(
+        to right,
+        rgba(9, 9, 121, 1) 0%,
+        rgba(0, 212, 255, 1) 50%,
+        rgba(9, 9, 121, 1) 100%
+    );
+    width: 100%;
+    height: 10vh;
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        color: white;
+        margin-left: 2%;
+        font-size: 3rem;
+    }
+    button {
+        margin-right: 2%;
+    }
+}
+.collapseToggler i {
+    width: 1.5rem;
+    min-width: 1rem;
+    cursor: pointer;
+}
+
+.col-menu {
+    background-color: $background-color;
+    height: 90vh;
+    position: static;
+    visibility: visible;
+    // opacity: 1;
+    transition: all 5s linear;
+    left: 0vw;
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+    &.collapse {
+        position: absolute;
+        visibility: collapse;
+        left: -100vw;
+        // opacity: 0;
+    }
+}

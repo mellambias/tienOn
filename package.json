@@ -7,7 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "serve": "node app",
         "dev": "nodemon -e js,css,html app",
-        "devall": "concurrently  \"nodemon -e js,css,html app\" \"npm run scss\" ",
+        "devall": "concurrently  \"npm run dev\" \"npm run scss\" ",
         "start": "npm run scss",
         "scss": "sass --watch sass/app.scss:public/app.css sass/appAdmin.scss:public/dashboard/css/app.css"
     },
@@ -32,6 +32,8 @@
     },
     "devDependencies": {
         "concurrently": "^7.6.0",
+        "connect-livereload": "^0.6.1",
+        "livereload": "^0.9.3",
         "nodemon": "^2.0.20",
         "sass": "^1.56.1"
     }

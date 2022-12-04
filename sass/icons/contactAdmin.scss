@@ -1,0 +1,21 @@
+.delete-icon {
+    display: inline-block;
+    width: 1rem;
+    background: url(/assets/svg/delete.svg) 0 0 / contain no-repeat;
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+}
+
+.edit-icon {
+    display: inline-block;
+    width: 1rem;
+    background: url(/assets/svg/edit.svg) 0 0 / contain no-repeat;
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+}

@@ -1,0 +1,46 @@
+//menu en arbol
+
+.treeMenu {
+    margin: 1px;
+    padding: 1px;
+    color: $menu-color;
+    li {
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+    }
+}
+
+// cursor "triangulo" mostrado a la izq
+.cursor {
+    cursor: pointer;
+    user-select: none;
+}
+
+.cursor::before {
+    content: '\25B6';
+    color: $menu-color;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+// cursor muestra menu abierto
+.cursor-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);
+}
+
+// items y submenus cerrados
+.close {
+    position: absolute;
+    visibility: collapse;
+    opacity: 0;
+}
+
+// items y submenus abiertos
+.open {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+}

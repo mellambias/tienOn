@@ -1,35 +1,61 @@
 .notification {
     position: fixed;
-    bottom: 120px;
-    right: -100vh;
+    top: 50vh;
+    right: -100vw;
     width: 30%;
-    height: 10vh;
+    height: 15vh;
     border: 3px solid;
-    border-top: 20px solid;
-    background-color: white;
+    border-top: 2rem solid;
     border-radius: 5px;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75) inset;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: opacity 0s, right 2s;
+    background-color: white;
+    border-color: white;
     opacity: 0;
+    transition: all 2s;
+    & > i {
+        width: 3rem;
+        margin: 0 1rem;
+        opacity: 0;
+    }
+    & > p {
+        color: white;
+        font-weight: bold;
+        opacity: 0;
+    }
 
-    p {
-        padding: 2px 10px;
+    & > .closeNotification {
+        position: absolute;
+        top: -23px;
+        right: 6px;
         color: black;
-        font-weight: 700;
     }
 
     &.success {
         border-color: green;
-        display: flex;
-        right: 2vh;
-        opacity: 100;
+        right: 15vw;
+        opacity: 1;
+        & > i {
+            filter: hue-rotate(90deg); //verde
+            opacity: 1;
+        }
+        & > p {
+            color: black;
+            opacity: 1;
+        }
     }
     &.error {
+        background-color: white;
         border-color: red;
-        display: flex;
-        right: 2vh;
-        opacity: 100;
+        right: 15vw;
+        opacity: 1;
+        & > i {
+            filter: hue-rotate(1deg); // rojo
+            opacity: 1;
+        }
+        & > p {
+            color: black;
+            opacity: 1;
+        }
     }
 }

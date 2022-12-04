@@ -1,4 +1,5 @@
 import contactForm from './contact-form.js';
+import notification from './notification.js';
 import { footer, header } from './partials.js';
 import { plusMinusButton } from './plus-minus-button.js';
 import { tabs } from './tabs.js';
@@ -8,8 +9,8 @@ const currentDocumentTitle = document
     .getElementsByTagName('title')
     .item(0).outerText;
 
-switch (currentDocumentTitle) {
-    case 'Contacto':
+switch (currentDocumentTitle.toLowerCase()) {
+    case 'contacto':
         contactForm();
         texAreaInputCounter();
         break;
@@ -18,12 +19,13 @@ switch (currentDocumentTitle) {
         break;
     case 'producto':
         tabs();
-    case 'Carrito':
+    case 'carrito':
         plusMinusButton();
         break;
     default:
         break;
 }
+notification();
 console.log(`Se encuentra en ${currentDocumentTitle}`);
 const headerElement = document.querySelector('header');
 const footerElement = document.querySelector('footer');

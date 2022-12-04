@@ -7,5 +7,11 @@
 @import 'base/typography';
 @import 'base/_columns';
 @import 'admin/contactAdmin';
-@import 'components/desktop/tabs.scss';
-@import 'pages/contacto.scss';
+@import 'components/desktop/notification';
+@import 'pages/contacto';
+@import 'admin/colapsibleMenu';
+@import 'icons/notification';
+@import 'icons/admin';
+@import 'icons/contactAdmin';
+@import 'admin/layoutIndex.scss';
+@import 'components/desktop/tabs';

@@ -1,0 +1,20 @@
+.hambutton-icon {
+    display: inline-block;
+    width: 1rem;
+    background: url(/assets/svg/hamburger-button.svg) 0 0 / contain no-repeat;
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+}
+.logo-icon {
+    display: inline-block;
+    width: 1rem;
+    background: url(/assets/svg/logo.svg) 0 0 / contain no-repeat;
+    &::before {
+        content: '';
+        display: block;
+        // padding-top: 100%;
+    }
+}

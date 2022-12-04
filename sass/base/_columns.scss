@@ -68,7 +68,7 @@
     width: 100%;
     flex-direction: column;
 
-    > .col {
+    & > .col {
         width: 100%;
     }
 }
@@ -78,7 +78,7 @@
     width: 100%;
     justify-content: space-between;
 
-    > .col {
+    & > .col {
         width: 50%;
     }
 }
@@ -118,12 +118,33 @@
     width: 100%;
     justify-content: space-between;
 
-    > .col-aside {
-        width: 20%;
+    & > .col-aside {
+        width: 30%;
+        min-width: 500px;
     }
 
-    > .col-main {
-        width: 80%;
+    & > .col-main {
+        width: 70%;
+    }
+}
+
+.col-menu-main {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & > .col-menu {
+        width: 10%;
+        flex-grow: 1;
+    }
+
+    & > .col-main {
+        width: 85%;
+        margin-top: 2rem;
+        margin-left: 1rem;
+        flex-grow: 1;
+        display: flex;
     }
 }
 
