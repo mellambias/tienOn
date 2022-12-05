@@ -1,0 +1,83 @@
+.tabs {
+    padding-top: 2vh;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+.tabs nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 90%;
+}
+.tab {
+    background-color: hsl(0, 0%, 75%);
+    border: 3px solid black;
+    border-color: black;
+    border-radius: 10px;
+    border-bottom: 0px solid;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 33%;
+    min-height: 2rem;
+    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tab p {
+    color: black;
+}
+
+.tab.active {
+    background-color: hsl(0, 0%, 100%);
+    border-width: 3px;
+    border-bottom: 0px solid hsl(0, 0%, 100%);
+    margin-bottom: -3px;
+    font-weight: bold;
+}
+
+.tabs > div {
+    display: none;
+    width: 90%;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 0px 5px 5px 5px;
+    // box-shadow: -5px -5px 5px black;
+    box-shadow: 5px 5px black;
+    overflow-y: auto;
+    height: 90vh;
+    padding: 2rem 1rem;
+    background-color: white;
+}
+.tabs div.active {
+    display: block;
+}
+
+// .tabs div.active * {
+//     color: black;
+// }
+
+.tabs div.active label,
+p,
+.campo span,
+input {
+    color: black;
+}
+
+.tabs div.active label.error,
+.error {
+    color: red;
+}
+.tabs div.active label.error,
+.error input,
+.error select,
+.error textarea {
+    color: black;
+}
