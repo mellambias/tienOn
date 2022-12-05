@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link href="./css/app.css" rel="stylesheet" />
+        <script src="./js/index.js" type="module" defer></script>
+    </head>
+    <body>
+        <main class="control-panel">
+            <header class="col-1">
+                <section class="breadcrubs">
+                    <div style="display: flex; align-items: center; width: 90%">
+                        <i
+                            class="logo-icon"
+                            style="
+                                width: 5rem;
+                                filter: invert(1);
+                                height: 4rem;
+                                width: 12rem;
+                            "
+                        ></i>
+                        <p id="breadcrumb">Panel de control</p>
+                    </div>
+                    <button class="collapseToggler" data-id="menubar">
+                        <i class="hambutton-icon"></i>
+                    </button>
+                </section>
+            </header>
+            <div class="col-menu-main">
+                <div id="menubar" class="col-menu">
+                    <nav>
+                        <ul id="main-menu" class="treeMenu"></ul>
+                    </nav>
+                </div>
+                <div class="col-main"></div>
+            </div>
+        </main>
+    </body>
+</html>

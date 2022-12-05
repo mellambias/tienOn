@@ -1,51 +1,43 @@
 export const tabs = () => {
     const tabsElements = [...document.getElementsByClassName('tab')];
+    const className = 'active';
 
     //controlador del evento click
-    function changeTab(evento) {
-        let activeNameId;
-        let currentElement;
-        /*
-         * comprueba que el elemento tenga el atributo. Si lo tiene es un div
-         * de lo contrario es un hijo y hay que buscar en el padre.
-         */
-        if (evento.target.hasAttribute('data-tabid')) {
-            activeNameId = evento.target.dataset.tabid;
-            currentElement = evento.target;
-        } else {
-            activeNameId = evento.target.parentElement.dataset.tabid;
-            currentElement = evento.target.parentElement;
+    function changeTab() {
+        function removeActiveContent(elementId) {
+            let trobat = elementId.classList.contains(className);
+            elementId.classList.remove(className);
+            document
+                .getElementById(elementId.dataset.tabid)
+                .classList.remove(className);
+            return trobat;
         }
 
-        //Si la pestaña ya esta activa => salir
-        if (currentElement.classList.contains('active')) {
-            return;
-        }
+        (function desactiva(node) {
+            let currentSibling = node.previousElementSibling;
 
-        //habilitar el elemento actual
-        let currentSibling = currentElement.nextElementSibling;
-        while (currentSibling != null) {
-            currentSibling.classList.remove('active');
-            document
-                .getElementById(currentSibling.dataset.tabid)
-                .classList.remove('active');
-            currentSibling = currentSibling.nextElementSibling;
-        }
-        currentSibling = currentElement.previousElementSibling;
-        while (currentSibling != null) {
-            currentSibling.classList.remove('active');
-            document
-                .getElementById(currentSibling.dataset.tabid)
-                .classList.remove('active');
-            currentSibling = currentSibling.previousElementSibling;
-        }
+            while (currentSibling != null) {
+                if (removeActiveContent(currentSibling)) {
+                    return;
+                }
+                currentSibling = currentSibling.previousElementSibling;
+            }
+            currentSibling = node.nextElementSibling;
+            while (currentSibling != null) {
+                if (removeActiveContent(currentSibling)) {
+                    return;
+                }
+                currentSibling = currentSibling.nextElementSibling;
+            }
+        })(this);
+
         // activa la pestaña y contenido actuales
-        currentElement.classList.add('active');
-        document.getElementById(activeNameId).classList.add('active');
+        this.classList.add(className);
+        document.getElementById(this.dataset.tabid).classList.add(className);
     }
 
     // establece los controladores para los tabs
-    tabsElements.forEach(element => {
-        element.addEventListener('click', changeTab);
+    tabsElements.forEach(tab => {
+        tab.addEventListener('click', changeTab);
     });
 };

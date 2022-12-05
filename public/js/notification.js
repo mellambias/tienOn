@@ -1,5 +1,5 @@
 const notification = () => {
-    const showNotification = event => {
+    const showNotification = async event => {
         const contenido = `<i class="${event.detail.icon}"></i><p>${event.detail.message}</p><span class="closeNotification"><i class="close-icon"></i></span>`;
         let notification = document.getElementsByClassName('notification')[0];
         if (!notification) {
@@ -10,7 +10,7 @@ const notification = () => {
             // espera a que se añada al DOM antes de aplicar el estilo animado.
             setTimeout(() => {
                 notification.classList.add(event.detail.className);
-            }, 1000);
+            }, 1);
         } else {
             notification.classList.add(event.detail.className);
             notification.innerHTML = contenido;

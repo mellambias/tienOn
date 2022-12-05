@@ -1,18 +1,9 @@
 const check = (elementForm, validaciones, errorElement) => {
     let isNotValid;
     if (!errorElement) {
-        console.error(
-            'para el %o no se encontro donde pone el error',
-            elementForm
-        );
-        return;
+        return (isNotValid = 0);
     }
     const relacionados = [...errorElement.parentElement.children];
-    console.log(
-        'valida el campo %o con el valor %o',
-        elementForm,
-        elementForm.value
-    );
     validaciones.forEach(validacion => {
         if (validacion.validate(elementForm.value)) {
             errorElement.parentElement.classList.add('error');

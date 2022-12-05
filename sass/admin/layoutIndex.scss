@@ -31,9 +31,9 @@
     height: 90vh;
     position: static;
     visibility: visible;
-    // opacity: 1;
-    transition: all 5s linear;
+    opacity: 1;
     left: 0vw;
+    transition: all 5s linear;
     nav {
         display: flex;
         flex-direction: column;
@@ -41,7 +41,7 @@
     &.collapse {
         position: absolute;
         visibility: collapse;
+        opacity: 0;
         left: -100vw;
-        // opacity: 0;
     }
 }

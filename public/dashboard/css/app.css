@@ -868,8 +868,9 @@ a:hover, a:focus {
   height: 90vh;
   position: static;
   visibility: visible;
-  transition: all 5s linear;
+  opacity: 1;
   left: 0vw;
+  transition: all 5s linear;
 }
 .col-menu nav {
   display: flex;
@@ -878,6 +879,7 @@ a:hover, a:focus {
 .col-menu.collapse {
   position: absolute;
   visibility: collapse;
+  opacity: 0;
   left: -100vw;
 }
 
