@@ -52,7 +52,8 @@
     // box-shadow: -5px -5px 5px black;
     box-shadow: 5px 5px black;
     overflow-y: auto;
-    height: 90vh;
+    height: max-content;
+    max-height: 90vh;
     padding: 2rem 1rem;
     background-color: white;
 }

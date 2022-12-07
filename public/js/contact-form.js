@@ -89,10 +89,11 @@ const contactForm = () => {
     const selectElements = [...formulario.getElementsByTagName('select')];
     const textAreaElements = [...formulario.getElementsByTagName('textarea')];
 
-    const submitForm = evento => {
-        evento.preventDefault();
-        if (!checkForm(evento, campos)) {
-            evento.target.dispatchEvent(
+    function submitForm(ev) {
+        ev.preventDefault();
+
+        if (!checkForm(this, campos)) {
+            this.dispatchEvent(
                 new CustomEvent('alert', {
                     bubbles: true,
                     detail: {
@@ -106,6 +107,9 @@ const contactForm = () => {
             /*
              * TODO enviar el formulario al servidor
              */
+            const formData = new FormData(this);
+            let formDataJson = Object.fromEntries(formData.entries());
+            console.log(JSON.stringify(formDataJson));
             evento.target.dispatchEvent(
                 new CustomEvent('alert', {
                     bubbles: true,
@@ -117,7 +121,7 @@ const contactForm = () => {
                 })
             );
         }
-    };
+    }
 
     formulario.addEventListener('submit', submitForm);
 

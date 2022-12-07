@@ -21,51 +21,21 @@
             },
             {
                 "id": "1.4",
+                "item": "Datos empresa",
+                "path": "datos-empresa",
+                "icon": "",
+                "content": []
+            },
+            {
+                "id": "1.5",
                 "item": "Submenu",
                 "path": "",
                 "icon": "",
                 "content": [
                     {
-                        "id": "1.4.1",
-                        "item": "Item",
-                        "path": "",
-                        "icon": "",
-                        "content": []
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "2",
-        "item": "Páginas",
-        "path": "",
-        "icon": "",
-        "content": [
-            {
-                "id": "2.1",
-                "item": "Menu",
-                "path": "home",
-                "icon": "",
-                "content": []
-            },
-            {
-                "id": "2.2",
-                "item": "Contacto",
-                "path": "contacto",
-                "icon": "",
-                "content": []
-            },
-            {
-                "id": "2.3",
-                "item": "Submenu",
-                "path": "",
-                "icon": "",
-                "content": [
-                    {
-                        "id": "1.3.1",
-                        "item": "Item",
-                        "path": "",
+                        "id": "1.5.1",
+                        "item": "nuevo usuario",
+                        "path": "nuevo usuario",
                         "icon": "",
                         "content": []
                     }

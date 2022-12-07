@@ -11,14 +11,12 @@ async function route(event) {
     fetch(`./pages/${path}.html`)
         .then(response => {
             if (response.status === 200) {
-                console.log('respuesta %o', response);
                 return Promise.resolve(response.text());
             }
             return Promise.reject(response);
         })
         .then(html => {
             document.querySelector('.col-main').innerHTML = html;
-            console.log(breadcrumb);
             breadcrumb.innerHTML = capitalize(path);
             changePage();
             return Promise.resolve(html);

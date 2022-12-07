@@ -1,6 +1,6 @@
 const check = (elementForm, validaciones, errorElement) => {
     let isNotValid;
-    if (!errorElement) {
+    if (!errorElement || !validaciones) {
         return (isNotValid = 0);
     }
     const relacionados = [...errorElement.parentElement.children];
@@ -26,9 +26,8 @@ const check = (elementForm, validaciones, errorElement) => {
     return isNotValid;
 };
 
-export function checkForm(event, campos) {
-    let formulario = event.target;
-    formulario = [...formulario];
+export function checkForm(form, campos) {
+    let formulario = [...form];
     let IsValido = 1;
     formulario.forEach(data => {
         IsValido += validate(data, campos);
