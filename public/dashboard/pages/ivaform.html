@@ -35,46 +35,31 @@
         <div class="contacto">
             <div class="col-1">
                 <div class="col">
-                    <form id="contactForm">
+                    <form id="ivaForm">
                         <!-- contacto formulario-->
                         <div class="nuevo-formulario">
                             <!-- campos -->
                             <div class="col-2">
                                 <div class="col">
                                     <div class="campo">
-                                        <label for="name">name</label>
+                                        <label for="type">Tipo</label>
                                         <input
-                                            id="name"
-                                            name="name"
-                                            type="text"
+                                            id="type"
+                                            name="type"
+                                            type="number"
                                         />
-                                        <p class="error" data-name="name"></p>
+                                        <p class="error" data-name="type"></p>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="campo">
-                                        <label for="password">password</label>
-                                        <input
-                                            id="password"
-                                            name="password"
-                                            type="text"
-                                        />
-                                        <p
-                                            class="error"
-                                            data-name="password"
-                                        ></p>
+                                        <label for="valid">valid</label>
+                                        <select name="valid" id="">
+                                            <option value="1">1</option>
+                                            <option value="1">2</option>
+                                        </select>
+                                        <p class="error" data-name="valid"></p>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="campo">
-                                    <label for="email">Email</label>
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                    />
-                                    <p class="error" data-name="email"></p>
                                 </div>
                             </div>
                         </div>

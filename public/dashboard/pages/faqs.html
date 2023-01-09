@@ -35,46 +35,75 @@
         <div class="contacto">
             <div class="col-1">
                 <div class="col">
-                    <form id="contactForm">
-                        <!-- contacto formulario-->
+                    <form id="faqForm">
+                        <!-- faq formulario-->
                         <div class="nuevo-formulario">
                             <!-- campos -->
-                            <div class="col-2">
+                            <div class="col-1">
                                 <div class="col">
                                     <div class="campo">
-                                        <label for="name">name</label>
-                                        <input
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                        />
-                                        <p class="error" data-name="name"></p>
+                                        <label for="categorie_id"
+                                            >Categoria</label
+                                        >
+                                        <select
+                                            name="categorie_id"
+                                            id="categorie_id"
+                                        >
+                                            <option value="categorias.id">
+                                                categoria.title
+                                            </option>
+                                            <option value="categorias.id">
+                                                categoria.title
+                                            </option>
+                                            <option value="categorias.id">
+                                                categoria.title
+                                            </option>
+                                        </select>
+                                        <p
+                                            class="error"
+                                            data-name="categorie_id"
+                                        ></p>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-1">
                                 <div class="col">
                                     <div class="campo">
-                                        <label for="password">password</label>
+                                        <label for="question">Pregunta</label>
                                         <input
-                                            id="password"
-                                            name="password"
+                                            id="question"
+                                            name="question"
                                             type="text"
                                         />
                                         <p
                                             class="error"
-                                            data-name="password"
+                                            data-name="question"
                                         ></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="campo">
-                                    <label for="email">Email</label>
+                                    <label for="response">Respuesta</label>
+                                    <textarea
+                                        name="response"
+                                        id="response"
+                                        cols="30"
+                                        rows="10"
+                                    >
+                                    </textarea>
+                                    <p class="error" data-name="response"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="campo">
+                                    <label for="image">Imagen</label>
                                     <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
+                                        id="image"
+                                        name="image"
+                                        type="file"
                                     />
-                                    <p class="error" data-name="email"></p>
+                                    <p class="error" data-name="image"></p>
                                 </div>
                             </div>
                         </div>

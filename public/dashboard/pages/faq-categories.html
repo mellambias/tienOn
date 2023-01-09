@@ -1,0 +1,130 @@
+<div class="col-aside-main">
+    <section class="col-aside">
+        <!-- <div class="col"> -->
+        <ul class="fichas">
+            <li>
+                <div class="ficha">
+                    <ul>
+                        <li>Nombre:</li>
+                        <li>Nombre:</li>
+                        <li>Nombre:</li>
+                    </ul>
+
+                    <div class="crud">
+                        <button>
+                            <i class="edit-icon"></i>
+                            Edit
+                        </button>
+                        <button>
+                            <i class="delete-icon"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ficha">ficha 2</div>
+            </li>
+            <li>
+                <div class="ficha">ficha 3</div>
+            </li>
+        </ul>
+        <!-- </div> -->
+    </section>
+    <section class="col-main">
+        <form id="faqCategoriesForm">
+            <div class="contactoAdmintabs">
+                <div id="tabs1" class="tabs">
+                    <nav>
+                        <ul>
+                            <li class="tab active" data-tabid="contenido">
+                                <p>Categorias</p>
+                            </li>
+                            <li class="tab" data-tabid="imagen">
+                                <p>imagen</p>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div id="contenido" class="active">
+                        <div class="contacto">
+                            <div class="col-1">
+                                <div class="col">
+                                    <!-- contacto formulario-->
+                                    <div class="contacto-formulario">
+                                        <!-- campos -->
+                                        <div class="col-1">
+                                            <div class="col">
+                                                <div class="campo">
+                                                    <label for="title"
+                                                        >Titulo</label
+                                                    >
+                                                    <input
+                                                        id="title"
+                                                        name="title"
+                                                        type="text"
+                                                    />
+                                                    <p
+                                                        class="error"
+                                                        data-name="title"
+                                                    ></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="col">
+                                                <div class="campo">
+                                                    <label for="description"
+                                                        >description</label
+                                                    >
+
+                                                    <textarea
+                                                        id="description"
+                                                        name="description"
+                                                        rows="10"
+                                                        maxlength="100"
+                                                    ></textarea>
+                                                    <span
+                                                        >máximo 100
+                                                        caracteres</span
+                                                    >
+                                                    <p
+                                                        class="error"
+                                                        data-name="mensaje"
+                                                    ></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- boton envio formulario -->
+                                        <div class="contacto-formulario-accion">
+                                            <button id="enviar">Enviar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="imagen">
+                        <h2>Imagen</h2>
+                        <p>contenido imagenes</p>
+                        <div class="col-1">
+                            <div class="col">
+                                <div class="campo">
+                                    <label for="image">Titulo</label>
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        id="image"
+                                    />
+                                    <p class="error" data-name="title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

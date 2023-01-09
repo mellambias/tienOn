@@ -35,13 +35,14 @@ export const menuTree = async () => {
 
     // leer datos de menuData.json usando async await
     async function leeData() {
-        const menuData = await fetch('./menuData.json');
+        const menuData = await fetch('./layout/menuData.json');
         const menu = await menuData.json();
         return menu;
     }
 
     const root = document.getElementById('main-menu');
     const menu = await leeData();
+    console.log(menu);
     await crearMenu(root, menu);
 };
 

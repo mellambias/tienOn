@@ -38,8 +38,37 @@
                         "path": "nuevo usuario",
                         "icon": "",
                         "content": []
+                    },
+                    {
+                        "id": "1.5.2",
+                        "item": "iva",
+                        "path": "ivaform",
+                        "icon": "",
+                        "content": []
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "item": "faq",
+        "path": "",
+        "icon": "",
+        "content": [
+            {
+                "id": "2.1",
+                "item": "Categorias",
+                "path": "faq-categories",
+                "icon": "",
+                "content": []
+            },
+            {
+                "id": "2.2",
+                "item": "Preguntas",
+                "path": "faqs",
+                "icon": "",
+                "content": []
             }
         ]
     }
