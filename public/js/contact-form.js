@@ -89,7 +89,7 @@ const contactForm = () => {
     const selectElements = [...formulario.getElementsByTagName('select')];
     const textAreaElements = [...formulario.getElementsByTagName('textarea')];
 
-    function submitForm(ev) {
+    async function submitForm(ev) {
         ev.preventDefault();
 
         if (!checkForm(this, campos)) {
@@ -109,17 +109,28 @@ const contactForm = () => {
              */
             const formData = new FormData(this);
             let formDataJson = Object.fromEntries(formData.entries());
-            console.log(JSON.stringify(formDataJson));
-            evento.target.dispatchEvent(
-                new CustomEvent('alert', {
-                    bubbles: true,
-                    detail: {
-                        className: 'success',
-                        message: 'Formulario correcto',
-                        icon: 'checked-icon',
+            try {
+                await fetch('http://localhost:8080/front/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                })
-            );
+                    body: JSON.stringify(formDataJson),
+                });
+                console.log(JSON.stringify(formDataJson));
+                this.dispatchEvent(
+                    new CustomEvent('alert', {
+                        bubbles: true,
+                        detail: {
+                            className: 'success',
+                            message: 'Formulario correcto',
+                            icon: 'checked-icon',
+                        },
+                    })
+                );
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 

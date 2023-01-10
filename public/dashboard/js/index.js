@@ -9,9 +9,15 @@ import { collapseToggler, menuTree } from './menu.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
 
+window.userSession = {};
+
 const changePage = () => {
     const currentDocumentTitle =
         document.getElementById('breadcrumb').outerText;
+    const userDom = document.getElementById('userSession');
+    if (userDom && userSession.name) {
+        userDom.innerHTML = userSession.name;
+    }
 
     switch (currentDocumentTitle.toLowerCase()) {
         case 'panel de control':
@@ -36,6 +42,8 @@ const changePage = () => {
             break;
         case 'login':
             login();
+            break;
+        case 'faq-categories':
             break;
         default:
             break;

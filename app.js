@@ -18,6 +18,11 @@ app.use(connectLiveReload());
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
-    console.log('Servidor funcionando en %s', PORT);
+    const ahora = new Date();
+    console.log(
+        '(%o) Servidor funcionando en http://localhost:%s',
+        ahora,
+        PORT
+    );
 });
 module.exports = app;

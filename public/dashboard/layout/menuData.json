@@ -21,14 +21,14 @@
             },
             {
                 "id": "1.4",
-                "item": "Submenu",
+                "item": "Faq",
                 "path": "",
                 "icon": "",
                 "content": [
                     {
                         "id": "1.4.1",
-                        "item": "Item",
-                        "path": "",
+                        "item": "Categories",
+                        "path": "faq-categories",
                         "icon": "",
                         "content": []
                     }
