@@ -1,3 +1,4 @@
+import checkoutForm from './checkout-form.js';
 import contactForm from './contact-form.js';
 import notification from './notification.js';
 import { footer, header } from './partials.js';
@@ -15,7 +16,7 @@ switch (currentDocumentTitle.toLowerCase()) {
         texAreaInputCounter();
         break;
     case 'checkout':
-        contactForm();
+        checkoutForm();
         break;
     case 'producto':
         tabs();
