@@ -36,7 +36,7 @@ const checkoutForm = () => {
             },
             {
                 validate: email => {
-                    const regex = /\w+@\w+\.\w+/g;
+                    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
                     return email.match(regex) == null;
                 },
                 errorText: 'El email no es valido',
@@ -110,14 +110,18 @@ const checkoutForm = () => {
             const formData = new FormData(this);
             let formDataJson = Object.fromEntries(formData.entries());
             try {
-                await fetch('http://localhost:8080/front/checkout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formDataJson),
-                });
-                console.log(JSON.stringify(formDataJson));
+                const res = await fetch(
+                    'http://localhost:8080/front/checkout',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formDataJson),
+                    }
+                );
+                const data = await res.json();
+                if (res.status == 400) throw new Error(data.message.email);
                 this.dispatchEvent(
                     new CustomEvent('alert', {
                         bubbles: true,
@@ -130,6 +134,16 @@ const checkoutForm = () => {
                 );
             } catch (error) {
                 console.error(error);
+                this.dispatchEvent(
+                    new CustomEvent('alert', {
+                        bubbles: true,
+                        detail: {
+                            className: 'error',
+                            message: error,
+                            icon: 'alert-icon',
+                        },
+                    })
+                );
             }
         }
     }
