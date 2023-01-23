@@ -8,12 +8,16 @@ import { renderLogin } from './login.js';
 import { collapseToggler, menuTree } from './menu.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
+import './webComponents/Menu.js';
+import './webComponents/PageTitle.js';
 
 window.userSession = {};
 
 const changePage = () => {
     const currentDocumentTitle =
         document.getElementById('breadcrumb').outerText;
+    const pageTitle = (document.getElementById('page-title').title =
+        currentDocumentTitle);
     const userDom = document.getElementById('userSession');
     if (userDom && userSession.name) {
         userDom.innerHTML = userSession.name;
