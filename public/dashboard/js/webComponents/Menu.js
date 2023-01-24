@@ -40,7 +40,14 @@ class Menu extends HTMLElement {
                 a.innerHTML = menuItem.item;
                 a.href = menuItem.path;
                 a.dataset.href = menuItem.path;
-                // a.addEventListener('click', route);
+                a.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.dispatchEvent(
+                        new CustomEvent('clickLink', {
+                            detail: { menuItem },
+                        })
+                    );
+                });
                 return;
             }
         });
@@ -56,111 +63,74 @@ class Menu extends HTMLElement {
     async render() {
         this.shadow.innerHTML = `
         <style>
-        a {
-            margin: 0;
-            background-color: transparent;
-            -webkit-transition: 300ms;
-            -moz-transition: 300ms;
-            -o-transition: 300ms;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 300ms;
-        }
-        a:hover,
-        a:focus {
-            outline: none;
-            text-decoration: none;
-            outline-offset: 0;
-        }
-        ol,
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-        .col-menu-main {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.col-menu-main > .col-menu {
-    width: 10%;
-    flex-grow: 1;
-}
-.col-menu-main > .col-main {
-    width: 85%;
-    margin-top: 2rem;
-    margin-left: 1rem;
-    flex-grow: 1;
-    display: flex;
-}
-        .col-menu {
-            background-color: hsl(218deg, 44%, 45%);
-            height: 90vh;
-            position: static;
-            visibility: visible;
-            opacity: 1;
-            left: 0vw;
-            transition: all 5s linear;
-        }
-        .col-menu nav {
-            display: flex;
-        flex-direction: column;
-        }
-        .col-menu.collapse {
-            position: absolute;
-            visibility: collapse;
-            opacity: 0;
-            left: -100vw;
-        }
-        .treeMenu {
-            margin: 1px;
-            padding: 1px;
-            color: white;
-        }
-        .treeMenu li {
-            margin-top: 0.5rem;
-            margin-left: 1rem;
-        }
+            a {
+                margin: 0;
+                background-color: transparent;
+                transition: 300ms;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            a:hover,
+            a:focus {
+                outline: none;
+                text-decoration: none;
+                outline-offset: 0;
+            }
+            nav {
+                display: flex;
+                flex-direction: column;
+                width:50vh;
+            }
+            ul {
+                list-style: none;
+                padding-left: 0;
+                margin: 0;
+            }
+            .treeMenu {
+                margin: 1px;
+                padding: 1px;
+                color: white;
+            }
+            .treeMenu li {
+                margin-top: 0.5rem;
+                margin-left: 1rem;
+            }
+            
+            .cursor {
+                cursor: pointer;
+                user-select: none;
+            }
 
-        .cursor {
-            cursor: pointer;
-            user-select: none;
-        }
+            .cursor::before {
+                content: "▶";
+                color: white;
+                display: inline-block;
+                margin-right: 6px;
+            }
 
-        .cursor::before {
-            content: "▶";
-            color: white;
-            display: inline-block;
-            margin-right: 6px;
-        }
+            .cursor-down::before {
+                -ms-transform: rotate(90deg); /* IE 9 */
+                -webkit-transform: rotate(90deg); /* Safari */
+                transform: rotate(90deg);
+            }
 
-        .cursor-down::before {
-            -ms-transform: rotate(90deg); /* IE 9 */
-             -webkit-transform: rotate(90deg); /* Safari */
-            transform: rotate(90deg);
-        }
+            .close {
+                position: absolute;
+                visibility: collapse;
+                opacity: 0;
+            }
 
-        .close {
-            position: absolute;
-            visibility: collapse;
-            opacity: 0;
-        }
-
-        .open {
-            position: static;
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 1s linear;
-        }
+            .open {
+                position: static;
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 1s linear;
+            }
 
         </style>
-        <div id="menubar" class="col-menu">
-            <nav>
-                <ul id="main-menu" class="treeMenu"></ul>
-            </nav>
-        </div>`;
+        <nav>
+            <ul id="main-menu" class="treeMenu"></ul>
+        </nav>`;
         const root = this.shadow.getElementById('main-menu');
         const menu = await this.leeData();
         console.log('(%o) menu: %o', new Date(), menu);
@@ -168,4 +138,49 @@ class Menu extends HTMLElement {
     }
 }
 
-customElements.define('menu-component', Menu);
+/**
+ * Cierra el menu
+ * @class
+ * @extends HTMLElement
+ */
+class CollapseToggler extends HTMLElement {
+    constructor() {
+        super();
+        this.shadow = this.attachShadow({ mode: 'open' });
+    }
+    connectedCallback() {
+        this.shadow.innerHTML = `
+        <style>
+            .hambutton-icon {
+                display: inline-block;
+                width: 1rem;
+                background: url(/assets/svg/hamburger-button.svg) 0 0 / contain no-repeat;
+            }
+            .hambutton-icon::before {
+                content: '';
+                display: block;
+                padding-top: 100%;
+            }
+        </style>
+        <button class="collapseToggler" data-id="menubar">
+            <i class="hambutton-icon"></i>
+        </button>`;
+        const menus = [...this.shadow.querySelectorAll('.collapseToggler')];
+        menus.forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const idCollapsible = this.dataset.id;
+                document
+                    .getElementById(idCollapsible)
+                    .classList.toggle('collapse');
+            });
+        });
+    }
+}
+
+customElements.define('wc-menu', Menu);
+customElements.define('wc-collapse-toggler', CollapseToggler);
+
+/*
+document.addEventListener('evento,callback)
+document.dispatchEvent(new CustomEvent('evento',{data}))
+*/

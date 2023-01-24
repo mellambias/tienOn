@@ -17,8 +17,9 @@ class PageTitle extends HTMLElement {
      * Funcion llamada cuando se inserta el componente
      */
     connectedCallback() {
-        document.addEventListener('newUrl', event => {
-            this.setAttribute('title', event.detail.title);
+        document.addEventListener('clickLink', event => {
+            console.log(event.detail);
+            this.setAttribute('title', event.detail.menuItem.item);
         });
 
         this.render();
@@ -33,7 +34,9 @@ class PageTitle extends HTMLElement {
      */
 
     attributeChangedCallback(name, oldValue, newValue) {
-        this.render();
+        if (oldValue != null) {
+            this.shadow.querySelector('h2').innerHTML = newValue;
+        }
     }
     /**
      * Crea el componente.
@@ -60,4 +63,4 @@ class PageTitle extends HTMLElement {
     }
 }
 
-customElements.define('page-title-component', PageTitle);
+customElements.define('wc-pagetitle', PageTitle);

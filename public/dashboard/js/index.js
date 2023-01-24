@@ -5,7 +5,7 @@ import { texAreaInputCounter } from '../../js/textAreaInputCounter.js';
 import empresaForm from './empresaForm.js';
 import ivaform from './ivaForm.js';
 import { renderLogin } from './login.js';
-import { collapseToggler, menuTree } from './menu.js';
+// import { collapseToggler, menuTree } from './menu.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/Menu.js';
@@ -55,8 +55,8 @@ const changePage = () => {
     console.log(`Se encuentra en ${currentDocumentTitle}`);
 };
 // componentes comunes
-menuTree();
-collapseToggler();
+// menuTree();
+// collapseToggler();
 notification();
 changePage();
 export default changePage;

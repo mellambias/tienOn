@@ -32,23 +32,19 @@
                         <span id="breadcrumb" style="display: none"
                             >Panel de control</span
                         >
-                        <page-title-component
+                        <wc-pagetitle
                             id="page-title"
-                        ></page-title-component>
+                            title="Panel de control"
+                        ></wc-pagetitle>
                         <p id="userSession"></p>
                     </div>
-                    <button class="collapseToggler" data-id="menubar">
-                        <i class="hambutton-icon"></i>
-                    </button>
+                    <wc-collapse-toggler></wc-collapse-toggler>
                 </section>
             </header>
             <div class="col-menu-main">
-                <!-- <div id="menubar" class="col-menu">
-                    <nav>
-                        <ul id="main-menu" class="treeMenu"></ul>
-                    </nav>
-                </div> -->
-                <menu-component></menu-component>
+                <div id="menubar" class="col-menu">
+                    <wc-menu></wc-menu>
+                </div>
                 <div class="col-main"></div>
             </div>
         </main>
