@@ -6,10 +6,20 @@ import empresaForm from './empresaForm.js';
 import ivaform from './ivaForm.js';
 import { renderLogin } from './login.js';
 // import { collapseToggler, menuTree } from './menu.js';
+import Dao from '../dao/Dao.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
+
+const mydao = new Dao();
+mydao.validateObject({
+    categoryId: 4,
+    taxeId: 3,
+    name: 'Producto de temporada',
+    price: -150,
+    outstanding: true,
+});
 
 window.userSession = {};
 
