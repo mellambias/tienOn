@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
+//unpkg.com/validator@13.7.0/validator.js
 /**
  * Adaptación a modulos ES6
  * @author Miguel Llambías Llansó
@@ -28,7 +28,7 @@
  * @version 1.0
  */
 
-'use strict';
+https: 'use strict';
 
 function _typeof(obj) {
     '@babel/helpers - typeof';

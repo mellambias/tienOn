@@ -7,14 +7,19 @@ const defaultConnection = new Connection();
 class Model {
     constructor(connection = defaultConnection) {
         this.modelDtd = this.defineModel();
+        this.connection = connection;
         this._model = {};
-        this.connection = defaultConnection;
+        this.errors = {};
+        this.records = [];
+        return this;
     }
 
-    set model(values = {}) {
+    set model(values) {
         const errors = this.validateModel(values);
         if (errors == false) {
             Object.assign(this._model, values);
+        } else {
+            Object.assign(this.errors, errors);
         }
     }
 
@@ -25,9 +30,62 @@ class Model {
     defineModel() {
         return {};
     }
-    save() {
-        console.log('Su modelo ha sido guardado %o', this.model);
-        this.connection.save(this.model);
+    async save() {
+        if (Object.keys(this._model).length === 0) {
+            this.errors = { message: 'el modelo esta vacio' };
+            console.log(this.errors);
+            return false;
+        }
+        try {
+            console.log(this._model);
+            const errors = this.validateModel(this._model);
+            if (errors == false) {
+                console.log('Su modelo ha sido guardado %o', this.model);
+                this.records = await this.connection.save(this.model);
+                return this.records;
+            } else {
+                this.errors = { message: `Error en el modelo ${errors}` };
+                console.log('Error en el modelo %o', this.errors);
+            }
+        } catch (error) {
+            this.errors = { message: `Error en el modelo ${errors}` };
+            console.log(this.errors);
+        }
+    }
+    async findAll() {
+        try {
+            console.log('buscando todos los registros');
+            const records = await this.connection.findAll();
+            records.forEach(record => {
+                const newModel = new Model();
+                Object.assign(newModel, this);
+                newModel.records = [];
+                newModel.model = record;
+                this.records.push(newModel);
+            });
+            return this.records;
+        } catch (error) {
+            this.errors = {
+                message: `Error en el modelo ${error}`,
+            };
+            console.log(this.errors);
+        }
+    }
+
+    async findOne(id) {
+        try {
+            console.log('buscando un registro');
+            const record = await this.connection.findOne(id);
+            const newModel = new Model();
+            Object.assign(newModel, this);
+            newModel.model = record;
+            return newModel;
+        } catch (error) {
+            this.errors = {
+                message: `Error en el modelo ${error}`,
+            };
+            console.log(this.errors);
+        }
     }
     /**
      * sincroniza el modelo con los datos del formulario
@@ -48,9 +106,10 @@ class Model {
                 if (this.modelDtd.hasOwnProperty(modelKey)) {
                     temp[modelKey] = valores[key];
                 } else {
-                    console.error(
-                        `La clave ${modelKey} no pertenece al modelo`
-                    );
+                    this.errors = {
+                        message: `La clave ${modelKey} no pertenece al modelo`,
+                    };
+                    console.log(this.errors);
                 }
             }
         });
@@ -62,9 +121,8 @@ class Model {
         return false;
     }
 
-    modelParse(modelToParse = { enpty: true }) {
-        if (modelToParse?.enpty) {
-            modelToParse = {};
+    modelParse(modelToParse = {}) {
+        if (Object.keys(modelToParse).length === 0) {
             Object.keys(this.modelDtd).forEach(key => {
                 modelToParse[key] = key;
             });

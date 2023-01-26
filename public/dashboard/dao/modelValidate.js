@@ -30,7 +30,6 @@ validate.validators.validate = function (value, options, key, attributes) {
     if (options?.isIn && validator.isIn(value + '', options.isIn)) {
         error.push('no esta dentro de los valores permitidos');
     }
-
     if (error.length) {
         return error;
     }

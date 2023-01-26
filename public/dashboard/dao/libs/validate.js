@@ -18,6 +18,7 @@
 //   - fullMessages (boolean) - If `true` (default) the attribute name is prepended to the error.
 //
 // Please note that the options are also passed to each validator.
+////cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js
 export default function validate(attributes, constraints, options) {
     options = v.extend({}, v.options, options);
 

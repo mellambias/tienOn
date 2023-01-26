@@ -6,7 +6,7 @@ import Model, { DataTypes } from '../dao/Model.js';
 export default class Contact extends Model {
     constructor() {
         super();
-        this.connection.endPoint = '/api/routes/Contact/';
+        this.connection.endPoint = '/api/admin/contact';
     }
     defineModel() {
         return {
@@ -52,9 +52,9 @@ export default class Contact extends Model {
             message: {
                 type: DataTypes.TEXT,
                 allowNull: false,
+                length: { minimum: 20, maximum: 500 },
                 validate: {
                     notEmpty: true,
-                    len: [20, 500],
                 },
             },
         };
