@@ -20,11 +20,13 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-// (function (global, factory) {
-// 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-// 	typeof define === 'function' && define.amd ? define(factory) :
-//       (global.validator = factory());
-// }(this, (
+
+/**
+ * Adaptación a modulos ES6
+ * @author Miguel Llambías Llansó
+ * @email  mellambias@gmail.com
+ * @version 1.0
+ */
 
 'use strict';
 
@@ -6497,7 +6499,112 @@ export function isVAT(str, countryCode) {
 
     throw new Error("Invalid country code: '".concat(countryCode, "'"));
 }
-var version = '13.7.0';
+const version = '13.7.0';
+const versionFork = '1.0.0';
+const validatorLib = {
+    version: versionFork,
+    toDate: toDate,
+    toFloat: toFloat,
+    toInt: toInt,
+    toBoolean: toBoolean,
+    equals: equals,
+    contains: contains,
+    matches: matches,
+    isEmail: isEmail,
+    isURL: isURL,
+    isMACAddress: isMACAddress,
+    isIP: isIP,
+    isIPRange: isIPRange,
+    isFQDN: isFQDN,
+    isBoolean: isBoolean,
+    isIBAN: isIBAN,
+    isBIC: isBIC,
+    isAlpha: isAlpha,
+    isAlphaLocales: locales$1,
+    isAlphanumeric: isAlphanumeric,
+    isAlphanumericLocales: locales$2,
+    isNumeric: isNumeric,
+    isPassportNumber: isPassportNumber,
+    isPort: isPort,
+    isLowercase: isLowercase,
+    isUppercase: isUppercase,
+    isAscii: isAscii,
+    isFullWidth: isFullWidth,
+    isHalfWidth: isHalfWidth,
+    isVariableWidth: isVariableWidth,
+    isMultibyte: isMultibyte,
+    isSemVer: isSemVer,
+    isSurrogatePair: isSurrogatePair,
+    isInt: isInt,
+    isIMEI: isIMEI,
+    isFloat: isFloat,
+    isFloatLocales: locales,
+    isDecimal: isDecimal,
+    isHexadecimal: isHexadecimal,
+    isOctal: isOctal,
+    isDivisibleBy: isDivisibleBy,
+    isHexColor: isHexColor,
+    isRgbColor: isRgbColor,
+    isHSL: isHSL,
+    isISRC: isISRC,
+    isMD5: isMD5,
+    isHash: isHash,
+    isJWT: isJWT,
+    isJSON: isJSON,
+    isEmpty: isEmpty,
+    isLength: isLength,
+    isLocale: isLocale,
+    isByteLength: isByteLength,
+    isUUID: isUUID,
+    isMongoId: isMongoId,
+    isAfter: isAfter,
+    isBefore: isBefore,
+    isIn: isIn,
+    isCreditCard: isCreditCard,
+    isIdentityCard: isIdentityCard,
+    isEAN: isEAN,
+    isISIN: isISIN,
+    isISBN: isISBN,
+    isISSN: isISSN,
+    isMobilePhone: isMobilePhone,
+    isMobilePhoneLocales: locales$4,
+    isPostalCode: isPostalCode,
+    isPostalCodeLocales: locales$5,
+    isEthereumAddress: isEthereumAddress,
+    isCurrency: isCurrency,
+    isBtcAddress: isBtcAddress,
+    isISO8601: isISO8601,
+    isRFC3339: isRFC3339,
+    isISO31661Alpha2: isISO31661Alpha2,
+    isISO31661Alpha3: isISO31661Alpha3,
+    isISO4217: isISO4217,
+    isBase32: isBase32,
+    isBase58: isBase58,
+    isBase64: isBase64,
+    isDataURI: isDataURI,
+    isMagnetURI: isMagnetURI,
+    isMimeType: isMimeType,
+    isLatLong: isLatLong,
+    ltrim: ltrim,
+    rtrim: rtrim,
+    trim: trim,
+    escape: escape,
+    unescape: unescape,
+    stripLow: stripLow,
+    whitelist: whitelist,
+    blacklist: blacklist$1,
+    isWhitelisted: isWhitelisted,
+    normalizeEmail: normalizeEmail,
+    toString: toString,
+    isSlug: isSlug,
+    isStrongPassword: isStrongPassword,
+    isTaxID: isTaxID,
+    isDate: isDate,
+    isLicensePlate: isLicensePlate,
+    isVAT: isVAT,
+    ibanLocales: locales$3,
+};
 
-// })));
-
+export default function Validator() {
+    return validatorLib;
+}

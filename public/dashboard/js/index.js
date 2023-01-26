@@ -2,24 +2,62 @@ import contactForm from '../../js/contact-form.js';
 import notification from '../../js/notification.js';
 import { tabs } from '../../js/tabs.js';
 import { texAreaInputCounter } from '../../js/textAreaInputCounter.js';
+import Product from '../models/Product.js';
 import empresaForm from './empresaForm.js';
 import ivaform from './ivaForm.js';
 import { renderLogin } from './login.js';
 // import { collapseToggler, menuTree } from './menu.js';
-import Dao from '../dao/Dao.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
 
-const mydao = new Dao();
-mydao.validateObject({
+let myModel = new Product();
+myModel.model = {
     categoryId: 4,
-    taxeId: 3,
-    name: 'Producto de temporada',
-    price: -150,
+    taxeId: 16,
+    name: 'camiseta',
+    price: 150.3,
+    outstanding: false,
+};
+console.log(myModel.model);
+// myModel.validateModel({
+//     categoryId: 4,
+//     taxeId: 16,
+//     name: 'camiseta',
+//     price: -150.3,
+//     outstanding: false,
+// });
+const formValues = {
+    catId: 20,
+    taxId: 80,
+    produntoNombre: 'Producto de lana',
+    precio: 500,
+    existe: false,
+    iva: 0.21,
+};
+const modelForm = {
+    catId: 'categoryId',
+    taxId: 'taxeId',
+    produntoNombre: 'name',
+    precio: 'price',
+    existe: 'outstanding',
+    iva: 'iva',
+};
+const dataForm2 = {
+    categoryId: 4,
+    taxeId: 16,
+    name: 'americana',
+    price: 25,
     outstanding: true,
-});
+};
+// const apiModel = myModel.modelSync(formValues, modelForm);
+// const apiModel = myModel.modelSync(dataForm2);
+// console.log('apiModel %o', apiModel);
+
+// const parse = myModel.modelParse(modelForm);
+// console.log(parse);
+console.log(myModel.save());
 
 window.userSession = {};
 
