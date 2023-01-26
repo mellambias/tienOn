@@ -56,18 +56,19 @@ async function test() {
         email: 'adminadmin.es',
         message: 'hola mi hermano se fue a londres de viaje',
     };
-    console.log(myContact);
+    // console.log(myContact);
     // const myContact2 = await myContact.save();
     // console.log(myContact2);
     // const records = await myContact.findAll();
     const records = await myContact.findOne(55);
     console.log(records);
-    console.log(
-        records.modelParse({
-            email: 'email',
-            message: 'message',
-        })
-    );
+    // console.log(
+    //     records.modelParse({
+    //         email: 'email',
+    //         message: 'message',
+    //     })
+    // );
+    console.log(await records.save());
 }
 
 export default test;

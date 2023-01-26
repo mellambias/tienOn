@@ -6,7 +6,7 @@ class Connection {
         this.endPoint = endPoint;
     }
 
-    async save(modelo) {
+    async create(modelo) {
         console.log('Guardando sobre el API RESTFULL %o', this.endPoint);
         try {
             const response = await fetch(
@@ -29,9 +29,35 @@ class Connection {
             return await response.json();
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
-
+    async update(modelo) {
+        console.log('Actualizando sobre el API RESTFULL %o', this.endPoint);
+        try {
+            const response = await fetch(
+                this.protocol +
+                    '://' +
+                    this.host +
+                    ':' +
+                    this.port +
+                    this.endPoint,
+                {
+                    method: 'PUT',
+                    body: JSON.stringify(modelo),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization:
+                            'Bearer ' + localStorage.getItem('token'),
+                    },
+                }
+            );
+            return await response.json();
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
     /**
      *
      */
@@ -60,6 +86,7 @@ class Connection {
             return await result.json();
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
 
@@ -90,6 +117,7 @@ class Connection {
             return await result.json();
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
 }

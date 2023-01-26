@@ -9,6 +9,7 @@ class Model {
         this.modelDtd = this.defineModel();
         this.connection = connection;
         this._model = {};
+        this.previus = {};
         this.errors = {};
         this.records = [];
         return this;
@@ -40,8 +41,13 @@ class Model {
             console.log(this._model);
             const errors = this.validateModel(this._model);
             if (errors == false) {
-                console.log('Su modelo ha sido guardado %o', this.model);
-                this.records = await this.connection.save(this.model);
+                if (this.isEqual()) {
+                    console.log('Su modelo ha sido actualizado %o', this.model);
+                    this.records = await this.connection.update(this.model);
+                } else {
+                    console.log('Su modelo ha sido guardado %o', this.model);
+                    this.records = await this.connection.create(this.model);
+                }
                 return this.records;
             } else {
                 this.errors = { message: `Error en el modelo ${errors}` };
@@ -59,6 +65,7 @@ class Model {
             records.forEach(record => {
                 const newModel = new Model();
                 Object.assign(newModel, this);
+                Object.assign(newModel.previus, this.model);
                 newModel.records = [];
                 newModel.model = record;
                 this.records.push(newModel);
@@ -78,6 +85,7 @@ class Model {
             const record = await this.connection.findOne(id);
             const newModel = new Model();
             Object.assign(newModel, this);
+            Object.assign(newModel.previus, this.model);
             newModel.model = record;
             return newModel;
         } catch (error) {
@@ -85,6 +93,9 @@ class Model {
                 message: `Error en el modelo ${error}`,
             };
             console.log(this.errors);
+            Object.assign(this.model, {});
+            Object.assign(this.previus, {});
+            return this;
         }
     }
     /**
@@ -137,6 +148,15 @@ class Model {
     validateModel(obj) {
         const errors = validate(obj, this.modelDtd) || false;
         return errors;
+    }
+
+    isEqual() {
+        Object.keys(this.previus).forEach(key => {
+            if (this.model[key] != this.previus[key]) {
+                return false;
+            }
+        });
+        return true;
     }
 }
 
