@@ -116,7 +116,7 @@ class Connection {
             );
             return await result.json();
         } catch (error) {
-            console.log(error);
+            console.log('Conection.js : %o', error);
             throw error;
         }
     }

@@ -12,6 +12,7 @@ class Model {
         this.previus = {};
         this.errors = {};
         this.records = [];
+        this.recordsCount = 0;
         return this;
     }
 
@@ -62,6 +63,7 @@ class Model {
         try {
             console.log('buscando todos los registros');
             const records = await this.connection.findAll();
+            this.recordsCount = records.length;
             records.forEach(record => {
                 const newModel = new Model();
                 Object.assign(newModel, this);
@@ -70,12 +72,16 @@ class Model {
                 newModel.model = record;
                 this.records.push(newModel);
             });
-            return this.records;
+            return { count: this.recordsCount, records: this.records };
         } catch (error) {
             this.errors = {
                 message: `Error en el modelo ${error}`,
             };
             console.log(this.errors);
+            this._model = {};
+            this.previus = {};
+            this.records = [];
+            return this;
         }
     }
 
@@ -92,9 +98,8 @@ class Model {
             this.errors = {
                 message: `Error en el modelo ${error}`,
             };
-            console.log(this.errors);
-            Object.assign(this.model, {});
-            Object.assign(this.previus, {});
+            this._model = {};
+            this.previus = {};
             return this;
         }
     }

@@ -47,7 +47,7 @@ import Contact from '../models/Contact.js';
 // // console.log(parse);
 // // console.log(myModel.save());
 async function test() {
-    console.log('test');
+    console.log('******** Iniciando test **************');
     const myContact = new Contact();
     myContact.model = {
         name: 'juan',
@@ -57,8 +57,8 @@ async function test() {
         message: 'hola mi hermano se fue a londres de viaje',
     };
     // console.log(myContact);
-    // const myContact2 = await myContact.save();
-    // console.log(myContact2);
+    const myContact2 = await myContact.save();
+    console.log(myContact2);
     // const records = await myContact.findAll();
     const records = await myContact.findOne(55);
     console.log(records);

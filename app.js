@@ -24,5 +24,10 @@ app.listen(PORT, () => {
         ahora,
         PORT
     );
+    console.log(
+        '(%o) Admin funcionando en http://localhost:%s/dashboard',
+        ahora,
+        PORT
+    );
 });
 module.exports = app;
