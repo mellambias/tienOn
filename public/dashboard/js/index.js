@@ -11,6 +11,7 @@ import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
+import './webComponents/Tabla.js';
 
 test();
 window.userSession = {};
