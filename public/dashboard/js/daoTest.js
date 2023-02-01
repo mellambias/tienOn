@@ -1,4 +1,7 @@
-import Contact from '../models/Contact.js';
+// import Contact from '../models/Contact.js';
+import MenuController from '../controlers/MenuController.js';
+import Connection from '../dao/Connection.js';
+import Menu from '../models/Menu.js';
 
 // let myModel = new Product();
 // myModel.model = {
@@ -48,27 +51,36 @@ import Contact from '../models/Contact.js';
 // // console.log(myModel.save());
 async function test() {
     console.log('******** Iniciando test **************');
-    const myContact = new Contact();
-    myContact.model = {
-        name: 'juan',
-        surnames: 'perez dez',
-        phone: '999999999',
-        email: 'adminadmin.es',
-        message: 'hola mi hermano se fue a londres de viaje',
-    };
-    // console.log(myContact);
-    const myContact2 = await myContact.save();
-    console.log(myContact2);
-    // const records = await myContact.findAll();
-    const records = await myContact.findOne(55);
-    console.log(records);
-    // console.log(
-    //     records.modelParse({
-    //         email: 'email',
-    //         message: 'message',
-    //     })
-    // );
-    console.log(await records.save());
+    // const myContact = new Contact();
+    // myContact.model = {
+    //     name: 'juan',
+    //     surnames: 'perez dez',
+    //     phone: '999999999',
+    //     email: 'adminadmin.es',
+    //     message: 'hola mi hermano se fue a londres de viaje',
+    // };
+    // // console.log(myContact);
+    // const myContact2 = await myContact.save();
+    // console.log(myContact2);
+    // // const records = await myContact.findAll();
+    // const records = await myContact.findOne(55);
+    // console.log(records);
+    // // console.log(
+    // //     records.modelParse({
+    // //         email: 'email',
+    // //         message: 'message',
+    // //     })
+    // // );
+    // console.log(await records.save());
+    console.log('Test Menu Controller');
+    const menuConnection = new Connection(
+        'http://127.0.0.1:8080/api/admin/menu'
+    );
+    const model = new Menu(menuConnection);
+    const vista = null;
+    const myMenuCtr = new MenuController(model, vista);
+    console.log('buscar datos');
+    console.log(await myMenuCtr.loadData('admin-header'));
 }
 
 export default test;

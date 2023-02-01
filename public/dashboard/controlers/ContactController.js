@@ -1,7 +1,9 @@
-import Contact from '../models/Contact';
-import Controller from './Controller';
+import Connection from '../dao/Connection.js';
+import Contact from '../models/Contact.js';
+import Controller from './Controller.js';
 
-const model = new Contact();
+const contactConnection = new Connection('/api/admin/contact');
+const model = new Contact(contactConnection);
 const vista = null;
 
 class ContactController extends Controller {
