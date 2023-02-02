@@ -4,9 +4,8 @@ import Model, { DataTypes } from '../dao/Model.js';
 // presence: true;
 
 export default class Contact extends Model {
-    constructor() {
-        super();
-        this.connection.endPoint = '/api/admin/contact';
+    constructor(connection) {
+        super(connection);
     }
     defineModel() {
         return {

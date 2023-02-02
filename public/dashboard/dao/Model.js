@@ -17,6 +17,9 @@ class Model {
     }
 
     set model(values) {
+        if (Object.keys(values).length) {
+            return;
+        }
         const errors = this.validateModel(values);
         if (errors == false) {
             Object.assign(this._model, values);
@@ -61,7 +64,7 @@ class Model {
     }
     async findAll() {
         try {
-            console.log('buscando todos los registros');
+            console.log('Model -> buscando todos los registros -> connection');
             const records = await this.connection.findAll();
             this.recordsCount = records.length;
             records.forEach(record => {
@@ -77,7 +80,7 @@ class Model {
             this.errors = {
                 message: `Error en el modelo ${error}`,
             };
-            console.log(this.errors);
+            console.log('Errores:', this.errors);
             this._model = {};
             this.previus = {};
             this.records = [];
