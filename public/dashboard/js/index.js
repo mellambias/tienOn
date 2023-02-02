@@ -9,6 +9,7 @@ import { renderLogin } from './login.js';
 import test from './daoTest.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
+import './webComponents/ElementDetails.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
 
