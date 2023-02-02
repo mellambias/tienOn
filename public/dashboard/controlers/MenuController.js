@@ -9,7 +9,7 @@ const vista = null;
 class MenuController extends Controller {
     constructor(model = model, vista = vista) {
         super(model, vista);
-        this.vistaToModel = this.vistaToModel();
+        this._vistaToModel = this.vistaToModel();
     }
 
     vistaToModel() {
@@ -22,8 +22,29 @@ class MenuController extends Controller {
     }
 
     async loadData(name) {
-        const records = await this.model.findMenu(name);
-        return records;
+        let records = await this.model.findMenu(name);
+        console.log(records);
+        let newMenu = {};
+        /**
+         * Transforma los datos del modelo al de la vista
+         * @param {object} root
+         * @param {object} vistaToModel
+         * @returns el menu con la nueva estructura
+         */
+        function transform(root, vistaToModel) {
+            let format = {
+                id: root.id,
+                item: root.name || '',
+                path: root.customUrl || '',
+                content: [],
+            };
+            root.children.forEach(element => {
+                format.content.push(transform(element, vistaToModel));
+            });
+            return format;
+        }
+        newMenu = transform(records, this._vistaToModel);
+        return newMenu.content;
     }
 
     async loadOne(id) {

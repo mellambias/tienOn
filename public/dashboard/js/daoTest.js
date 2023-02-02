@@ -80,7 +80,18 @@ async function test() {
     const vista = null;
     const myMenuCtr = new MenuController(model, vista);
     console.log('buscar datos');
-    console.log(await myMenuCtr.loadData('admin-header'));
+    const dataMenu = await myMenuCtr.loadData('admin-header');
+    console.log('Send event ->');
+    document.dispatchEvent(
+        new CustomEvent('loadMenuData', {
+            detail: { dataMenu },
+        })
+    );
 }
 
 export default test;
+
+/*
+document.addEventListener('evento,callback)
+document.dispatchEvent(new CustomEvent('evento',{data}))
+*/

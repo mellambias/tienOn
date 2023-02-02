@@ -9,7 +9,16 @@ class Menu extends HTMLElement {
     // }
 
     connectedCallback() {
-        this.render();
+        console.log('menu connected');
+        document.addEventListener('loadMenuData', async event => {
+            console.log('Evento recibido %o', event.detail);
+            this.render();
+            const root = this.shadow.getElementById('main-menu');
+            // const menu = await this.leeData();
+            const menu = event.detail.dataMenu;
+            console.log('(%o) menu: %o', new Date(), menu);
+            await this.crearMenu(root, menu);
+        });
     }
     disconnectedCallback() {}
     attributeChangedCallback(name, oldValue, newValue) {}
@@ -131,10 +140,10 @@ class Menu extends HTMLElement {
         <nav>
             <ul id="main-menu" class="treeMenu"></ul>
         </nav>`;
-        const root = this.shadow.getElementById('main-menu');
-        const menu = await this.leeData();
-        console.log('(%o) menu: %o', new Date(), menu);
-        await this.crearMenu(root, menu);
+        // const root = this.shadow.getElementById('main-menu');
+        // const menu = await this.leeData();
+        // console.log('(%o) menu: %o', new Date(), menu);
+        // await this.crearMenu(root, menu);
     }
 }
 
