@@ -11,6 +11,7 @@ import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/App.js';
 import './webComponents/ElementDetails.js';
+import './webComponents/Login.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
 import './webComponents/Tabla.js';

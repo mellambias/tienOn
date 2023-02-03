@@ -1,3 +1,4 @@
+import '../dashboard/js/webComponents/Login.js';
 import checkoutForm from './checkout-form.js';
 import contactForm from './contact-form.js';
 import notification from './notification.js';
