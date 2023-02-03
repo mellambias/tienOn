@@ -19,7 +19,8 @@ class PageTitle extends HTMLElement {
     connectedCallback() {
         document.addEventListener('clickLink', event => {
             console.log(event.detail);
-            this.setAttribute('title', event.detail.menuItem.item);
+            let title = event.detail.menuItem.item;
+            this.setAttribute('title', title.replace(/-/g, ' ').toUpperCase());
         });
 
         this.render();
