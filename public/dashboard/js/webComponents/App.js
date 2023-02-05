@@ -10,18 +10,24 @@ class App extends HTMLElement {
     }
 
     connectedCallback() {
+        window.addEventListener('popstate', this.readFromHistory);
         document.addEventListener('clickLink', this.changePage);
-        window.addEventListener('popstate', this.changePage);
-        this.loadControler('Menu');
+        document.addEventListener('menuConnected', this.loadMenu);
+    }
+
+    readFromHistory(event) {
+        event.preventDefault();
+        console.log('From History', event?.state);
     }
 
     changePage = event => {
+        event.preventDefault();
+        const controler = event?.state || event.detail?.menuItem;
         console.log(
             'La app a recibido %o',
             event?.state || event.detail?.menuItem
         );
-        event.preventDefault();
-
+        if (!controler) return;
         if (event.detail?.menuItem) {
             window.document.title = event.detail.menuItem.item;
             window.history.pushState(
@@ -32,7 +38,7 @@ class App extends HTMLElement {
         } else {
             window.document.title = location.href.split('/').slice(-1)[0];
         }
-        this.loadControler(event?.state || event.detail?.menuItem);
+        this.loadControler(controler);
     };
 
     loadControler = async controler => {
@@ -45,20 +51,28 @@ class App extends HTMLElement {
                 break;
             case 'admin-header':
             default:
-                this.loadMenu(controler);
                 break;
         }
     };
 
-    async loadMenu(controler) {
-        const menuConnection = new Connection(
-            `http://127.0.0.1:8080${controler.path}`
-        );
-        const model = new Menu(menuConnection);
-        const vista = null;
-        const myMenuCtr = new MenuController(model, vista);
-        console.log('buscar datos ->');
-        await myMenuCtr.loadData('admin-header');
+    async loadMenu() {
+        try {
+            const menuConnection = new Connection(
+                `http://127.0.0.1:8080/api/admin/menu`
+            );
+            const model = new Menu(menuConnection);
+            const vista = null;
+            const myMenuCtr = new MenuController(model, vista);
+            console.log('buscar datos ->');
+            const data = await myMenuCtr.loadData('admin-header');
+            document.dispatchEvent(
+                new CustomEvent('loadMenuData', {
+                    detail: { dataMenu: data },
+                })
+            );
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async loadData(controler) {

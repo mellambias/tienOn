@@ -10,15 +10,13 @@ class Menu extends HTMLElement {
 
     connectedCallback() {
         console.log('menu connected');
-        document.addEventListener('loadMenuData', async event => {
-            console.log('Evento recibido %o', event.detail);
-            this.render();
-            const root = this.shadow.getElementById('main-menu');
-            // const menu = await this.leeData();
-            const menu = event.detail.dataMenu;
-            console.log('(%o) menu: %o', new Date(), menu);
-            await this.crearMenu(root, menu);
-        });
+        document.addEventListener('loadMenuData', this.leeData);
+        // lanza el evento menuConnected
+        document.dispatchEvent(
+            new CustomEvent('menuConnected', {
+                detail: { data: this },
+            })
+        );
     }
     disconnectedCallback() {}
     attributeChangedCallback(name, oldValue, newValue) {}
@@ -62,12 +60,19 @@ class Menu extends HTMLElement {
         });
     }
 
-    // leer datos de menuData.json usando async await
-    async leeData() {
-        const menuData = await fetch('./layout/menuData.json');
-        const menu = await menuData.json();
-        return menu;
-    }
+    /**
+     * Lee los datos y crea el menu
+     * @param {*} event
+     */
+    leeData = async event => {
+        console.log('Evento recibido %o', event.detail);
+        this.render();
+        const root = this.shadow.getElementById('main-menu');
+        // const menu = await this.leeData();
+        const menu = event.detail.dataMenu;
+        console.log('(%o) menu: %o', new Date(), menu);
+        await this.crearMenu(root, menu);
+    };
 
     async render() {
         this.shadow.innerHTML = `
@@ -191,5 +196,9 @@ customElements.define('wc-collapse-toggler', CollapseToggler);
 
 /*
 document.addEventListener('evento,callback)
-document.dispatchEvent(new CustomEvent('evento',{data}))
+document.dispatchEvent(
+                        new CustomEvent('clickLink', {
+                            detail: { data },
+                        })
+                    );
 */

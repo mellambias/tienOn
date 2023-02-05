@@ -38,9 +38,10 @@ class MenuController extends Controller {
                 path: root.customUrl || '',
                 content: [],
             };
-            root.children.forEach(element => {
-                format.content.push(transform(element, vistaToModel));
-            });
+            if (Array.isArray(root.children))
+                root.children.forEach(element => {
+                    format.content.push(transform(element, vistaToModel));
+                });
             return format;
         }
         newMenu = transform(records, this._vistaToModel);

@@ -62,7 +62,7 @@ class Connection {
     }
 
     async findOne(id) {
-        console.log('Buscando un registro por id %o', this.endPoint);
+        console.log('Buscando un registro por id %s', `${this.endPoint}/${id}`);
         try {
             const result = await fetch(`${this.endPoint}/${id}`, {
                 method: 'GET',

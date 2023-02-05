@@ -6,7 +6,6 @@ import empresaForm from './empresaForm.js';
 import ivaform from './ivaForm.js';
 import { renderLogin } from './login.js';
 // import { collapseToggler, menuTree } from './menu.js';
-import test from './daoTest.js';
 import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/App.js';
@@ -16,7 +15,7 @@ import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
 import './webComponents/Tabla.js';
 
-test();
+// test();
 window.userSession = {};
 
 const changePage = () => {
