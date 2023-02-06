@@ -18,6 +18,7 @@ const PORT = 3000;
 app.use(connectLiveReload());
 app.use(express.static('public'));
 app.all('/dashboard/*', (req, res) => {
+    console.log(req.url);
     const options = {
         root: path.join(__dirname, 'public', 'dashboard'),
     };

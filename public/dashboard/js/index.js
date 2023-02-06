@@ -1,7 +1,7 @@
-import contactForm from '../../js/contact-form.js';
+// import contactForm from '../../js/contact-form.js';
 import notification from '../../js/notification.js';
-import { tabs } from '../../js/tabs.js';
-import { texAreaInputCounter } from '../../js/textAreaInputCounter.js';
+// import { tabs } from '../../js/tabs.js';
+// import { texAreaInputCounter } from '../../js/textAreaInputCounter.js';
 import empresaForm from './empresaForm.js';
 import ivaform from './ivaForm.js';
 import { renderLogin } from './login.js';
@@ -13,7 +13,10 @@ import './webComponents/ElementDetails.js';
 import './webComponents/Login.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
+import './webComponents/Tab.js';
+import './webComponents/Tabla-item.js';
 import './webComponents/Tabla.js';
+import './webComponents/Tabs.js';
 
 // test();
 window.userSession = {};
@@ -45,9 +48,9 @@ const changePage = () => {
             newUser();
             break;
         case 'contacto':
-            contactForm();
-            texAreaInputCounter();
-            tabs();
+            // contactForm();
+            // texAreaInputCounter();
+            // tabs();
             break;
         case 'login':
             login();

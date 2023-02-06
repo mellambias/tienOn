@@ -1,3 +1,4 @@
+import createContactControler from '../../controlers/ContactController.js';
 import Controller from '../../controlers/Controller.js';
 import MenuController from '../../controlers/MenuController.js';
 import Connection from '../../dao/Connection.js';
@@ -7,6 +8,17 @@ import Menu from '../../models/Menu.js';
 class App extends HTMLElement {
     constructor() {
         super();
+        console.log('App current location %o', window.location.href);
+        console.log(window.history.state);
+        if (window.history.state != null) {
+            this.loadControler(window.history.state);
+            window.document.title = location.href.split('/').slice(-1)[0];
+            document.dispatchEvent(
+                new CustomEvent('clickLink', {
+                    detail: { menuItem: window.history.state },
+                })
+            );
+        }
     }
 
     connectedCallback() {
@@ -15,18 +27,24 @@ class App extends HTMLElement {
         document.addEventListener('menuConnected', this.loadMenu);
     }
 
-    readFromHistory(event) {
+    readFromHistory = event => {
         event.preventDefault();
         console.log('From History', event?.state);
-    }
+        if (window.history.state != null) {
+            this.loadControler(window.history.state);
+            window.document.title = location.href.split('/').slice(-1)[0];
+            document.dispatchEvent(
+                new CustomEvent('clickLink', {
+                    detail: { menuItem: window.history.state },
+                })
+            );
+        }
+    };
 
     changePage = event => {
         event.preventDefault();
-        const controler = event?.state || event.detail?.menuItem;
-        console.log(
-            'La app a recibido %o',
-            event?.state || event.detail?.menuItem
-        );
+        const controler = event.detail?.menuItem;
+        console.log('La app a recibido %o', event.detail?.menuItem);
         if (!controler) return;
         if (event.detail?.menuItem) {
             window.document.title = event.detail.menuItem.item;
@@ -35,9 +53,8 @@ class App extends HTMLElement {
                 window.title,
                 event.detail.menuItem.item
             );
-        } else {
-            window.document.title = location.href.split('/').slice(-1)[0];
         }
+        window.document.title = location.href.split('/').slice(-1)[0];
         this.loadControler(controler);
     };
 
@@ -47,7 +64,7 @@ class App extends HTMLElement {
             case 'Usuarios':
                 break;
             case 'Contactos':
-                this.loadData(controler);
+                createContactControler();
                 break;
             case 'admin-header':
             default:

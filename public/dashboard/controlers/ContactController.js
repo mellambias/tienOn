@@ -1,13 +1,18 @@
 import Connection from '../dao/Connection.js';
 import Contact from '../models/Contact.js';
+import ContactView from '../views/contactView.js';
 import Controller from './Controller.js';
 
-const contactConnection = new Connection('/api/admin/contact');
-const model = new Contact(contactConnection);
-const vista = null;
+const createContactControler = () => {
+    const contactConnection = new Connection('/api/admin/contact');
+    const model = new Contact(contactConnection);
+    const vista = new ContactView();
+    const controller = new ContactController(model, vista);
+    return controller;
+};
 
 class ContactController extends Controller {
-    constructor(model = model, vista = vista) {
+    constructor(model, vista) {
         super(model, vista);
         this.vistaToModel = this.vistaToModel();
     }
@@ -33,4 +38,4 @@ class ContactController extends Controller {
     }
 }
 
-export default ContactController;
+export default createContactControler;
