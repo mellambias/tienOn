@@ -14,7 +14,7 @@ class TabsComponent extends HTMLElement {
     }
 
     tabs = () => {
-        const tabsElements = [...this.shadow.querySelectorAll('.tab')];
+        const tabsElements = [...this.shadow.querySelectorAll('li.tab')];
         const className = 'active';
         const shadow = this.shadow; // closure del this.
         //controlador del evento click
@@ -54,9 +54,16 @@ class TabsComponent extends HTMLElement {
 
         // establece los controladores para los tabs
         tabsElements.forEach(tab => {
-            tab.addEventListener('click', changeTab);
+            console.log('addEventListener', tab);
+            tab.addEventListener('click', this.changeTab2);
         });
     };
+    changeTab2(ev) {
+        console.log('previousElementSibling', this.previousElementSibling);
+        const content = document.getElementById(this.dataset.tabid);
+        console.log(content);
+        content.setAttribute('state', 'active');
+    }
 }
 
 customElements.define('wc-tabs', TabsComponent);

@@ -2,17 +2,30 @@ class TabComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-    }
-    connectedCallback() {
-        this.render();
-        this.shadow.querySelector('button').addEventListener('click', () => {
-            console.log(this);
-            this.classList.toggle('active');
-        });
+        this.state = this.getAttribute('state') || 'noActive';
     }
 
-    change(ev) {
+    static get observedAttributes() {
+        return ['state'];
+    }
+
+    connectedCallback() {
+        this.render();
+        this.shadow
+            .querySelector('button')
+            .addEventListener('click', this.change);
+    }
+
+    change = ev => {
         console.log(ev.target);
+        this.setAttribute('state', 'noActive');
+        console.log(this);
+        // this.classList.toggle('active');
+    };
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log('nuevo valor:', newValue);
+        if (oldValue) this.classList.remove(oldValue);
+        if (newValue) this.classList.add(newValue);
     }
 
     render() {
@@ -28,8 +41,10 @@ class TabComponent extends HTMLElement {
                 font-weight: bold;
                 display:block;
             }
-
-            :host {
+            :host(.noActive){
+                display: none;
+            }
+            :host{
                 display: none;
                 width: 90%;
                 border-top: 3px solid black;

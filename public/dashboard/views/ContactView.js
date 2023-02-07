@@ -1,4 +1,4 @@
-import { tabs } from '../../js/tabs.js';
+// import { tabs } from '../../js/tabs.js';
 import { texAreaInputCounter } from '../../js/textAreaInputCounter.js';
 // import Tabla from '../js/webComponents/Tabla.js'
 
@@ -13,6 +13,6 @@ export default class ContactView {
         const response = await fetch('./pages/contacto.html');
         main.innerHTML = await response.text();
         texAreaInputCounter();
-        tabs();
+        // tabs();
     }
 }
