@@ -22,10 +22,10 @@ class TabsComponent extends HTMLElement {
             function removeActiveContent(elementId) {
                 let trobat = elementId.classList.contains(className);
                 elementId.classList.remove(className);
-                console.log(shadow.getElementById(elementId.dataset.tabid));
-                shadow
+                console.log(document.getElementById(elementId.dataset.tabid));
+                document
                     .getElementById(elementId.dataset.tabid)
-                    .classList.remove(className);
+                    .setAttribute('state', 'noActive');
                 return trobat;
             }
 
@@ -49,17 +49,23 @@ class TabsComponent extends HTMLElement {
 
             // activa la pestaña y contenido actuales
             this.classList.add(className);
-            shadow.getElementById(this.dataset.tabid).classList.add(className);
+            document
+                .getElementById(this.dataset.tabid)
+                .setAttribute('state', 'active');
         }
 
         // establece los controladores para los tabs
         tabsElements.forEach(tab => {
             console.log('addEventListener', tab);
-            tab.addEventListener('click', this.changeTab2);
+            tab.addEventListener('click', changeTab);
         });
     };
     changeTab2(ev) {
-        console.log('previousElementSibling', this.previousElementSibling);
+        console.log(
+            'previousElementSibling',
+            this.previousElementSibling.dataset.tabid
+        );
+        // this.previousElementSibling;
         const content = document.getElementById(this.dataset.tabid);
         console.log(content);
         content.setAttribute('state', 'active');

@@ -11,17 +11,15 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.shadow
-            .querySelector('button')
-            .addEventListener('click', this.change);
+        const form = this.shadow.querySelector('form');
+
+        form.addEventListener('submit', event => {
+            console.log('evento', event);
+            event.preventDefault();
+            this.sendForm(event);
+        });
     }
 
-    change = ev => {
-        console.log(ev.target);
-        this.setAttribute('state', 'noActive');
-        console.log(this);
-        // this.classList.toggle('active');
-    };
     attributeChangedCallback(name, oldValue, newValue) {
         console.log('nuevo valor:', newValue);
         if (oldValue) this.classList.remove(oldValue);
