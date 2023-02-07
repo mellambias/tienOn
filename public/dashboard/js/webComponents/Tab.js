@@ -11,13 +11,6 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        const form = this.shadow.querySelector('form');
-
-        form.addEventListener('submit', event => {
-            console.log('evento', event);
-            event.preventDefault();
-            this.sendForm(event);
-        });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

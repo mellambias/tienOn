@@ -938,37 +938,6 @@ a:focus {
     width: 90%;
 }
 
-.tab {
-    background-color: hsl(0deg, 0%, 75%);
-    border: 3px solid black;
-    border-color: black;
-    border-radius: 10px;
-    border-bottom: 0px solid;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    width: 33%;
-    min-height: 2rem;
-    margin-right: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-.tab p {
-    color: black;
-}
-
-.tab.active {
-    background-color: hsl(0deg, 0%, 100%);
-    border-width: 3px;
-    border-bottom: 0px solid hsl(0deg, 0%, 100%);
-    margin-bottom: -3px;
-    font-weight: bold;
-}
-
 .tabs > div {
     display: none;
     width: 90%;
@@ -1008,4 +977,34 @@ input {
     color: black;
 }
 
+.tab {
+    background-color: hsl(0deg, 0%, 75%);
+    border: 3px solid black;
+    border-color: black;
+    border-radius: 10px;
+    border-bottom: 0px solid;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 33%;
+    min-height: 2rem;
+    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tab p {
+    color: black;
+}
+
+.tab.active {
+    background-color: hsl(0deg, 0%, 100%);
+    border-width: 3px;
+    border-bottom: 0px solid hsl(0deg, 0%, 100%);
+    margin-bottom: -2px;
+    font-weight: bold;
+}
 /*# sourceMappingURL=app.css.map */

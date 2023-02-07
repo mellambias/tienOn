@@ -22,7 +22,7 @@ class TabsComponent extends HTMLElement {
             function removeActiveContent(elementId) {
                 let trobat = elementId.classList.contains(className);
                 elementId.classList.remove(className);
-                console.log(document.getElementById(elementId.dataset.tabid));
+                elementId.classList.add('noActive');
                 document
                     .getElementById(elementId.dataset.tabid)
                     .setAttribute('state', 'noActive');
@@ -49,6 +49,7 @@ class TabsComponent extends HTMLElement {
 
             // activa la pestaña y contenido actuales
             this.classList.add(className);
+            elementId.classList.remove('noActive');
             document
                 .getElementById(this.dataset.tabid)
                 .setAttribute('state', 'active');
@@ -60,16 +61,6 @@ class TabsComponent extends HTMLElement {
             tab.addEventListener('click', changeTab);
         });
     };
-    changeTab2(ev) {
-        console.log(
-            'previousElementSibling',
-            this.previousElementSibling.dataset.tabid
-        );
-        // this.previousElementSibling;
-        const content = document.getElementById(this.dataset.tabid);
-        console.log(content);
-        content.setAttribute('state', 'active');
-    }
 }
 
 customElements.define('wc-tabs', TabsComponent);

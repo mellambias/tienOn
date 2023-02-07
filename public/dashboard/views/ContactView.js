@@ -16,7 +16,7 @@ export default class ContactView {
             const form = document.querySelector('form');
 
             form.addEventListener('submit', event => {
-                console.log('evento', event);
+                console.log('evento form', event);
                 event.preventDefault();
                 this.sendForm(event);
             });
@@ -28,7 +28,7 @@ export default class ContactView {
     async sendForm(event) {
         console.log('evento recibido', event);
         event.preventDefault();
-        const form = e.target;
+        const form = event.target;
         const data = new FormData(form);
         console.log(data);
         // const response = await fetch('http://localhost:3000/contacto', {
