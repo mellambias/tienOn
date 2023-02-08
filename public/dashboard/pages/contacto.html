@@ -80,7 +80,6 @@
     </button>
 </template>
 <template id="template-tabs">
-    <!-- <link href="../dashboard/css/app.css" rel="stylesheet" /> -->
     <style>
         .tabs {
             padding-top: 2vh;
@@ -117,21 +116,18 @@
             user-select: none;
         }
         .tab.noActive {
-            margin-left: -20px;
             z-index: 100;
             pointer-events: all;
             position: relative;
-            top: 10px;
-            height: 59px;
         }
         .tab.active {
             z-index: 200;
             background-color: hsl(0deg, 0%, 100%);
             border-width: 3px;
-            border-bottom: 0px solid hsl(0deg, 0%, 100%);
-            margin-bottom: -2px;
+            border-bottom: 3px solid hsl(0deg, 0%, 100%);
+            margin-bottom: -3px;
             font-weight: bold;
-            height: 70px;
+            /* height: 70px; */
         }
         p {
             color: black;
@@ -158,18 +154,15 @@
     </section>
     <section class="col-main">
         <div class="contactoAdmintabs">
-            <form id="contactForm">
-                <wc-tabs>
-                    <wc-tab id="contenido" state="active">
-                        <link
-                            href="../dashboard/css/app.css"
-                            rel="stylesheet"
-                        />
-                        <style>
-                            .campo label {
-                                color: black;
-                            }
-                        </style>
+            <wc-tabs>
+                <wc-tab id="contenido" state="active">
+                    <link href="../dashboard/css/app.css" rel="stylesheet" />
+                    <style>
+                        .campo label {
+                            color: black;
+                        }
+                    </style>
+                    <form id="contactForm">
                         <div class="contacto">
                             <div class="col-1">
                                 <div class="col">
@@ -274,20 +267,27 @@
                                 </div>
                             </div>
                         </div>
-                    </wc-tab>
-                    <wc-tab id="imagen" state="">
-                        <button>cambiar</button>
-                    </wc-tab>
-                </wc-tabs>
-                <div class="col-1">
-                    <div class="col">
-                        <!-- boton envio formulario -->
-                        <div class="contacto-formulario-accion">
-                            <button id="enviar">Enviar</button>
+                        <div class="col-1">
+                            <div class="col">
+                                <!-- boton envio formulario -->
+                                <div class="contacto-formulario-accion">
+                                    <button id="enviar" type="submit">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </form>
+                    </form>
+                </wc-tab>
+                <wc-tab id="imagen" state=""
+                    ><form>
+                        <input id="email" name="email" type="email" />
+                        <button id="enviar" type="submit">Enviar</button>
+                    </form>
+                </wc-tab>
+            </wc-tabs>
+
+            <!-- </form> -->
         </div>
     </section>
 </div>

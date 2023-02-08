@@ -1,7 +1,27 @@
 class TabsComponent extends HTMLElement {
+    static formAssociated = true;
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
+        this.internals = this.attachInternals();
+    }
+    get value() {
+        return this._value;
+    }
+    set value(value) {
+        this._value = value;
+        this.internals.setFormValue(value);
+    }
+    get form() {
+        return this.internals.form;
+    }
+
+    get name() {
+        return this.getAttribute('name');
+    }
+
+    get type() {
+        return this.localName;
     }
     connectedCallback() {
         this.render();
@@ -31,7 +51,6 @@ class TabsComponent extends HTMLElement {
 
             (function desactiva(node) {
                 let currentSibling = node.previousElementSibling;
-                console.log('hermano del nodo  ', node, currentSibling);
                 while (currentSibling != null) {
                     if (removeActiveContent(currentSibling)) {
                         return;
@@ -49,7 +68,7 @@ class TabsComponent extends HTMLElement {
 
             // activa la pestaña y contenido actuales
             this.classList.add(className);
-            elementId.classList.remove('noActive');
+            this.classList.remove('noActive');
             document
                 .getElementById(this.dataset.tabid)
                 .setAttribute('state', 'active');
@@ -57,7 +76,6 @@ class TabsComponent extends HTMLElement {
 
         // establece los controladores para los tabs
         tabsElements.forEach(tab => {
-            console.log('addEventListener', tab);
             tab.addEventListener('click', changeTab);
         });
     };

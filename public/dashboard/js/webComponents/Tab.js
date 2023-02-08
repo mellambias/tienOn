@@ -11,16 +11,32 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        this.shadow.addEventListener('submit', event => {
+            event.preventDefault();
+            if (event.target.id) {
+                console.log(
+                    'El formulario id "%s" ha sido enviado',
+                    event.target.id
+                );
+            } else {
+                event.target.id = 'submit';
+            }
+            document.dispatchEvent(
+                new CustomEvent(event.target.id, {
+                    bubbles: true,
+                    composed: true,
+                    detail: event.target,
+                })
+            );
+        });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log('nuevo valor:', newValue);
         if (oldValue) this.classList.remove(oldValue);
         if (newValue) this.classList.add(newValue);
     }
 
     render() {
-        console.log(this);
         this.shadow.innerHTML = `
         <style>
 
@@ -42,13 +58,14 @@ class TabComponent extends HTMLElement {
                 border-left: 3px solid black;
                 border-right: 2px solid black;
                 border-bottom: 2px solid black;
-                border-radius: 0px 5px 5px 5px;
+                border-radius: 0px 5px 5px 0px;
                 box-shadow: 5px 5px black;
                 overflow-y: auto;
                 height: max-content;
                 max-height: 90vh;
                 padding: 2rem 1rem;
                 background-color: white;
+                 z-index: 100;
             }
 
         </style>

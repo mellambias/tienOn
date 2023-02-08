@@ -10,13 +10,14 @@ import newUser from './newUser.js';
 import login from './sigin.js';
 import './webComponents/App.js';
 import './webComponents/ElementDetails.js';
+import './webComponents/Form.js';
 import './webComponents/Login.js';
 import './webComponents/Menu.js';
 import './webComponents/PageTitle.js';
-import './webComponents/Tab.js';
-import './webComponents/Tabla-item.js';
-import './webComponents/Tabla.js';
-import './webComponents/Tabs.js';
+// import './webComponents/Tab.js';
+// import './webComponents/Tabla-item.js';
+// import './webComponents/Tabla.js';
+// import './webComponents/Tabs.js';
 
 // test();
 window.userSession = {};
