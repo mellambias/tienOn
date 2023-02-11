@@ -881,7 +881,7 @@ validate.validators = {
             err =
                 options.tooShort ||
                 this.tooShort ||
-                'is too short (minimum is %{count} characters)';
+                'es demasiado corto (minimo de %{count} characteres)';
             errors.push(v.format(err, { count: minimum }));
         }
 

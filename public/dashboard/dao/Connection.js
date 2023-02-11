@@ -21,9 +21,13 @@ class Connection {
         }
     }
     async update(modelo) {
-        console.log('Actualizando sobre el API RESTFULL %o', this.endPoint);
+        console.log(
+            'Actualizando sobre el API RESTFULL %o/%s',
+            this.endPoint,
+            modelo.id
+        );
         try {
-            const response = await fetch(this.endPoint, {
+            const response = await fetch(`${this.endPoint}/${modelo.id}`, {
                 method: 'PUT',
                 body: JSON.stringify(modelo),
                 headers: {

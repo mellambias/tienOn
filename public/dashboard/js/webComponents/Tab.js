@@ -3,6 +3,19 @@ class TabComponent extends HTMLElement {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
         this.state = this.getAttribute('state') || 'noActive';
+        document.addEventListener('FormError', event => {
+            console.log('Errores', event.detail);
+            //TODO gestionar los errores
+        });
+        document.addEventListener('editForm', event => {
+            const datos = event.detail.model;
+            for (let key in datos) {
+                let input = this.shadow.getElementById(key);
+                if (input) {
+                    input.value = datos[key];
+                }
+            }
+        });
     }
 
     static get observedAttributes() {
@@ -13,27 +26,28 @@ class TabComponent extends HTMLElement {
         this.render();
         this.shadow.addEventListener('submit', event => {
             event.preventDefault();
-            if (event.target.id) {
-                console.log(
-                    'El formulario id "%s" ha sido enviado',
-                    event.target.id
-                );
+            let eventName = event.target.getAttribute('id');
+            if (eventName) {
+                console.log('El formulario id "%s" ha sido enviado', eventName);
             } else {
-                event.target.id = 'submit';
+                eventName = 'submit';
             }
             document.dispatchEvent(
-                new CustomEvent(event.target.id, {
+                new CustomEvent(eventName, {
                     bubbles: true,
                     composed: true,
                     detail: event.target,
                 })
             );
+            event.target.reset();
         });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue) this.classList.remove(oldValue);
-        if (newValue) this.classList.add(newValue);
+        if (name == 'state') {
+            if (oldValue) this.classList.remove(oldValue);
+            if (newValue) this.classList.add(newValue);
+        }
     }
 
     render() {

@@ -4,33 +4,57 @@ const validator = Validator();
 /**
  * validador adaptador para secuelize
  * @param {any} value - valor del campo
- * @param {any} options - valor de la clave
- * @param {any} key   - clave de la validacion
- * @param {any} attributes - atributos del campo
+ * @param {any} options condiciones ha cumplir el campo
+ * @param {any} key   nombre del campo
+ * @param {any} attributes - todos los campos ha comprobar
  * @returns {null} - retorna null si es valido
  * @returns {array} - array de errores
  */
 validate.validators.validate = function (value, options, key, attributes) {
+    console.log(value, options, key, attributes);
     let error = [];
-    if (
-        options?.notEmpty &&
-        validator.isEmpty(value + '', { ignore_whitespace: false })
-    ) {
-        error.push('no puede estar vacio');
+    let validates = {
+        notEmpty: {
+            check: value =>
+                validator.isEmpty(value + '', { ignore_whitespace: false }),
+            message: 'no puede estar vacio',
+        },
+        isMobilePhone: {
+            check: value => !validator.isMobilePhone(value + '', 'es-ES'),
+            message: 'Debe ser un telefono valido',
+        },
+        isDecimal: {
+            check: value => !validator.isDecimal(value + ''),
+            message: 'Debe ser un numero decimal',
+        },
+        isIn: {
+            check: value => !validator.isIn(value + '', options.isIn),
+            message: 'no esta dentro de los valores permitidos',
+        },
+        isEmail: {
+            check: value => !validator.isEmail(value + ''),
+            message: 'no es un email valido',
+        },
+    };
+    try {
+        for (let option in options) {
+            if (validates[option]?.check) {
+                const isError = validates[option].check(value);
+                if (isError) {
+                    error.push(validates[option].message);
+                }
+            } else {
+                error.push(`no existe el validador  ${option}`);
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        error.push(e.message);
+        throw e;
     }
-    if (
-        options?.isDecimal &&
-        !validator.isDecimal(value + '', { decimal_separator: '.' })
-    ) {
-        error.push('tiene que ser decimal');
-    }
-    if (options.hasOwnProperty('min') && value < options.min) {
-        error.push(`tiene que ser mayor que ${options.min}`);
-    }
-    if (options?.isIn && validator.isIn(value + '', options.isIn)) {
-        error.push('no esta dentro de los valores permitidos');
-    }
+
     if (error.length) {
+        console.log(error);
         return error;
     }
 

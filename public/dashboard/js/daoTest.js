@@ -95,3 +95,27 @@ export default test;
 document.addEventListener('evento,callback)
 document.dispatchEvent(new CustomEvent('evento',{data}))
 */
+
+class Demo {
+    apli2 = 180;
+    apli1 = 120;
+
+    constructor() {
+        Object.defineProperty(this, 'apli1', {
+            get() {
+                return this._apli1;
+            },
+            set(value) {
+                this._apli1 = value + ' euros';
+            },
+        });
+    }
+    test() {
+        console.log('test');
+    }
+}
+
+const demo = new Demo();
+
+demo.apli1 = 300;
+console.log(demo.apli1);

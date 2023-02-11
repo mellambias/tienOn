@@ -12,12 +12,12 @@ export default class Menu extends Model {
             id: {
                 autoIncrement: true,
                 type: DataTypes.INTEGER,
-                allowNull: false,
+                presence: true,
                 primaryKey: true,
             },
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                presence: true,
                 validator: {
                     notNull: {
                         msg: 'Por favor, rellena el campo "Nombre".',

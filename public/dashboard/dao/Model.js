@@ -9,27 +9,27 @@ class Model {
         this.modelDtd = this.defineModel();
         this.connection = connection;
         this._model = {};
+        this._vistaToModel = {};
         this.previus = {};
+        this.validates = {};
         this.errors = {};
-        this.records = [];
         this.recordsCount = 0;
         return this;
     }
 
     set model(values) {
-        if (Object.keys(values).length) {
+        console.log('asignando valores a model');
+        if (Object.keys(values).length == 0) {
             return;
         }
-        const errors = this.validateModel(values);
-        if (errors == false) {
-            Object.assign(this._model, values);
-        } else {
-            Object.assign(this.errors, errors);
-        }
+        const transFormValues = this.modelSync(values, this._vistaToModel);
+        const errors = this.validateModel(transFormValues);
+        Object.assign(this.errors, errors);
+        Object.assign(this._model, transFormValues);
     }
 
     get model() {
-        return this._model;
+        return this.modelParse();
     }
 
     defineModel() {
@@ -42,17 +42,37 @@ class Model {
             return false;
         }
         try {
+            let record;
             console.log(this._model);
             const errors = this.validateModel(this._model);
-            if (errors == false) {
-                if (this.isEqual()) {
-                    console.log('Su modelo ha sido actualizado %o', this.model);
-                    this.records = await this.connection.update(this.model);
+            if (errors == undefined) {
+                // si no hay errores entonces miramos si es un registro nuevo
+                if (this.previus.id == undefined) {
+                    record = await this.connection.create(this._model);
+                    console.log('Su modelo ha sido guardado %o', this._model);
+                    this._model = record;
+                    this.previus = this._model;
+                    this.errors = undefined;
+                    return this;
                 } else {
-                    console.log('Su modelo ha sido guardado %o', this.model);
-                    this.records = await this.connection.create(this.model);
+                    // registro existe comprobar si hay cambios
+                    if (this.isEqual().length == 0) {
+                        console.log(
+                            'Su modelo no ha sido modificado %o',
+                            this._model
+                        );
+                        return this;
+                    } else {
+                        record = await this.connection.update(this._model);
+                        console.log(
+                            'Su modelo ha sido actualizado %o',
+                            this._model
+                        );
+                        this._model = record;
+                        this.previus = this._model;
+                        return this;
+                    }
                 }
-                return this.records;
             } else {
                 this.errors = { message: `Error en el modelo ${errors}` };
                 console.log('Error en el modelo %o', this.errors);
@@ -67,15 +87,7 @@ class Model {
             console.log('Model -> buscando todos los registros -> connection');
             const records = await this.connection.findAll();
             this.recordsCount = records.length;
-            records.forEach(record => {
-                const newModel = new Model();
-                Object.assign(newModel, this);
-                Object.assign(newModel.previus, this.model);
-                newModel.records = [];
-                newModel.model = record;
-                this.records.push(newModel);
-            });
-            return { count: this.recordsCount, records: this.records };
+            return { count: this.recordsCount, records: records };
         } catch (error) {
             this.errors = {
                 message: `Error en el modelo ${error}`,
@@ -92,11 +104,7 @@ class Model {
         try {
             console.log('buscando un registro');
             const record = await this.connection.findOne(id);
-            const newModel = new Model();
-            Object.assign(newModel, this);
-            Object.assign(newModel.previus, this.model);
-            newModel.model = record;
-            return newModel;
+            return record;
         } catch (error) {
             this.errors = {
                 message: `Error en el modelo ${error}`,
@@ -106,6 +114,10 @@ class Model {
             return this;
         }
     }
+
+    delete = async () => {
+        console.log('eliminando un registro', this._model);
+    };
     /**
      * sincroniza el modelo con los datos del formulario
      */
@@ -124,23 +136,18 @@ class Model {
             } else {
                 if (this.modelDtd.hasOwnProperty(modelKey)) {
                     temp[modelKey] = valores[key];
-                } else {
-                    this.errors = {
-                        message: `La clave ${modelKey} no pertenece al modelo`,
-                    };
-                    console.log(this.errors);
                 }
             }
         });
-        const errors = this.validateModel(temp);
-        if (errors == false) {
-            Object.assign(this._model, temp);
-            return this._model;
-        }
-        return false;
+        this._model = temp;
+        return this._model;
     }
-
-    modelParse(modelToParse = {}) {
+    /**
+     * Transforma el modelo en un objeto de datos
+     * @param {*} modelToParse objeto de datos
+     * @returns nuevo objeto de datos
+     */
+    modelParse(data = this._model, modelToParse = this._vistaToModel) {
         if (Object.keys(modelToParse).length === 0) {
             Object.keys(this.modelDtd).forEach(key => {
                 modelToParse[key] = key;
@@ -148,23 +155,47 @@ class Model {
         }
         const temp = Object.assign({}, modelToParse);
         Object.keys(temp).forEach(key => {
-            temp[key] = this._model[temp[key]];
+            if (data[temp[key]] != undefined) {
+                temp[key] = data[temp[key]];
+            } else {
+                delete temp[key];
+            }
         });
         return temp;
     }
 
     validateModel(obj) {
-        const errors = validate(obj, this.modelDtd) || false;
+        console.log('validando modelo');
+        let errors;
+        obj = Object.keys(obj).length != 0 ? obj : this.model;
+        if (Object.keys(this.validates).length === 0) {
+            errors = validate(obj, this.modelDtd) || {};
+            if (Object.keys(errors).length === 0) {
+                Object.assign(this.validates, this._model);
+            }
+        } else {
+            Object.keys(obj)
+                .filter(key => obj[key] != this.validates[key])
+                .forEach(key => {
+                    let campo = {};
+                    campo[key] = obj[key];
+                    errors = validate(campo, this.modelDtd[key]);
+                    if (errors == undefined) {
+                        this.validates[key] = obj[key];
+                    }
+                });
+        }
         return errors;
     }
 
     isEqual() {
-        Object.keys(this.previus).forEach(key => {
-            if (this.model[key] != this.previus[key]) {
-                return false;
-            }
-        });
-        return true;
+        if (Object.keys(this.previus).length === 0) {
+            return false;
+        }
+        const current = this.modelSync(this._model, this._vistaToModel);
+        return Object.keys(this.previus).filter(
+            key => current[key] != this.previus[key]
+        );
     }
 }
 

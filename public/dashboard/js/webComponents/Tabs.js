@@ -1,28 +1,29 @@
 class TabsComponent extends HTMLElement {
-    static formAssociated = true;
+    // static formAssociated = true;
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-        this.internals = this.attachInternals();
+        // this.internals = this.attachInternals();
     }
-    get value() {
-        return this._value;
-    }
-    set value(value) {
-        this._value = value;
-        this.internals.setFormValue(value);
-    }
-    get form() {
-        return this.internals.form;
-    }
+    // get value() {
+    //     return this._value;
+    // }
+    // set value(value) {
+    //     this._value = value;
+    //     this.internals.setFormValue(value);
+    // }
+    // get form() {
+    //     return this.internals.form;
+    // }
 
-    get name() {
-        return this.getAttribute('name');
-    }
+    // get name() {
+    //     return this.getAttribute('name');
+    // }
 
-    get type() {
-        return this.localName;
-    }
+    // get type() {
+    //     return this.localName;
+    // }
+
     connectedCallback() {
         this.render();
         this.tabs();
@@ -34,7 +35,7 @@ class TabsComponent extends HTMLElement {
     }
 
     tabs = () => {
-        const tabsElements = [...this.shadow.querySelectorAll('li.tab')];
+        const tabsElements = this.shadow.querySelectorAll('li.tab');
         const className = 'active';
         const shadow = this.shadow; // closure del this.
         //controlador del evento click
@@ -43,6 +44,7 @@ class TabsComponent extends HTMLElement {
                 let trobat = elementId.classList.contains(className);
                 elementId.classList.remove(className);
                 elementId.classList.add('noActive');
+
                 document
                     .getElementById(elementId.dataset.tabid)
                     .setAttribute('state', 'noActive');
@@ -76,7 +78,7 @@ class TabsComponent extends HTMLElement {
 
         // establece los controladores para los tabs
         tabsElements.forEach(tab => {
-            tab.addEventListener('click', changeTab);
+            tab.onclick = changeTab;
         });
     };
 }

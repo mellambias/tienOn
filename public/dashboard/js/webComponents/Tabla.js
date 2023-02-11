@@ -2,10 +2,31 @@ class TablaComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
+        document.addEventListener('tablaData', event => {
+            console.log('datos recibidos', event.detail);
+            this.data = event.detail;
+            this.shadow.innerHTML = '';
+            this.render();
+        });
+        document.addEventListener('TablaError', event => {
+            console.log('Errores', event.detail);
+            //TODO gestionar los errores
+        });
+    }
+
+    static get observedAttributes() {
+        return ['data'];
     }
 
     connectedCallback() {
-        this.render();
+        console.log('connected');
+        document.dispatchEvent(
+            new CustomEvent('tablaReady', {
+                bubbles: true,
+                composed: true,
+                detail: 'componente conectado',
+            })
+        );
     }
     /**
      * Cuando cambia alguno de los atributos observados
@@ -15,38 +36,6 @@ class TablaComponent extends HTMLElement {
      */
     attributeChangedCallback(name, oldValue, newValue) {}
 
-    fake() {
-        return [
-            {
-                id: 1,
-                name: 'Miguel',
-                surnames: 'Llambias',
-                phone: 'telefono',
-                email: 'me@gmail.com',
-                message:
-                    'dfasdkfkkdsf dfdsfdskfdsfsdkks dsfkkasdfs af kasdfdks',
-            },
-            {
-                id: 2,
-                name: 'Miguel',
-                surnames: 'Llambias',
-                phone: 'telefono',
-                email: 'me@gmail.com',
-                message:
-                    'dfasdkfkkdsf dfdsfdskfdsfsdkks dsfkkasdfs af kasdfdks',
-            },
-            {
-                id: 3,
-                name: 'Miguel',
-                surnames: 'Llambias',
-                phone: 'telefono',
-                email: 'me@gmail.com',
-                message:
-                    'dfasdkfkkdsf dfdsfdskfdsfsdkks dsfkkasdfs af kasdfdks',
-            },
-        ];
-    }
-
     /**
      * Renderiza el componente
      */
@@ -54,14 +43,19 @@ class TablaComponent extends HTMLElement {
         const template = document.getElementById('template-tabla').content;
         this.shadow.appendChild(template.cloneNode(true));
         const rows = this.shadow.getElementById('fichas');
-        const data = this.fake();
-        data.forEach(element => {
+        console.log('data', this.data, this.data.size);
+        if (this.data.size == 0) {
+            return;
+        }
+        this.data.forEach(element => {
             let row = document.createElement('li');
+            let elementData = element.model;
+            row.id = elementData?.id;
             let tablaItem = document.createElement('wc-tabla-item');
-            for (const key in element) {
+            for (let key in elementData) {
                 let item = document.createElement('span');
                 item.setAttribute('slot', key);
-                item.innerHTML = element[key];
+                item.innerHTML = elementData[key];
                 tablaItem.appendChild(item);
             }
             row.appendChild(tablaItem);
@@ -72,10 +66,28 @@ class TablaComponent extends HTMLElement {
                     .getElementById(`button-${action}-template`)
                     .content.cloneNode(true);
                 let button = buttonEdit.querySelector('button');
-                button.setAttribute('id', element.id);
+                button.setAttribute('data-id', elementData.id);
                 button.setAttribute('data-action', action);
                 button.addEventListener('click', e => {
-                    console.log(e.target);
+                    console.log('evento en tabla', e.target);
+                    console.log(e.target.id, e.target.dataset.action);
+                    const id = parseInt(e.target.dataset.id);
+                    switch (e.target.dataset.action) {
+                        case 'delete':
+                            this.data.get(id).delete();
+                            this.data.delete(id);
+                            this.shadow.getElementById(id).remove();
+                            break;
+                        case 'edit':
+                            document.dispatchEvent(
+                                new CustomEvent('editForm', {
+                                    bubbles: true,
+                                    composed: true,
+                                    detail: this.data.get(id),
+                                })
+                            );
+                            break;
+                    }
                 });
                 span.appendChild(buttonEdit);
             });

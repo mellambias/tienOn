@@ -2,6 +2,7 @@ class Menu extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
+        document.addEventListener('loadMenuData', this.leeData);
     }
 
     // static get observedAttributes() {
@@ -10,7 +11,6 @@ class Menu extends HTMLElement {
 
     connectedCallback() {
         console.log('menu connected');
-        document.addEventListener('loadMenuData', this.leeData);
         // lanza el evento menuConnected
         document.dispatchEvent(
             new CustomEvent('menuConnected', {

@@ -1,9 +1,5 @@
-import createContactControler from '../../controlers/ContactController.js';
-import Controller from '../../controlers/Controller.js';
+import ContactController from '../../controlers/ContactController.js';
 import MenuController from '../../controlers/MenuController.js';
-import Connection from '../../dao/Connection.js';
-import Contact from '../../models/Contact.js';
-import Menu from '../../models/Menu.js';
 
 class App extends HTMLElement {
     constructor() {
@@ -64,7 +60,8 @@ class App extends HTMLElement {
             case 'Usuarios':
                 break;
             case 'Contactos':
-                createContactControler();
+                const contact = ContactController.create();
+                console.log('Contacto %o', contact);
                 break;
             case 'admin-header':
             default:
@@ -74,14 +71,9 @@ class App extends HTMLElement {
 
     async loadMenu() {
         try {
-            const menuConnection = new Connection(
-                `http://127.0.0.1:8080/api/admin/menu`
-            );
-            const model = new Menu(menuConnection);
-            const vista = null;
-            const myMenuCtr = new MenuController(model, vista);
-            console.log('buscar datos ->');
-            const data = await myMenuCtr.loadData('admin-header');
+            const menuController = MenuController.create();
+            console.log('buscar datos menu->');
+            const data = await menuController.loadData('admin-header');
             document.dispatchEvent(
                 new CustomEvent('loadMenuData', {
                     detail: { dataMenu: data },
@@ -90,18 +82,6 @@ class App extends HTMLElement {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    async loadData(controler) {
-        const menuConnection = new Connection(
-            `http://127.0.0.1:8080${controler.path}`
-        );
-        console.log('Conexion con %o', menuConnection);
-        const model = new Contact(menuConnection);
-        const vista = null;
-        const controller = new Controller(model, vista);
-        console.log('buscar datos para %o', controler.item);
-        const data = await controller.loadData();
     }
 }
 

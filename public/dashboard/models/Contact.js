@@ -12,30 +12,28 @@ export default class Contact extends Model {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
-                allowNull: false,
                 primaryKey: true,
             },
             fingerprintId: {
                 type: DataTypes.INTEGER,
-                allowNull: true,
             },
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                presence: true,
                 validate: {
                     notEmpty: true,
                 },
             },
             surnames: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                presence: true,
                 validate: {
                     notEmpty: true,
                 },
             },
             phone: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                presence: true,
                 validate: {
                     notEmpty: true,
                     isMobilePhone: true,
@@ -43,15 +41,15 @@ export default class Contact extends Model {
             },
             email: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                presence: true,
                 validate: {
                     isEmail: true,
                 },
             },
             message: {
                 type: DataTypes.TEXT,
-                allowNull: false,
-                length: { minimum: 20, maximum: 500 },
+                presence: true,
+                length: { minimum: 20, maximum: 100 },
                 validate: {
                     notEmpty: true,
                 },

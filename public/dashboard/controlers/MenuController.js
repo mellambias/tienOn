@@ -2,16 +2,14 @@ import Connection from '../dao/Connection.js';
 import Menu from '../models/Menu.js';
 import Controller from './Controller.js';
 
-const menuConnection = new Connection('/api/admin/menu');
-const model = new Menu(menuConnection);
-const vista = null;
-
 class MenuController extends Controller {
-    constructor(model = model, vista = vista) {
-        super(model, vista);
-        this._vistaToModel = this.vistaToModel();
+    constructor(model = model, connection, vista = vista) {
+        super(model, connection, vista);
     }
-
+    /**
+     * Define la relación entre la vista y el modelo
+     * @returns {object} relacion
+     */
     vistaToModel() {
         return {
             id: 'id',
@@ -22,7 +20,7 @@ class MenuController extends Controller {
     }
 
     async loadData(name) {
-        let records = await this.model.findMenu(name);
+        let records = await this.modelInstance.findMenu(name);
         console.log(records);
         let newMenu = {};
         /**
@@ -44,14 +42,26 @@ class MenuController extends Controller {
                 });
             return format;
         }
-        newMenu = transform(records, this._vistaToModel);
+        newMenu = transform(records, this.vistaToModel);
         return newMenu.content;
     }
 
     async loadOne(id) {
-        const record = await this.model.findOne(id);
+        const model = new this.modelClass(this.conection, this.modelClass);
+        const record = await model.findOne(id);
         console.log(record);
     }
+    useCases() {
+        console.log('casos de uso Menu');
+    }
 }
+
+MenuController.create = () => {
+    const menuConnection = new Connection(
+        'http://127.0.0.1:8080/api/admin/menu'
+    );
+    const vista = null;
+    return [Menu, menuConnection, vista];
+};
 
 export default MenuController;

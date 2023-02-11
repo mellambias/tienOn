@@ -28,14 +28,14 @@
         <ul>
             <li>
                 <span>Nombre</span>
-                <slot name="name">nombre</slot>
+                <slot name="nombre">nombre</slot>
             </li>
             <li>
-                <span>Apellidos</span><slot name="surnames">apellidos</slot>
+                <span>Apellidos</span><slot name="apellidos">apellidos</slot>
             </li>
-            <li><span>Teléfono</span><slot name="phone">telefono</slot></li>
+            <li><span>Teléfono</span><slot name="telefono">telefono</slot></li>
             <li><span>Correo</span><slot name="email">email</slot></li>
-            <li><span>Mensaje</span><slot name="message">messaje</slot></li>
+            <li><span>Mensaje</span><slot name="mensaje">messaje</slot></li>
         </ul>
         <div class="crud">
             <slot name="crud-buttons"></slot>
@@ -124,8 +124,8 @@
             z-index: 200;
             background-color: hsl(0deg, 0%, 100%);
             border-width: 3px;
-            border-bottom: 3px solid hsl(0deg, 0%, 100%);
-            margin-bottom: -3px;
+            border-bottom: 1px solid hsl(0deg, 0%, 100%);
+            margin-bottom: -2px;
             font-weight: bold;
             /* height: 70px; */
         }
@@ -163,6 +163,7 @@
                         }
                     </style>
                     <form id="contactForm">
+                        <input id="id" name="id" type="number" hidden />
                         <div class="contacto">
                             <div class="col-1">
                                 <div class="col">
@@ -272,7 +273,7 @@
                                 <!-- boton envio formulario -->
                                 <div class="contacto-formulario-accion">
                                     <button id="enviar" type="submit">
-                                        Enviar
+                                        Guardar
                                     </button>
                                 </div>
                             </div>

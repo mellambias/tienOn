@@ -2,7 +2,7 @@
     "configurations": [
         {
             "type": "chrome",
-            "name": "http://localhost:3000/dashboard/",
+            "name": "dashboard",
             "request": "launch",
             "url": "http://localhost:3000/dashboard/"
         }
