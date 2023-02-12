@@ -5,6 +5,12 @@
             "name": "dashboard",
             "request": "launch",
             "url": "http://localhost:3000/dashboard/"
+        },
+        {
+            "type": "node",
+            "name": "Run Current File",
+            "request": "launch",
+            "program": "${workspaceFolder}\\public\\dashboard\\models\\autogetters.js"
         }
     ]
 }
