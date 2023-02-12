@@ -36,7 +36,7 @@ class ContactController extends Controller {
         if (results.count) {
             results.records.forEach(record => {
                 const newModel = new this.modelClass(this.connection);
-                newModel._vistaToModel = this.vistaToModel;
+                // newModel._vistaToModel = this.vistaToModel;
                 newModel._model = record;
                 newModel.previus = newModel._model;
                 this.records.set(record.id, newModel);

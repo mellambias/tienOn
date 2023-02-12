@@ -7,6 +7,7 @@ export default class Contact extends Model {
     constructor(connection) {
         super(connection);
     }
+
     defineModel() {
         return {
             id: {

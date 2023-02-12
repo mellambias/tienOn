@@ -17,6 +17,20 @@ class Model {
         return this;
     }
 
+    static getterAndSetter(vistaToModel) {
+        const keys = Object.keys(vistaToModel);
+        keys.forEach(key => {
+            Object.defineProperty(this.prototype, `${key}`, {
+                get() {
+                    return this.model[vistaToModel[key]];
+                },
+                set(value) {
+                    this.model[vistaToModel[key]] = value;
+                },
+            });
+        });
+        return keys;
+    }
     set model(values) {
         console.log('asignando valores a model');
         if (Object.keys(values).length == 0) {

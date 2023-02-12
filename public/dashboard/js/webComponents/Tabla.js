@@ -43,21 +43,15 @@ class TablaComponent extends HTMLElement {
         const template = document.getElementById('template-tabla').content;
         this.shadow.appendChild(template.cloneNode(true));
         const rows = this.shadow.getElementById('fichas');
-        console.log('data', this.data, this.data.size);
+        // console.log('data', this.data, this.data.size);
         if (this.data.size == 0) {
             return;
         }
         this.data.forEach(element => {
             let row = document.createElement('li');
-            let elementData = element.model;
-            row.id = elementData?.id;
+            row.id = element?.id;
             let tablaItem = document.createElement('wc-tabla-item');
-            for (let key in elementData) {
-                let item = document.createElement('span');
-                item.setAttribute('slot', key);
-                item.innerHTML = elementData[key];
-                tablaItem.appendChild(item);
-            }
+            tablaItem.elementData = element;
             row.appendChild(tablaItem);
             let span = document.createElement('span');
             span.setAttribute('slot', 'crud-buttons');
@@ -66,7 +60,7 @@ class TablaComponent extends HTMLElement {
                     .getElementById(`button-${action}-template`)
                     .content.cloneNode(true);
                 let button = buttonEdit.querySelector('button');
-                button.setAttribute('data-id', elementData.id);
+                button.setAttribute('data-id', element.id);
                 button.setAttribute('data-action', action);
                 button.addEventListener('click', e => {
                     console.log('evento en tabla', e.target);
@@ -79,6 +73,7 @@ class TablaComponent extends HTMLElement {
                             this.shadow.getElementById(id).remove();
                             break;
                         case 'edit':
+                            console.log('editar:', this.data.get(id));
                             document.dispatchEvent(
                                 new CustomEvent('editForm', {
                                     bubbles: true,

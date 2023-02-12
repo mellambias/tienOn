@@ -8,6 +8,7 @@ class Controller {
         this.vistaToModel = this.vistaToModel();
         this._useCases = this.useCases();
         this.modelInstance._vistaToModel = this.vistaToModel;
+        this.autoBeans = this.modelClass.getterAndSetter(this.vistaToModel);
     }
     static create() {
         this._create();

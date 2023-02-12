@@ -8,8 +8,13 @@ class TabComponent extends HTMLElement {
             //TODO gestionar los errores
         });
         document.addEventListener('editForm', event => {
-            const datos = event.detail.model;
-            for (let key in datos) {
+            const datos = event.detail;
+            console.log('Recibidos', datos);
+            const form = this.shadow.querySelector('form');
+            const formData = new FormData(form);
+            console.log('formData', formData);
+            for (const key of formData.keys()) {
+                formData.set(key, datos[key]);
                 let input = this.shadow.getElementById(key);
                 if (input) {
                     input.value = datos[key];
