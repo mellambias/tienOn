@@ -2,6 +2,7 @@ class TabComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
+        this.content = this.attachShadow({ mode: 'open' });
         this.state = this.getAttribute('state') || 'noActive';
         document.addEventListener('FormError', event => {
             console.log('Errores', event.detail);
@@ -29,6 +30,14 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        const slot = this.shadow.querySelector('slot');
+        for (var field of slot.assignedNodes()) {
+            console.log('field', field);
+            //    .insertBefore(field, slot);
+        }
+        this.parentElement.dispatchEvent(
+            new CustomEvent('loadTab', { detail: this.shadow })
+        );
         this.shadow.addEventListener('submit', event => {
             event.preventDefault();
             let eventName = event.target.getAttribute('id');
@@ -88,7 +97,7 @@ class TabComponent extends HTMLElement {
             }
 
         </style>
-        ${this.innerHTML}`;
+        <slot></slot>`;
     }
 }
 

@@ -27,6 +27,13 @@ class TabsComponent extends HTMLElement {
     connectedCallback() {
         this.render();
         this.tabs();
+        this.addEventListener('loadTab', ev => {
+            console.log('loadTab componente cargado', ev.detail);
+
+            this.parentElement.dispatchEvent(
+                new CustomEvent('loadTabs', { detail: this.shadow })
+            );
+        });
     }
 
     render() {

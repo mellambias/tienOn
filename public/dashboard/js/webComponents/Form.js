@@ -2,6 +2,10 @@ class FormComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
+        this.id = this.getAttribute('id');
+        this.addEventListener('loadTabs', ev => {
+            console.log('loadTabs componenete cargado', ev);
+        });
     }
 
     connectedCallback() {
@@ -27,7 +31,9 @@ class FormComponent extends HTMLElement {
     };
     render() {
         this.shadow.innerHTML = `
-            <form><slot></slot></form>
+            <form id='${id}' >
+            <slot></slot>
+            </form>
         `;
     }
 }

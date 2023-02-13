@@ -63,16 +63,16 @@
             left: -2px;
             box-shadow: 2px 2px black;
         }
+        i {
+            pointer-events: none;
+        }
     </style>
 
-    <button>
-        <span class="edit-icon"></span>
-        Edit
-    </button>
+    <button><i class="edit-icon"></i> Edit</button>
 </template>
 <template id="button-delete-template">
     <button>
-        <span class="delete-icon"></span>
+        <i class="delete-icon"></i>
         Delete
     </button>
 </template>
@@ -151,15 +151,19 @@
     </section>
     <section class="col-main">
         <div class="contactoAdmintabs">
-            <wc-tabs>
-                <wc-tab id="contenido" state="active">
-                    <link href="../dashboard/css/app.css" rel="stylesheet" />
-                    <style>
-                        .campo label {
-                            color: black;
-                        }
-                    </style>
-                    <form id="contactForm">
+            <wc-form id="contactForm">
+                <wc-tabs>
+                    <wc-tab id="contenido" state="active">
+                        <link
+                            href="../dashboard/css/app.css"
+                            rel="stylesheet"
+                        />
+                        <style>
+                            .campo label {
+                                color: black;
+                            }
+                        </style>
+                        <!-- <form id="contactForm"> -->
                         <input id="id" name="id" type="number" hidden />
                         <div class="contacto">
                             <div class="col-1">
@@ -275,16 +279,16 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </wc-tab>
-                <wc-tab id="imagen" state=""
-                    ><form>
-                        <input id="email" name="email" type="email" />
-                        <button id="enviar" type="submit">Enviar</button>
-                    </form>
-                </wc-tab>
-            </wc-tabs>
-
+                        <!-- </form> -->
+                    </wc-tab>
+                    <wc-tab id="imagen" state=""
+                        ><form>
+                            <input id="email" name="email" type="email" />
+                            <button id="enviar" type="submit">Enviar</button>
+                        </form>
+                    </wc-tab>
+                </wc-tabs>
+            </wc-form>
             <!-- </form> -->
         </div>
     </section>
