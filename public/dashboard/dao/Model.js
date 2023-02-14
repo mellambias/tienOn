@@ -25,7 +25,34 @@ class Model {
                     return this._model[vistaToModel[key]];
                 },
                 set(value) {
-                    this._model[vistaToModel[key]] = value;
+                    // const errors = this.validateModel(this._model);
+                    // validar que el valor sea el correcto
+                    let keyInModel = vistaToModel[key];
+                    switch (this.modelDtd[keyInModel].type) {
+                        case 'integer':
+                            value = parseInt(value) || undefined;
+                            break;
+                        case 'boolean':
+                            value = value === 'true';
+                            break;
+                        case 'number':
+                            value = parseFloat(value);
+                            break;
+                    }
+                    let campo = {};
+                    let validacion = {};
+                    campo[keyInModel] = value;
+                    validacion[keyInModel] = this.modelDtd[vistaToModel[key]];
+                    this.errors = {};
+                    const error = validate(campo, validacion, {
+                        fullMessages: false,
+                    });
+                    if (error == undefined) {
+                        this.validates[keyInModel] = campo;
+                    } else {
+                        this.errors[key] = error[keyInModel];
+                        this._model[keyInModel] = value;
+                    }
                 },
             });
         });

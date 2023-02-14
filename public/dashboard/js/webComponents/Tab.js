@@ -11,23 +11,6 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.shadow.addEventListener('submit', event => {
-            event.preventDefault();
-            let eventName = event.target.getAttribute('id');
-            if (eventName) {
-                console.log('El formulario id "%s" ha sido enviado', eventName);
-            } else {
-                eventName = 'submit';
-            }
-            document.dispatchEvent(
-                new CustomEvent(eventName, {
-                    bubbles: true,
-                    composed: true,
-                    detail: event.target,
-                })
-            );
-            event.target.reset();
-        });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

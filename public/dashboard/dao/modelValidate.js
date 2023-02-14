@@ -17,23 +17,23 @@ validate.validators.validate = function (value, options, key, attributes) {
         notEmpty: {
             check: value =>
                 validator.isEmpty(value + '', { ignore_whitespace: false }),
-            message: 'no puede estar vacio',
+            message: 'No puede estar vacio',
         },
         isMobilePhone: {
             check: value => !validator.isMobilePhone(value + '', 'es-ES'),
-            message: 'Debe ser un telefono valido',
+            message: 'Debe ser un teléfono valido',
         },
         isDecimal: {
             check: value => !validator.isDecimal(value + ''),
-            message: 'Debe ser un numero decimal',
+            message: 'Debe ser un número decimal',
         },
         isIn: {
             check: value => !validator.isIn(value + '', options.isIn),
-            message: 'no esta dentro de los valores permitidos',
+            message: 'Debe estar dentro de los valores permitidos',
         },
         isEmail: {
             check: value => !validator.isEmail(value + ''),
-            message: 'no es un email valido',
+            message: 'Debe ser un un email valido',
         },
     };
     try {
