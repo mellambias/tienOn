@@ -2,7 +2,8 @@ class TablaComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-        document.addEventListener('tablaData', event => {
+        this.id = this.getAttribute('id');
+        document.addEventListener(`${this.id}`, event => {
             // console.log('datos recibidos', event.detail);
             this.data = event.detail;
             this.shadow.innerHTML = '';

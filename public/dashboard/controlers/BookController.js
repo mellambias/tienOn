@@ -31,9 +31,7 @@ class BookController extends Controller {
     }
 
     fakeData() {
-        const book_1 = new this.modelClass();
-        const book_2 = new this.modelClass();
-        book_1._model = {
+        const book_1 = {
             id: 1,
             title: 'Titulo del libro',
             author: 'El que lo escribio',
@@ -42,7 +40,7 @@ class BookController extends Controller {
             pageCount: '1024',
             published: '2023-01-01',
         };
-        book_2._model = {
+        const book_2 = {
             id: 2,
             title: 'CASTILLOS DE FUEGO',
             author: 'Ignacio Martinez de Pison',
@@ -68,7 +66,7 @@ class BookController extends Controller {
                 this.records.set(record.id, newModel);
             });
             document.dispatchEvent(
-                new CustomEvent('tablaData', {
+                new CustomEvent('tabla-book', {
                     detail: this.records,
                 })
             );

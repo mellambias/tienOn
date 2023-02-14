@@ -2,6 +2,11 @@ import BookController from '../../controlers/BookController.js';
 import ContactController from '../../controlers/ContactController.js';
 import MenuController from '../../controlers/MenuController.js';
 
+const controladores = {
+    book: BookController,
+    contact: ContactController,
+    menu: MenuController,
+};
 class App extends HTMLElement {
     constructor() {
         super();
@@ -57,21 +62,8 @@ class App extends HTMLElement {
 
     loadControler = async controler => {
         // console.log('Cargar el controler %o', controler);
-        switch (controler.item) {
-            case 'Usuarios':
-                break;
-            case 'Contactos':
-                const contact = ContactController.create();
-                console.log('Contacto %o', contact);
-                break;
-            case 'Books':
-                const book = BookController.create();
-                console.log('book %o', book);
-                break;
-            case 'admin-header':
-            default:
-                break;
-        }
+        const contact = controladores[controler.controlerName]?.create();
+        console.log('Contacto %o', contact);
     };
 
     async loadMenu() {

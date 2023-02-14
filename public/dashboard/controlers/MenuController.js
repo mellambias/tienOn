@@ -15,6 +15,7 @@ class MenuController extends Controller {
             id: 'id',
             item: 'name',
             path: 'customUrl',
+            controlerName: 'controlerName',
             content: 'children',
         };
     }
@@ -34,6 +35,7 @@ class MenuController extends Controller {
                     id: root.id,
                     item: root.name || '',
                     path: root.customUrl || '',
+                    controlerName: root.controlerName,
                     content: [],
                 };
                 if (Array.isArray(root.children))

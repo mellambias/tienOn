@@ -42,7 +42,7 @@ class ContactController extends Controller {
                 this.records.set(record.id, newModel);
             });
             document.dispatchEvent(
-                new CustomEvent('tablaData', {
+                new CustomEvent('tabla-contact', {
                     detail: this.records,
                 })
             );
