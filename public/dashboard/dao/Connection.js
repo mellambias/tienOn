@@ -46,10 +46,10 @@ class Connection {
      */
     async findAll() {
         try {
-            console.log(
-                'Connection -> Buscando todos los registros %o',
-                this.endPoint
-            );
+            // console.log(
+            //     'Connection -> Buscando todos los registros %o',
+            //     this.endPoint
+            // );
             const result = await fetch(this.endPoint, {
                 method: 'GET',
                 headers: {
@@ -57,7 +57,7 @@ class Connection {
                     Authorization: 'Bearer ' + localStorage.getItem('token'),
                 },
             });
-            console.log('Resultado recibido', result);
+            // console.log('Resultado recibido', result);
             return await result.json();
         } catch (error) {
             console.log(error);
@@ -66,7 +66,7 @@ class Connection {
     }
 
     async findOne(id) {
-        console.log('Buscando un registro por id %s', `${this.endPoint}/${id}`);
+        // console.log('Buscando un registro por id %s', `${this.endPoint}/${id}`);
         try {
             const result = await fetch(`${this.endPoint}/${id}`, {
                 method: 'GET',

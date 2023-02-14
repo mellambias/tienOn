@@ -46,10 +46,10 @@ export default class Menu extends Model {
         try {
             let temp = this.connection.endPoint;
             this.connection.endPoint += `/display`;
-            console.log(
-                'findMenu -> buscando todos los registros -> %o',
-                this.connection
-            );
+            // console.log(
+            //     // 'findMenu -> buscando todos los registros -> %o',
+            //     this.connection
+            // );
             const records = await this.connection.findOne(name);
             this.connection.endPoint = temp;
             return records;

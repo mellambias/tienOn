@@ -3,7 +3,7 @@ class TablaComponent extends HTMLElement {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
         document.addEventListener('tablaData', event => {
-            console.log('datos recibidos', event.detail);
+            // console.log('datos recibidos', event.detail);
             this.data = event.detail;
             this.shadow.innerHTML = '';
             this.render();
@@ -19,7 +19,7 @@ class TablaComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log('connected');
+        // console.log('connected');
         document.dispatchEvent(
             new CustomEvent('tablaReady', {
                 bubbles: true,

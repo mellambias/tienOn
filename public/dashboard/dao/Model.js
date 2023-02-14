@@ -22,10 +22,10 @@ class Model {
         keys.forEach(key => {
             Object.defineProperty(this.prototype, `${key}`, {
                 get() {
-                    return this.model[vistaToModel[key]];
+                    return this._model[vistaToModel[key]];
                 },
                 set(value) {
-                    this.model[vistaToModel[key]] = value;
+                    this._model[vistaToModel[key]] = value;
                 },
             });
         });
@@ -43,7 +43,8 @@ class Model {
     }
 
     get model() {
-        return this.modelParse();
+        // return this.modelParse();
+        return this._model;
     }
 
     defineModel() {
@@ -98,7 +99,7 @@ class Model {
     }
     async findAll() {
         try {
-            console.log('Model -> buscando todos los registros -> connection');
+            // console.log('Model -> buscando todos los registros -> connection');
             const records = await this.connection.findAll();
             this.recordsCount = records.length;
             return { count: this.recordsCount, records: records };

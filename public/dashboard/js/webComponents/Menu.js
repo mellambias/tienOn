@@ -10,7 +10,7 @@ class Menu extends HTMLElement {
     // }
 
     connectedCallback() {
-        console.log('menu connected');
+        // console.log('menu connected');
         // lanza el evento menuConnected
         document.dispatchEvent(
             new CustomEvent('menuConnected', {
@@ -65,12 +65,12 @@ class Menu extends HTMLElement {
      * @param {*} event
      */
     leeData = async event => {
-        console.log('Evento recibido %o', event.detail);
+        // console.log('Evento recibido %o', event.detail);
         this.render();
         const root = this.shadow.getElementById('main-menu');
         // const menu = await this.leeData();
         const menu = event.detail.dataMenu;
-        console.log('(%o) menu: %o', new Date(), menu);
+        // console.log('(%o) menu: %o', new Date(), menu);
         await this.crearMenu(root, menu);
     };
 

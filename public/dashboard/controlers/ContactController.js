@@ -31,7 +31,7 @@ class ContactController extends Controller {
     }
 
     loadDataTable = async () => {
-        console.log('loadDataTable');
+        // console.log('loadDataTable');
         const results = await this.modelInstance.findAll();
         if (results.count) {
             results.records.forEach(record => {
@@ -49,7 +49,7 @@ class ContactController extends Controller {
         }
     };
     processContact = async event => {
-        console.log('processContact ->', event.detail);
+        // console.log('processContact ->', event.detail);
         let newContact;
 
         // function getFormData(formElement, controler) {
@@ -73,7 +73,7 @@ class ContactController extends Controller {
         //     return data;
         // }
         const data = this.getFormData(event.detail, this);
-        console.log(data);
+        // console.log(data);
 
         if (data?.id) {
             // Ya exite el contacto
@@ -93,7 +93,7 @@ class ContactController extends Controller {
             );
         } else {
             const response = await newContact.save();
-            console.log('Contacto guardado', response);
+            // console.log('Contacto guardado', response);
             this.records.set(response.model.id, response);
             document.dispatchEvent(
                 new CustomEvent('tablaData', {
@@ -103,7 +103,7 @@ class ContactController extends Controller {
         }
     };
     useCases() {
-        console.log('activando useCases for Contact');
+        // console.log('activando useCases for Contact');
         const instance = this;
         document.addEventListener('tablaReady', () => {
             instance.loadDataTable();

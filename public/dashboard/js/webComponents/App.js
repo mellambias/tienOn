@@ -4,8 +4,8 @@ import MenuController from '../../controlers/MenuController.js';
 class App extends HTMLElement {
     constructor() {
         super();
-        console.log('App current location %o', window.location.href);
-        console.log(window.history.state);
+        // console.log('App current location %o', window.location.href);
+        // console.log(window.history.state);
         if (window.history.state != null) {
             this.loadControler(window.history.state);
             window.document.title = location.href.split('/').slice(-1)[0];
@@ -40,7 +40,7 @@ class App extends HTMLElement {
     changePage = event => {
         event.preventDefault();
         const controler = event.detail?.menuItem;
-        console.log('La app a recibido %o', event.detail?.menuItem);
+        // console.log('La app a recibido %o', event.detail?.menuItem);
         if (!controler) return;
         if (event.detail?.menuItem) {
             window.document.title = event.detail.menuItem.item;
@@ -55,13 +55,13 @@ class App extends HTMLElement {
     };
 
     loadControler = async controler => {
-        console.log('Cargar el controler %o', controler);
+        // console.log('Cargar el controler %o', controler);
         switch (controler.item) {
             case 'Usuarios':
                 break;
             case 'Contactos':
                 const contact = ContactController.create();
-                console.log('Contacto %o', contact);
+                // console.log('Contacto %o', contact);
                 break;
             case 'admin-header':
             default:
@@ -72,7 +72,7 @@ class App extends HTMLElement {
     async loadMenu() {
         try {
             const menuController = MenuController.create();
-            console.log('buscar datos menu->');
+            // console.log('buscar datos menu->');
             const data = await menuController.loadData('admin-header');
             document.dispatchEvent(
                 new CustomEvent('loadMenuData', {

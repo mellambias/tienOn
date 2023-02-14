@@ -2,26 +2,7 @@ class TabComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-        this.content = this.attachShadow({ mode: 'open' });
         this.state = this.getAttribute('state') || 'noActive';
-        document.addEventListener('FormError', event => {
-            console.log('Errores', event.detail);
-            //TODO gestionar los errores
-        });
-        document.addEventListener('editForm', event => {
-            const datos = event.detail;
-            console.log('Recibidos', datos);
-            const form = this.shadow.querySelector('form');
-            const formData = new FormData(form);
-            console.log('formData', formData);
-            for (const key of formData.keys()) {
-                formData.set(key, datos[key]);
-                let input = this.shadow.getElementById(key);
-                if (input) {
-                    input.value = datos[key];
-                }
-            }
-        });
     }
 
     static get observedAttributes() {
@@ -30,14 +11,6 @@ class TabComponent extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        const slot = this.shadow.querySelector('slot');
-        for (var field of slot.assignedNodes()) {
-            console.log('field', field);
-            //    .insertBefore(field, slot);
-        }
-        this.parentElement.dispatchEvent(
-            new CustomEvent('loadTab', { detail: this.shadow })
-        );
         this.shadow.addEventListener('submit', event => {
             event.preventDefault();
             let eventName = event.target.getAttribute('id');
@@ -67,7 +40,6 @@ class TabComponent extends HTMLElement {
     render() {
         this.shadow.innerHTML = `
         <style>
-
             :host(.active) {
                 background-color: hsl(0deg, 0%, 100%);
                 border-width: 3px;

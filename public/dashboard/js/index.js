@@ -61,7 +61,7 @@ const changePage = () => {
         default:
             break;
     }
-    console.log(`Se encuentra en ${currentDocumentTitle}`);
+    // console.log(`Se encuentra en ${currentDocumentTitle}`);
 };
 // componentes comunes
 // menuTree();

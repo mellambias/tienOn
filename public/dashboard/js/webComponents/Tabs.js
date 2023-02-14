@@ -1,9 +1,11 @@
 class TabsComponent extends HTMLElement {
-    // static formAssociated = true;
+    static formAssociated = true;
+
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-        // this.internals = this.attachInternals();
+        this.internals = this.attachInternals();
+        this.setValue(''); // set form value to empty string or FormData object
     }
     // get value() {
     //     return this._value;
@@ -23,17 +25,18 @@ class TabsComponent extends HTMLElement {
     // get type() {
     //     return this.localName;
     // }
+    formAssociatedCallback(form) {
+        console.log('form associated', form.id);
+    }
+    // set form value
+    setValue(value) {
+        this.value = value;
+        this.internals.setFormValue(value); //A File, a string, or a FormData as the value to be submitted to the server.
+    }
 
     connectedCallback() {
         this.render();
         this.tabs();
-        this.addEventListener('loadTab', ev => {
-            console.log('loadTab componente cargado', ev.detail);
-
-            this.parentElement.dispatchEvent(
-                new CustomEvent('loadTabs', { detail: this.shadow })
-            );
-        });
     }
 
     render() {

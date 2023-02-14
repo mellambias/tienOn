@@ -21,7 +21,7 @@ class MenuController extends Controller {
 
     async loadData(name) {
         let records = await this.modelInstance.findMenu(name);
-        console.log(records);
+        // console.log(records);
         let newMenu = {};
         /**
          * Transforma los datos del modelo al de la vista
@@ -52,7 +52,7 @@ class MenuController extends Controller {
         console.log(record);
     }
     useCases() {
-        console.log('casos de uso Menu');
+        // console.log('casos de uso Menu');
     }
 }
 
