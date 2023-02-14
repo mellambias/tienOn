@@ -19,7 +19,7 @@ class TablaComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        // console.log('connected');
+        console.log('connected');
         document.dispatchEvent(
             new CustomEvent('tablaReady', {
                 bubbles: true,

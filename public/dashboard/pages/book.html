@@ -27,15 +27,10 @@
     <div class="ficha">
         <ul>
             <li>
-                <span>Nombre</span>
-                <slot name="nombre">nombre</slot>
+                <span>Title</span>
+                <slot name="title">Titulo del libro</slot>
             </li>
-            <li>
-                <span>Apellidos</span><slot name="apellidos">apellidos</slot>
-            </li>
-            <li><span>Teléfono</span><slot name="telefono">telefono</slot></li>
-            <li><span>Correo</span><slot name="email">email</slot></li>
-            <li><span>Mensaje</span><slot name="mensaje">messaje</slot></li>
+            <li><span>Autor</span><slot name="author">Autor</slot></li>
         </ul>
         <div class="crud">
             <slot name="crud-buttons"></slot>
@@ -137,7 +132,7 @@
         <nav>
             <ul>
                 <li class="tab active" data-tabid="contenido">
-                    <p>Formulario de contracto</p>
+                    <p>Libro</p>
                 </li>
                 <li class="tab noActive" data-tabid="imagen">
                     <p>imagen</p>
@@ -153,7 +148,7 @@
     </section>
     <section class="col-main">
         <div class="contactoAdmintabs">
-            <wc-form id="contactForm">
+            <wc-form id="bookForm">
                 <wc-tabs>
                     <wc-tab id="contenido" state="active">
                         <link
@@ -177,33 +172,33 @@
                                         <div class="col-2">
                                             <div class="col">
                                                 <div class="campo">
-                                                    <label for="nombre"
-                                                        >Nombre</label
+                                                    <label for="title"
+                                                        >Titulo</label
                                                     >
                                                     <input
-                                                        id="nombre"
-                                                        name="nombre"
+                                                        id="title"
+                                                        name="title"
                                                         type="text"
                                                     />
                                                     <p
                                                         class="error"
-                                                        data-name="nombre"
+                                                        data-name="title"
                                                     ></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="campo">
-                                                    <label for="apellidos"
-                                                        >Apellidos</label
+                                                    <label for="author"
+                                                        >Autor</label
                                                     >
                                                     <input
-                                                        id="apellidos"
-                                                        name="apellidos"
+                                                        id="author"
+                                                        name="author"
                                                         type="text"
                                                     />
                                                     <p
                                                         class="error"
-                                                        data-name="apellidos"
+                                                        data-name="author"
                                                     ></p>
                                                 </div>
                                             </div>
@@ -211,33 +206,50 @@
                                         <div class="col-2">
                                             <div class="col">
                                                 <div class="campo">
-                                                    <label for="telefono"
-                                                        >Teléfono</label
+                                                    <label for="isbn"
+                                                        >ISBN</label
                                                     >
                                                     <input
-                                                        id="telefono"
-                                                        name="telefono"
-                                                        type="tel"
+                                                        id="isbn"
+                                                        name="isbn"
+                                                        type="text"
                                                     />
                                                     <p
                                                         class="error"
-                                                        data-name="telefono"
+                                                        data-name="isbn"
                                                     ></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="campo">
-                                                    <label for="email"
-                                                        >Email</label
+                                                    <label for="pageCount"
+                                                        >Numero páginas</label
                                                     >
                                                     <input
-                                                        id="email"
-                                                        name="email"
-                                                        type="email"
+                                                        id="pageCount"
+                                                        name="pageCount"
+                                                        type="number"
                                                     />
                                                     <p
                                                         class="error"
-                                                        data-name="email"
+                                                        data-name="pageCount"
+                                                    ></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="campo">
+                                                    <label for="publishedDate"
+                                                        >Fecha
+                                                        Publicacion</label
+                                                    >
+                                                    <input
+                                                        id="publishedDate"
+                                                        name="publishedDate"
+                                                        type="date"
+                                                    />
+                                                    <p
+                                                        class="error"
+                                                        data-name="publishedDate"
                                                     ></p>
                                                 </div>
                                             </div>
@@ -245,24 +257,24 @@
                                         <div class="col-1">
                                             <div class="col">
                                                 <div class="campo">
-                                                    <label for="mensaje"
-                                                        >Mensaje</label
+                                                    <label for="description"
+                                                        >Descripción</label
                                                     >
 
                                                     <textarea
-                                                        id="mensaje"
-                                                        name="mensaje"
+                                                        id="description"
+                                                        name="description"
                                                         rows="10"
                                                         minlength="20"
-                                                        maxlength="100"
+                                                        maxlength="200"
                                                     ></textarea>
                                                     <span
-                                                        >máximo 100
+                                                        >máximo 200
                                                         caracteres</span
                                                     >
                                                     <p
                                                         class="error"
-                                                        data-name="mensaje"
+                                                        data-name="description"
                                                     ></p>
                                                 </div>
                                             </div>

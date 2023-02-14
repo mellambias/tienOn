@@ -7,24 +7,7 @@ class TabsComponent extends HTMLElement {
         this.internals = this.attachInternals();
         this.setValue(''); // set form value to empty string or FormData object
     }
-    // get value() {
-    //     return this._value;
-    // }
-    // set value(value) {
-    //     this._value = value;
-    //     this.internals.setFormValue(value);
-    // }
-    // get form() {
-    //     return this.internals.form;
-    // }
 
-    // get name() {
-    //     return this.getAttribute('name');
-    // }
-
-    // get type() {
-    //     return this.localName;
-    // }
     formAssociatedCallback(form) {
         console.log('form associated', form.id);
     }

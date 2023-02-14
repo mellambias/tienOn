@@ -27,13 +27,21 @@ validate.validators.validate = function (value, options, key, attributes) {
             check: value => !validator.isDecimal(value + ''),
             message: 'Debe ser un número decimal',
         },
+        isInt: {
+            check: value => !validator.isInt(value + ''),
+            message: 'Debe ser un número entero',
+        },
         isIn: {
             check: value => !validator.isIn(value + '', options.isIn),
             message: 'Debe estar dentro de los valores permitidos',
         },
         isEmail: {
             check: value => !validator.isEmail(value + ''),
-            message: 'Debe ser un un email valido',
+            message: 'Debe ser un email valido',
+        },
+        isbn: {
+            check: value => !validator.isISBN(value + ''),
+            message: 'Debe ser un isbn valido',
         },
     };
     try {

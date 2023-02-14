@@ -17,7 +17,7 @@ class Model {
         return this;
     }
 
-    static getterAndSetter(vistaToModel) {
+    getterAndSetter(vistaToModel) {
         const keys = Object.keys(vistaToModel);
         keys.forEach(key => {
             Object.defineProperty(this.prototype, `${key}`, {

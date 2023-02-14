@@ -32,7 +32,7 @@ class FormComponent extends HTMLElement {
                 )
                 .forEach(element => {
                     const validate = event => {
-                        // console.log('validar', event.target.value);
+                        console.log('validar', event.target.value);
                         const message = document.querySelector(
                             `p[data-name="${event.target.name}"]`
                         );

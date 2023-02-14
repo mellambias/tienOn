@@ -1,3 +1,4 @@
+import BookController from '../../controlers/BookController.js';
 import ContactController from '../../controlers/ContactController.js';
 import MenuController from '../../controlers/MenuController.js';
 
@@ -61,7 +62,11 @@ class App extends HTMLElement {
                 break;
             case 'Contactos':
                 const contact = ContactController.create();
-                // console.log('Contacto %o', contact);
+                console.log('Contacto %o', contact);
+                break;
+            case 'Books':
+                const book = BookController.create();
+                console.log('book %o', book);
                 break;
             case 'admin-header':
             default:
@@ -74,6 +79,7 @@ class App extends HTMLElement {
             const menuController = MenuController.create();
             // console.log('buscar datos menu->');
             const data = await menuController.loadData('admin-header');
+            console.log('lanza evento -> loadMenuData');
             document.dispatchEvent(
                 new CustomEvent('loadMenuData', {
                     detail: { dataMenu: data },
