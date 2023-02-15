@@ -159,6 +159,14 @@
                             .campo label {
                                 color: black;
                             }
+                            input {
+                                padding-left: 0.5rem;
+                                padding-right: 0.5rem;
+                            }
+                            input[type='number'],
+                            input[type='date'] {
+                                text-align: end;
+                            }
                         </style>
                         <!-- <form id="contactForm"> -->
                         <input id="id" name="id" type="number" hidden />
@@ -212,7 +220,7 @@
                                                     <input
                                                         id="isbn"
                                                         name="isbn"
-                                                        type="text"
+                                                        type="number"
                                                     />
                                                     <p
                                                         class="error"
@@ -260,7 +268,6 @@
                                                     <label for="description"
                                                         >Descripción</label
                                                     >
-
                                                     <textarea
                                                         id="description"
                                                         name="description"
@@ -296,12 +303,7 @@
                         </div>
                         <!-- </form> -->
                     </wc-tab>
-                    <wc-tab id="imagen" state=""
-                        ><form>
-                            <input id="email" name="email" type="email" />
-                            <button id="enviar" type="submit">Enviar</button>
-                        </form>
-                    </wc-tab>
+                    <wc-tab id="imagen" state=""> </wc-tab>
                 </wc-tabs>
             </wc-form>
             <!-- </form> -->

@@ -53,6 +53,7 @@ export default class Book extends Model {
             },
             publishedDate: {
                 type: DataTypes.DATE,
+                presence: true,
             },
         };
     }

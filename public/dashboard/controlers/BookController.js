@@ -16,7 +16,7 @@ class BookController extends Controller {
             description: 'description',
             isbn: 'isbn',
             pageCount: 'pageCount',
-            published: 'published',
+            publishedDate: 'publishedDate',
         };
     }
 
@@ -38,31 +38,32 @@ class BookController extends Controller {
             description: 'En un lugar de Palma',
             isbn: '9788408268307',
             pageCount: '1024',
-            published: '2023-01-01',
+            publishedDate: '2023-01-01',
         };
         const book_2 = {
             id: 2,
-            title: 'CASTILLOS DE FUEGO',
+            title: 'Castillos de fuego',
             author: 'Ignacio Martinez de Pison',
             description:
                 'Madrid, 1939-1945. Muchos luchan por salir adelante en una ciudad marcada por el hambre, la penuria y el estraperlo. Como Eloy, un joven tullido que trata de salvar de la pena de muerte a su hermano encarcelado; Alicia, taquillera en un cine que pierde su empleo por seguir su corazón; Basilio, profesor de universidad que afronta un proceso de depuración; el falangista Matías, que trafica con objetos requisados, o Valentín, capaz de cualquier vileza con tal de purgar su anterior militancia. Costureras, estudiantes,',
             isbn: '9788432241680',
             pageCount: '704',
-            published: '2023-02-15',
+            publishedDate: '2023-02-15',
         };
         return { count: 2, records: [book_1, book_2] };
     }
     loadDataTable = async () => {
         //
         // console.log('loadDataTable');
-        // const results = await this.modelInstance.findAll();
-        const results = this.fakeData();
+        const results = await this.modelInstance.findAll();
+        // const results = this.fakeData();
         if (results.count) {
             results.records.forEach(record => {
                 const newModel = new this.modelClass(this.connection);
                 // newModel._vistaToModel = this.vistaToModel;
                 newModel._model = record;
                 newModel.previus = newModel._model;
+                newModel._vistaToModel = this.vistaToModel;
                 this.records.set(record.id, newModel);
             });
             document.dispatchEvent(
@@ -72,6 +73,20 @@ class BookController extends Controller {
             );
         }
     };
+
+    sendNewBook = event => {
+        console.log(
+            'respondiendo a %s con %s',
+            event.type,
+            `receives${event.type}`
+        );
+        const newInstance = new this.modelClass(this.connection);
+        document.dispatchEvent(
+            new CustomEvent(`receives${event.type}`, {
+                detail: newInstance,
+            })
+        );
+    };
     processBook = async event => {
         // console.log('processBook ->', event.detail);
         let newBook;
@@ -79,7 +94,7 @@ class BookController extends Controller {
         // console.log(data);
 
         if (data?.id) {
-            // Ya exite el Booko
+            // Ya exite el Book
             newBook = this.records.get(data.id);
         } else {
             newBook = new this.modelClass(this.connection);
@@ -92,14 +107,16 @@ class BookController extends Controller {
                 this.vistaToModel
             );
             document.dispatchEvent(
-                new CustomEvent('FormError', { detail: errors })
+                new CustomEvent('FormError', {
+                    detail: { errors, model: newBook },
+                })
             );
         } else {
             const response = await newBook.save();
             // console.log('Booko guardado', response);
             this.records.set(response.model.id, response);
             document.dispatchEvent(
-                new CustomEvent('tablaData', {
+                new CustomEvent('tabla-book', {
                     detail: this.records,
                 })
             );
@@ -110,17 +127,22 @@ class BookController extends Controller {
         const instance = this;
         document.addEventListener('tablaReady', () => {
             console.log('instance %o this:%o', instance, this);
-            instance.loadDataTable();
+            this.loadDataTable();
         });
-        document.addEventListener('BookForm', event => {
-            instance.processBook(event);
+        document.addEventListener('bookForm', event => {
+            console.log('Formulario recibido');
+            this.processBook(event);
+        });
+        document.addEventListener('getNewbookForm', event => {
+            console.log('Solicita nuevo book');
+            this.sendNewBook(event);
         });
     }
 }
 
 BookController.create = () => {
     const BookConnection = new Connection(
-        'http://127.0.0.1:8080/api/admin/Book'
+        'http://127.0.0.1:8080/api/admin/book'
     );
     const vista = new BookView();
     return [Book, BookConnection, vista];

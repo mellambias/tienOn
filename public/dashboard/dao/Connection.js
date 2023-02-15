@@ -24,7 +24,8 @@ class Connection {
         console.log(
             'Actualizando sobre el API RESTFULL %o/%s',
             this.endPoint,
-            modelo.id
+            modelo.id,
+            JSON.stringify(modelo)
         );
         try {
             const response = await fetch(`${this.endPoint}/${modelo.id}`, {
@@ -70,6 +71,22 @@ class Connection {
         try {
             const result = await fetch(`${this.endPoint}/${id}`, {
                 method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                },
+            });
+            return await result.json();
+        } catch (error) {
+            console.log('Conection.js : %o', error);
+            throw error;
+        }
+    }
+    async delete(id) {
+        // console.log('Eliminar  registro  id %s', `${this.endPoint}/${id}`);
+        try {
+            const result = await fetch(`${this.endPoint}/${id}`, {
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + localStorage.getItem('token'),

@@ -1,5 +1,8 @@
 import Connection from './Connection.js';
-import DataTypes from './dataTypes.js';
+import DataTypes, {
+    getTypeConversion,
+    setTypeConversion,
+} from './dataTypes.js';
 import validate from './modelValidate.js';
 
 const defaultConnection = new Connection();
@@ -23,26 +26,22 @@ class Model {
         keys.forEach(key => {
             Object.defineProperty(this.prototype, `${key}`, {
                 get() {
-                    return this._model[vistaToModel[key]];
+                    let value = this._model[vistaToModel[key]];
+                    let keyInModel = vistaToModel[key];
+                    return getTypeConversion[this.modelDtd[keyInModel].type](
+                        value
+                    );
                 },
                 set(value) {
                     // const errors = this.validateModel(this._model);
                     // validar que el valor sea el correcto
                     let keyInModel = vistaToModel[key];
-                    switch (this.modelDtd[keyInModel].type) {
-                        case 'integer':
-                            value = parseInt(value) || undefined;
-                            break;
-                        case 'boolean':
-                            value = value === 'true';
-                            break;
-                        case 'number':
-                            value = parseFloat(value);
-                            break;
-                    }
                     let campo = {};
                     let validacion = {};
-                    campo[keyInModel] = value;
+                    campo[keyInModel] =
+                        setTypeConversion[this.modelDtd[keyInModel].type](
+                            value
+                        );
                     validacion[keyInModel] = this.modelDtd[vistaToModel[key]];
                     this.errors = {};
                     const error = validate(campo, validacion, {
@@ -158,9 +157,15 @@ class Model {
         }
     }
 
-    delete = async () => {
+    async delete() {
         console.log('eliminando un registro', this._model);
-    };
+        try {
+            const record = await this.connection.delete(this.id);
+        } catch (error) {
+            console.log('Error', error);
+        }
+        //TODO eliminar registro.
+    }
     /**
      * sincroniza el modelo con los datos del formulario
      */
@@ -221,8 +226,10 @@ class Model {
                 .filter(key => obj[key] != this.validates[key])
                 .forEach(key => {
                     let campo = {};
+                    let validacion = {};
                     campo[key] = obj[key];
-                    errors = validate(campo, this.modelDtd[key]);
+                    validacion[key] = this.modelDtd[this._vistaToModel[key]];
+                    errors = validate(campo, validacion);
                     if (errors == undefined) {
                         this.validates[key] = obj[key];
                     }

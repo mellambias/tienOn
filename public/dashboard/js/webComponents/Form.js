@@ -5,9 +5,32 @@ class FormComponent extends HTMLElement {
         this.shadow = this.attachShadow({ mode: 'open' });
         this.id = this.getAttribute('id');
         this.register = null;
+        this.counter = 0;
+
+        document.addEventListener(`receivesgetNew${this.id}`, event => {
+            console.log('Recibiendo nuevo registro', event.detail);
+            this.register = event.detail;
+        });
+        this.counter++;
+        console.log(
+            `solicitando nuevo registro "getNew${this.id}" (${this.counter})`
+        );
+        document.dispatchEvent(
+            new CustomEvent(`getNew${this.id}`, {
+                detail: 'Send me a new register',
+            })
+        );
+
         document.addEventListener('FormError', event => {
             console.log('Errores', event.detail);
             //TODO gestionar los errores
+            const errores = event.detail.errors;
+            this.register = event.detail.model;
+            console.log(this.register);
+            for (let campo in errores) {
+                document.querySelector(`p[data-name="${campo}"]`).innerHTML =
+                    errores[campo][0];
+            }
         });
         document.addEventListener('editForm', event => {
             this.register = event.detail;
@@ -15,9 +38,9 @@ class FormComponent extends HTMLElement {
             const form = this.shadow.querySelector(`form`);
             let formData = new FormData(form);
             formData.forEach((value, key) => {
-                form.querySelector(`[name=${key}]`).value = this.register[key];
-                document.querySelector(`[name=${key}]`).value =
-                    this.register[key];
+                let dataValue = this.register[key];
+                form.querySelector(`[name=${key}]`).value = dataValue;
+                document.querySelector(`[name=${key}]`).value = dataValue;
             });
         });
     }
@@ -65,10 +88,10 @@ class FormComponent extends HTMLElement {
                             texAreaInputCounter(
                                 element.getAttribute('minlength')
                             );
-                            element.addEventListener('change', validate);
+                            element.addEventListener('blur', validate);
                             break;
                         default:
-                            element.addEventListener('change', validate);
+                            element.addEventListener('blur', validate);
                             break;
                     }
                     const clonElement = element.cloneNode(true);
@@ -77,28 +100,21 @@ class FormComponent extends HTMLElement {
                 });
         });
         document.querySelectorAll('button[type=submit]').forEach(button => {
-            button.addEventListener('click', event => {
+            button.addEventListener('click', async event => {
                 console.log('register', this.register);
                 const form = this.shadow.querySelector('form');
                 let eventName = form.getAttribute('id');
-                let formData = new FormData(form);
-                if (this.register) {
-                    formData.forEach((value, key) => {
-                        if (this.register) {
-                            this.register[key] = value;
-                            console.log(this.register.error);
-                        }
-                    });
-                } else {
-                    document.dispatchEvent(
-                        new CustomEvent(eventName, {
-                            bubbles: true,
-                            composed: true,
-                            detail: event.target,
-                        })
-                    );
-                }
+                console.log('Enviando formulario:', eventName);
+                document.dispatchEvent(
+                    new CustomEvent(eventName, {
+                        bubbles: true,
+                        composed: true,
+                        detail: form,
+                    })
+                );
+
                 // reset form
+                let formData = new FormData(form);
                 formData.forEach((value, key) => {
                     document.querySelector(`[name=${key}]`).value = null;
                 });

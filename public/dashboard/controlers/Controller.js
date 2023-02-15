@@ -1,3 +1,4 @@
+import { setTypeConversion } from '../dao/dataTypes.js';
 class Controller {
     constructor(model, connection, vista) {
         this.modelClass = model;
@@ -50,17 +51,10 @@ class Controller {
         for (const key of formData.keys()) {
             let value = formData.get(key);
             let keyInModel = controler.vistaToModel[key];
-            switch (controler.modelInstance.modelDtd[keyInModel].type) {
-                case 'integer':
-                    value = parseInt(value) || undefined;
-                    break;
-                case 'boolean':
-                    value = value === 'true';
-                    break;
-                case 'number':
-                    value = parseFloat(value);
-                    break;
-            }
+            value =
+                setTypeConversion[
+                    controler.modelInstance.modelDtd[keyInModel].type
+                ](value);
             if (value !== undefined) {
                 data[key] = value;
             }
