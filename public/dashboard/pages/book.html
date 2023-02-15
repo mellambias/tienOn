@@ -98,6 +98,7 @@
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
             width: 33%;
+            height: 3rem;
             min-height: 2rem;
             margin-right: 3px;
             display: flex;
@@ -108,24 +109,24 @@
             user-select: none;
         }
         .tab.noActive {
+            position: relative;
+            top: 10px;
             z-index: 100;
             pointer-events: all;
-            position: relative;
         }
         .tab.active {
             position: relative;
-            top: 1px;
+            top: 3px;
             z-index: 200;
             background-color: hsl(0deg, 0%, 100%);
             border-width: 3px;
             border-bottom: 0px solid hsl(0deg, 0%, 100%);
             margin-bottom: -2px;
-            font-weight: bold;
-            /* height: 70px; */
         }
         p {
             color: black;
             font-weight: bold;
+            font-size: 1.5rem;
         }
     </style>
     <div id="tabs1" class="tabs">

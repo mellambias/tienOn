@@ -83,6 +83,8 @@ class Menu extends HTMLElement {
                 transition: 300ms;
                 font-weight: 600;
                 text-decoration: none;
+                font-size:1.2rem;
+                color:white;
             }
             a:hover,
             a:focus {
@@ -145,10 +147,6 @@ class Menu extends HTMLElement {
         <nav>
             <ul id="main-menu" class="treeMenu"></ul>
         </nav>`;
-        // const root = this.shadow.getElementById('main-menu');
-        // const menu = await this.leeData();
-        // console.log('(%o) menu: %o', new Date(), menu);
-        // await this.crearMenu(root, menu);
     }
 }
 

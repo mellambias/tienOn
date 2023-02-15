@@ -24,6 +24,8 @@ class TabComponent extends HTMLElement {
         this.shadow.innerHTML = `
         <style>
             :host(.active) {
+                position:relative;
+                z-index:200px
                 background-color: hsl(0deg, 0%, 100%);
                 border-width: 3px;
                 border-bottom: 0px solid hsl(0deg, 0%, 100%);
