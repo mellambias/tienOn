@@ -6,6 +6,15 @@ class FormComponent extends HTMLElement {
         this.id = this.getAttribute('id');
         this.register = null;
         this.counter = 0;
+        this.placeholder = this.getAttribute('Placeholder') || 'none';
+        this.labelColor = this.getAttribute('labelColor') || 'black';
+        this.inputColor = this.getAttribute('inputColor') || 'black';
+        this.placeholderStyle =
+            this.getAttribute('placeholderStyle') || 'color:auto;';
+        this.inputStyle =
+            this.getAttribute('inputStyle') || 'border:1px solid black;';
+        this.textAreaStyle =
+            this.getAttribute('textAreaStyle') || 'border:1px solid black;';
 
         document.addEventListener(`receivesgetNew${this.id}`, event => {
             console.log('Recibiendo nuevo registro', event.detail);
@@ -48,6 +57,12 @@ class FormComponent extends HTMLElement {
     connectedCallback() {
         this.render();
         this.shadow.addEventListener('slotchange', event => {
+            const style = document.createElement('style');
+            style.innerHTML = this.getStyle();
+            let nodeTemp = this.shadow
+                .querySelector('slot')
+                .assignedElements()[0];
+            nodeTemp.appendChild(style);
             const form = this.shadow.querySelector(`form`);
             document
                 .querySelectorAll(
@@ -82,7 +97,20 @@ class FormComponent extends HTMLElement {
                             }
                         }
                     };
-
+                    if (
+                        this.placeholder == 'auto' &&
+                        !element.getAttribute('placeholder')
+                    ) {
+                        const label = element.parentElement.querySelector(
+                            `label[for="${element.name}"]`
+                        );
+                        if (label) {
+                            element.setAttribute(
+                                'placeholder',
+                                label.textContent
+                            );
+                        }
+                    }
                     switch (element.type) {
                         case 'textarea':
                             texAreaInputCounter(
@@ -122,12 +150,72 @@ class FormComponent extends HTMLElement {
             });
         });
     }
+    getStyle() {
+        return `
+        input,  select,
+        checkbox,  radio,  file,  
+        color,  date,  datetime-local,  
+        email,  month,  number,  
+        password,  search,  tel,  
+        time,  url,  week {
+            ${this.inputStyle}
+            color: ${this.inputColor};
+        }
+        textarea {
+            ${this.textAreaStyle}
+            color: ${this.inputColor};
+        }
+        *::placeholder{
+            ${this.placeholderStyle};
+        }
+            .campo label {
+                color: ${this.labelColor};
+                font-weight: bold;
+            }
+            .campo span {
+                color: ${this.labelColor};
+            }
 
+            input {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;  
+            }
+            
+            input[type='number'],
+            input[type='date'] {
+                text-align: end;
+            }
+            .error{
+                font-weight: bold;
+            }
+        button {
+            position: relative;
+            width: 80px;
+            margin: 5px;
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 2px 1px black;
+            cursor: pointer;
+        }
+
+        button:hover {
+            top: -1px;
+            left: -2px;
+            box-shadow: 2px 2px black;
+        }
+        i {
+            pointer-events: none;
+        }`;
+    }
     render() {
         this.shadow.innerHTML = `
-            <form id="${this.id}">
-            <slot></slot>
-            </form>
+        <form id="${this.id}">
+        <slot></slot>
+        </form>
         `;
     }
 }

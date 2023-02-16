@@ -3,10 +3,13 @@ class TabComponent extends HTMLElement {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
         this.state = this.getAttribute('state') || 'noActive';
+        this.backGroundColor = this.getAttribute('bgColor') || 'white';
+        this.borderColor = this.getAttribute('bordercolor') || 'black';
+        this.bg = this.getAttribute('bg') || 'auto';
     }
 
     static get observedAttributes() {
-        return ['state'];
+        return ['state', 'bordercolor', 'bgcolor'];
     }
 
     connectedCallback() {
@@ -14,10 +17,21 @@ class TabComponent extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name == 'state') {
-            if (oldValue) this.classList.remove(oldValue);
-            if (newValue) this.classList.add(newValue);
-        }
+        const changeValue = {
+            state: (oldValue, newValue) => {
+                if (oldValue) this.classList.remove(oldValue);
+                if (newValue) this.classList.add(newValue);
+            },
+            bordercolor: (oldValue, newValue) => {
+                this.borderColor = newValue;
+                this.render();
+            },
+            bgcolor: (oldValue, newValue) => {
+                this.backGroundColor = newValue;
+                this.render();
+            },
+        };
+        changeValue[name](oldValue, newValue);
     }
 
     render() {
@@ -25,32 +39,26 @@ class TabComponent extends HTMLElement {
         <style>
             :host(.active) {
                 position:relative;
-                z-index:200px
-                background-color: hsl(0deg, 0%, 100%);
                 border-width: 3px;
-                border-bottom: 0px solid hsl(0deg, 0%, 100%);
                 margin-bottom: -3px;
-                font-weight: bold;
                 display:block;
+                
             }
             :host(.noActive){
                 display: none;
             }
             :host{
+                
                 display: none;
-                width: 90%;
-                border-top: 3px solid black;
-                border-left: 3px solid black;
-                border-right: 2px solid black;
-                border-bottom: 2px solid black;
-                border-radius: 0px 5px 5px 0px;
-                box-shadow: 5px 5px black;
+                border:3px solid ${this.borderColor};
+                border-radius: 0px 6px 6px 6px;
                 overflow-y: auto;
-                height: max-content;
-                max-height: 90vh;
+                height:70vh;
+                max-height: 70vh;
                 padding: 2rem 1rem;
-                background-color: white;
-                 z-index: 100;
+                background-color: ${this.backGroundColor};
+                background:${this.bg};
+                z-index: 100;
             }
 
         </style>

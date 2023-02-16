@@ -72,63 +72,6 @@
     </button>
 </template>
 <template id="template-tabs">
-    <style>
-        .tabs {
-            padding-top: 2vh;
-            height: 100%;
-            width: 100%;
-            overflow-y: scroll;
-        }
-        nav,
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            width: 90%;
-        }
-        .tab {
-            background-color: hsl(0deg, 0%, 75%);
-            border: 3px solid black;
-            border-color: black;
-            border-radius: 10px;
-            border-bottom: 0px solid;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-            width: 33%;
-            height: 3rem;
-            min-height: 2rem;
-            margin-right: 3px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            user-select: none;
-        }
-        .tab.noActive {
-            position: relative;
-            top: 10px;
-            z-index: 100;
-            pointer-events: all;
-        }
-        .tab.active {
-            position: relative;
-            top: 3px;
-            z-index: 200;
-            background-color: hsl(0deg, 0%, 100%);
-            border-width: 3px;
-            border-bottom: 0px solid hsl(0deg, 0%, 100%);
-            margin-bottom: -2px;
-        }
-        p {
-            color: black;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-    </style>
     <div id="tabs1" class="tabs">
         <nav>
             <ul>
@@ -149,26 +92,17 @@
     </section>
     <section class="col-main">
         <div class="contactoAdmintabs">
-            <wc-form id="bookForm">
-                <wc-tabs>
+            <wc-form
+                id="bookForm"
+                labelColor="blue"
+                inputColor="green"
+                inputStyle=""
+                textAreaStyle=""
+                placeholder="auto"
+                placeholderStyle
+            >
+                <wc-tabs borderColor="" bgColor="" textColor="">
                     <wc-tab id="contenido" state="active">
-                        <link
-                            href="../dashboard/css/app.css"
-                            rel="stylesheet"
-                        />
-                        <style>
-                            .campo label {
-                                color: black;
-                            }
-                            input {
-                                padding-left: 0.5rem;
-                                padding-right: 0.5rem;
-                            }
-                            input[type='number'],
-                            input[type='date'] {
-                                text-align: end;
-                            }
-                        </style>
                         <!-- <form id="contactForm"> -->
                         <input id="id" name="id" type="number" hidden />
                         <div class="contacto">
@@ -238,6 +172,7 @@
                                                         id="pageCount"
                                                         name="pageCount"
                                                         type="number"
+                                                        min="0"
                                                     />
                                                     <p
                                                         class="error"
@@ -248,7 +183,7 @@
                                             <div class="col">
                                                 <div class="campo">
                                                     <label for="publishedDate"
-                                                        >Fecha
+                                                        >Fecha de
                                                         Publicacion</label
                                                     >
                                                     <input
